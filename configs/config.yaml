@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  mode: debug
+
+mysql:
+  host: localhost
+  port: 13306
+  database: pr_guard
+  username: root
+  password: "123456"
+
+redis:
+  addr : localhost:6379
+  password: ""
+  db: 0
+
+qdrant:
+  host: localhost
+  port: 6333
+  grpc_port: 6334
