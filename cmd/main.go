@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"pr-guard-agent/internal/config"
+	"pr-guard-agent/internal/database"
 	"pr-guard-agent/internal/router"
 )
 
@@ -17,6 +18,18 @@ func main() {
 	}
 
 	gin.SetMode(cfg.Server.Mode)
+
+	if err := database.InitMySQL(cfg); err != nil {
+		log.Fatalf("init mysql failed: %v", err)
+	}
+
+	if err := database.InitRedis(cfg); err != nil {
+		log.Fatalf("init redis failed: %v", err)
+	}
+
+	if err := database.AutoMigrate(); err != nil {
+		log.Fatalf("auto migrate failed: %v", err)
+	}
 
 	r := router.SetupRouter()
 	addr := fmt.Sprintf(":%d", cfg.Server.Port)
