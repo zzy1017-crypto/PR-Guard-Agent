@@ -4,6 +4,7 @@ import (
 	"io"
 	"net/http"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -12,32 +13,27 @@ import (
 	"pr-guard-agent/internal/service"
 )
 
-const maxUploadSize = 20 << 20 //限制上传文件大小为20MB，保护后端安全
+const maxUploadSize = 20 << 20
 
 func UploadProject(c *gin.Context) {
 	c.Request.Body = http.MaxBytesReader(c.Writer, c.Request.Body, maxUploadSize+1<<20)
 
-	//从multipart表单中获取名为"file"的上传文件
 	fileHeader, err := c.FormFile("file")
 	if err != nil {
-		//处理上传文件错误，如果错误信息包含"request body too large"，则返回请求实体过大的响应，否则返回请求错误的响应
 		if strings.Contains(err.Error(), "request body too large") {
 			c.JSON(http.StatusRequestEntityTooLarge, gin.H{"code": 1, "msg": "zip file size exceeds 20MB"})
 			return
 		}
-		//处理其他上传文件错误，返回请求错误的响应
 		c.JSON(http.StatusBadRequest, gin.H{"code": 1, "msg": "file is required"})
 		return
 	}
 
-	//从表单中获取名为"project_name"的项目名称，并去除前后空格
 	projectName := strings.TrimSpace(c.PostForm("project_name"))
 	if projectName == "" {
 		c.JSON(http.StatusBadRequest, gin.H{"code": 1, "msg": "project_name is required"})
 		return
 	}
 
-	//检查上传文件的大小和类型，如果文件大小超过20MB，则返回相应的错误响应
 	if fileHeader.Size > maxUploadSize {
 		c.JSON(http.StatusRequestEntityTooLarge, gin.H{"code": 1, "msg": "zip file size exceeds 20MB"})
 		return
@@ -79,6 +75,30 @@ func UploadProject(c *gin.Context) {
 		"code": 0,
 		"msg":  "success",
 		"data": result,
+	})
+}
+
+func GenerateASTChunks(c *gin.Context) {
+	projectID64, err := strconv.ParseUint(c.Param("id"), 10, 64)
+	if err != nil || projectID64 == 0 {
+		c.JSON(http.StatusBadRequest, gin.H{"code": 1, "msg": "invalid project id"})
+		return
+	}
+
+	chunkService := service.NewChunkService(database.DB)
+	count, err := chunkService.GenerateASTChunks(uint(projectID64))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"code": 1, "msg": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"code": 0,
+		"msg":  "ast chunks generated",
+		"data": gin.H{
+			"project_id":  uint(projectID64),
+			"chunk_count": count,
+		},
 	})
 }
 
