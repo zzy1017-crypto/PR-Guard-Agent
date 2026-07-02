@@ -20,7 +20,7 @@ var allowedExts = map[string]struct{}{
 	".md":   {},
 	".yaml": {},
 	".yml":  {},
-	".josn": {},
+	".json": {},
 	".lua":  {},
 	".sql":  {},
 	".mod":  {},
