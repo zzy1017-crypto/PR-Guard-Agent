@@ -12,6 +12,7 @@ func SetupRouter() *gin.Engine {
 	r.GET("/health", handler.Health)
 	r.POST("/projects/upload", handler.UploadProject)
 	r.POST("/projects/:id/chunks/ast", handler.GenerateASTChunks)
+	r.POST("/projects/:id/index", handler.IndexProject)
 	r.POST("/projects/:id/diffs", handler.UploadDiff)
 
 	return r
