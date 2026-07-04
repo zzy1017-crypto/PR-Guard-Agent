@@ -18,3 +18,12 @@ qdrant:
   host: localhost
   port: 6333
   grpc_port: 6334
+
+embedding:
+  provider: mock
+  base_url: ""
+  api_key: ""
+  model: "mock_embedding"
+  dimension: 1536
+  timeout_seconds: 10
+  batch_size: 16

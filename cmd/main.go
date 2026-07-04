@@ -31,7 +31,7 @@ func main() {
 		log.Fatalf("auto migrate failed: %v", err)
 	}
 
-	r := router.SetupRouter()
+	r := router.SetupRouter(cfg)
 	addr := fmt.Sprintf(":%d", cfg.Server.Port)
 
 	if err := r.Run(addr); err != nil {
