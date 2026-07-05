@@ -11,8 +11,12 @@ import (
 
 func SetupRouter(cfg *config.Config) *gin.Engine {
 	r := gin.Default()
+	embeddingClient := embedding.NewClient(cfg.Embedding)
 	embeddingHandler := handler.NewEmbeddingHandler(
-		service.NewEmbeddingService(embedding.NewClient(cfg.Embedding)),
+		service.NewEmbeddingService(embeddingClient),
+	)
+	vectorHandler := handler.NewVectorHandler(
+		service.NewVectorService(cfg.Qdrant, embeddingClient),
 	)
 
 	r.GET("/health", handler.Health)
@@ -21,6 +25,10 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	r.POST("/projects/:id/index", handler.IndexProject)
 	r.POST("/projects/:id/diffs", handler.UploadDiff)
 	r.POST("/embedding/test", embeddingHandler.Test)
+	r.POST("/vector/collection/init", vectorHandler.InitCollection)
+	r.POST("/vectoe/collection/init", vectorHandler.InitCollection)
+	r.POST("/vector/test/upsert", vectorHandler.TestUpsert)
+	r.POST("/vector/test/search", vectorHandler.TestSearch)
 
 	return r
 }

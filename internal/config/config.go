@@ -30,9 +30,12 @@ type RedisConfig struct {
 }
 
 type QdrantConfig struct {
-	Host     string `mapstructure:"host"`
-	Port     int    `mapstructure:"port"`
-	GRPCPort int    `mapstructure:"grpc_port"`
+	Host           string `mapstructure:"host"`
+	Port           int    `mapstructure:"port"`
+	CollectionName string `mapstructure:"collection_name"`
+	VectorSize     int    `mapstructure:"vector_size"`
+	Distance       string `mapstructure:"distance"`
+	TimeoutSeconds int    `mapstructure:"timeout_seconds"`
 }
 
 type EmbeddingConfig struct {
@@ -61,8 +64,11 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("redis.password", "")
 	v.SetDefault("redis.db", 0)
 	v.SetDefault("qdrant.host", "localhost")
-	v.SetDefault("qdrant.port", 6333)
-	v.SetDefault("qdrant.grpc_port", 6334)
+	v.SetDefault("qdrant.port", 6334)
+	v.SetDefault("qdrant.collection_name", "pr_guard_code_chunks")
+	v.SetDefault("qdrant.vector_size", 1536)
+	v.SetDefault("qdrant.distance", "Cosine")
+	v.SetDefault("qdrant.timeout_seconds", 10)
 	v.SetDefault("embedding.provider", "mock")
 	v.SetDefault("embedding.base_url", "")
 	v.SetDefault("embedding.api_key", "")

@@ -16,8 +16,11 @@ redis:
 
 qdrant:
   host: localhost
-  port: 6333
-  grpc_port: 6334
+  port: 6334
+  collection_name: pr_guard_code_chunks
+  vector_size: 1536
+  distance: Cosine
+  timeout_seconds: 10
 
 embedding:
   provider: mock
