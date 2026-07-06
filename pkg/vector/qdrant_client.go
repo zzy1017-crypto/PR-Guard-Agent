@@ -90,6 +90,13 @@ func (c *Client) Close() error {
 	return c.client.Close()
 }
 
+func (c *Client) CollectionName() string {
+	if c == nil {
+		return ""
+	}
+	return c.collectionName
+}
+
 func (c *Client) EnsureCollection(ctx context.Context) error {
 	requestCtx, cancel := context.WithTimeout(ctx, c.timeout)
 	defer cancel()

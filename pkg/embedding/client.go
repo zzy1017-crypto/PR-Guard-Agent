@@ -122,6 +122,10 @@ func (c *Client) Dimension() int {
 	return c.dimension
 }
 
+func (c *Client) BatchSize() int {
+	return c.batchSize
+}
+
 func (c *Client) embedBatch(ctx context.Context, texts []string) ([][]float32, error) {
 	if c.provider == ProviderMock {
 		return c.embedMockBatch(ctx, texts)

@@ -24,3 +24,9 @@ func (r *CodeChunkRepository) BatchCreate(chunks []model.CodeChunk) error {
 func (r *CodeChunkRepository) DeleteByProjectID(projectID uint) error {
 	return r.db.Where("project_id = ?", projectID).Delete(&model.CodeChunk{}).Error
 }
+
+func (r *CodeChunkRepository) UpdateEmbeddingID(chunkID uint, embeddingID string) error {
+	return r.db.Model(&model.CodeChunk{}).
+		Where("id = ?", chunkID).
+		Update("embedding_id", embeddingID).Error
+}
