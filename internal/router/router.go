@@ -22,12 +22,16 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	indexHandler := handler.NewIndexHandler(
 		service.NewIndexService(database.DB, cfg.Qdrant, embeddingClient),
 	)
+	ragHandler := handler.NewRAGHandler(
+		service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
+	)
 
 	r.GET("/health", handler.Health)
 	r.POST("/projects/upload", handler.UploadProject)
 	r.POST("/projects/:id/chunks/ast", handler.GenerateASTChunks)
 	r.POST("/projects/:id/index", indexHandler.IndexProject)
 	r.POST("/projects/:id/diffs", handler.UploadDiff)
+	r.POST("/projects/:id/diffs/:diff_id/retrieve", ragHandler.RetrieveRelatedChunks)
 	r.POST("/embedding/test", embeddingHandler.Test)
 	r.POST("/vector/collection/init", vectorHandler.InitCollection)
 	r.POST("/vectoe/collection/init", vectorHandler.InitCollection)
