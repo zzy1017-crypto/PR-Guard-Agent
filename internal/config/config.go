@@ -8,6 +8,7 @@ type Config struct {
 	Redis     RedisConfig     `mapstructure:"redis"`
 	Qdrant    QdrantConfig    `mapstructure:"qdrant"`
 	Embedding EmbeddingConfig `mapstructure:"embedding"`
+	LLM       LLMConfig       `mapstructure:"llm"`
 }
 
 type ServerConfig struct {
@@ -48,6 +49,16 @@ type EmbeddingConfig struct {
 	BatchSize      int    `mapstructure:"batch_size"`
 }
 
+type LLMConfig struct {
+	Provider       string  `mapstructure:"provider"`
+	BaseURL        string  `mapstructure:"base_url"`
+	APIKey         string  `mapstructure:"api_key"`
+	Model          string  `mapstructure:"model"`
+	TimeoutSeconds int     `mapstructure:"timeout_seconds"`
+	MaxTokens      int     `mapstructure:"max_tokens"`
+	Temperature    float64 `mapstructure:"temperature"`
+}
+
 func Load(path string) (*Config, error) {
 	v := viper.New()
 	v.SetConfigFile(path)
@@ -76,6 +87,13 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("embedding.dimension", 1536)
 	v.SetDefault("embedding.timeout_seconds", 10)
 	v.SetDefault("embedding.batch_size", 16)
+	v.SetDefault("llm.provider", "mock")
+	v.SetDefault("llm.base_url", "")
+	v.SetDefault("llm.api_key", "")
+	v.SetDefault("llm.model", "mock-llm")
+	v.SetDefault("llm.timeout_seconds", 20)
+	v.SetDefault("llm.max_tokens", 1200)
+	v.SetDefault("llm.temperature", 0.2)
 
 	if err := v.ReadInConfig(); err != nil {
 		return nil, err

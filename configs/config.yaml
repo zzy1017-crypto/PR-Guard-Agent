@@ -30,3 +30,12 @@ embedding:
   dimension: 1536
   timeout_seconds: 10
   batch_size: 16
+
+llm:
+  provider: mock
+  base_url: ""
+  api_key: ""
+  model: "mock-llm"
+  timeout_seconds: 20
+  max_tokens: 1200
+  temperature: 0.2

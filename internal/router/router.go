@@ -8,6 +8,7 @@ import (
 	"pr-guard-agent/internal/handler"
 	"pr-guard-agent/internal/service"
 	"pr-guard-agent/pkg/embedding"
+	"pr-guard-agent/pkg/llm"
 )
 
 func SetupRouter(cfg *config.Config) *gin.Engine {
@@ -25,6 +26,9 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	ragHandler := handler.NewRAGHandler(
 		service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
 	)
+	llmHandler := handler.NewLLMHandler(
+		service.NewLLMService(llm.NewClient(cfg.LLM)),
+	)
 
 	r.GET("/health", handler.Health)
 	r.POST("/projects/upload", handler.UploadProject)
@@ -37,6 +41,7 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	r.POST("/vectoe/collection/init", vectorHandler.InitCollection)
 	r.POST("/vector/test/upsert", vectorHandler.TestUpsert)
 	r.POST("/vector/test/search", vectorHandler.TestSearch)
+	r.POST("/llm/risk/test", llmHandler.RiskTest)
 
 	return r
 }
