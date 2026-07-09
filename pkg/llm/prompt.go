@@ -62,6 +62,9 @@ func BuildRiskAnalysisPrompt(input RiskPromptInput) (string, error) {
 	b.WriteString(diffText)
 	b.WriteString("\n\ncontext_chunks:\n")
 	b.Write(contextJSON)
+	if len(input.ContextChunks) == 0 {
+		b.WriteString("\n\nContext note: context_chunks is empty; explicitly mention that available context is insufficient.")
+	}
 
 	return b.String(), nil
 }

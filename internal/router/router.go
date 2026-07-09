@@ -14,6 +14,7 @@ import (
 func SetupRouter(cfg *config.Config) *gin.Engine {
 	r := gin.Default()
 	embeddingClient := embedding.NewClient(cfg.Embedding)
+	llmClient := llm.NewClient(cfg.LLM)
 	embeddingHandler := handler.NewEmbeddingHandler(
 		service.NewEmbeddingService(embeddingClient),
 	)
@@ -27,7 +28,14 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 		service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
 	)
 	llmHandler := handler.NewLLMHandler(
-		service.NewLLMService(llm.NewClient(cfg.LLM)),
+		service.NewLLMService(llmClient),
+	)
+	reportHandler := handler.NewReportHandler(
+		service.NewReportService(
+			database.DB,
+			service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
+			llmClient,
+		),
 	)
 
 	r.GET("/health", handler.Health)
@@ -36,6 +44,7 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 	r.POST("/projects/:id/index", indexHandler.IndexProject)
 	r.POST("/projects/:id/diffs", handler.UploadDiff)
 	r.POST("/projects/:id/diffs/:diff_id/retrieve", ragHandler.RetrieveRelatedChunks)
+	r.POST("/projects/:id/diffs/:diff_id/analyze", reportHandler.AnalyzeDiff)
 	r.POST("/embedding/test", embeddingHandler.Test)
 	r.POST("/vector/collection/init", vectorHandler.InitCollection)
 	r.POST("/vectoe/collection/init", vectorHandler.InitCollection)
