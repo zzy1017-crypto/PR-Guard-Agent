@@ -5,12 +5,15 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"log"
 	"strings"
+	"time"
 
 	"pr-guard-agent/internal/config"
 	"pr-guard-agent/internal/database"
 	"pr-guard-agent/internal/model"
 	"pr-guard-agent/internal/repository"
+	reportcache "pr-guard-agent/pkg/cache"
 	"pr-guard-agent/pkg/embedding"
 	"pr-guard-agent/pkg/llm"
 
@@ -24,24 +27,17 @@ type ReportService struct {
 	riskReportRepo *repository.RiskReportRepository
 	ragService     *RAGService
 	llmClient      *llm.Client
+	reportCache    *reportcache.ReportCache
 }
 
-type AnalyzeResult struct {
-	ReportID        uint     `json:"report_id"`
-	ProjectID       uint     `json:"project_id"`
-	DiffID          uint     `json:"diff_id"`
-	RiskLevel       string   `json:"risk_level"`
-	Summary         string   `json:"summary"`
-	AffectedModules []string `json:"affected_modules"`
-	PossibleRisks   []string `json:"possible_risks"`
-	SuggestedTests  []string `json:"suggested_tests"`
-	RelatedFiles    []string `json:"related_files"`
-	RelatedSymbols  []string `json:"related_symbols"`
-	Confidence      float64  `json:"confidence"`
-	Cached          bool     `json:"cached"`
-}
+type AnalyzeResult = reportcache.AnalyzeResult
 
-func NewReportService(db *gorm.DB, ragService *RAGService, llmClient *llm.Client) *ReportService {
+func NewReportService(
+	db *gorm.DB,
+	ragService *RAGService,
+	llmClient *llm.Client,
+	reportCache *reportcache.ReportCache,
+) *ReportService {
 	return &ReportService{
 		db:             db,
 		projectRepo:    repository.NewProjectRepository(db),
@@ -49,6 +45,7 @@ func NewReportService(db *gorm.DB, ragService *RAGService, llmClient *llm.Client
 		riskReportRepo: repository.NewRiskReportRepository(db),
 		ragService:     ragService,
 		llmClient:      llmClient,
+		reportCache:    reportCache,
 	}
 }
 
@@ -60,7 +57,12 @@ func AnalyzeDiff(projectID uint, diffID uint, topK int) (*AnalyzeResult, error) 
 
 	embeddingClient := embedding.NewClient(cfg.Embedding)
 	ragService := NewRAGService(database.DB, cfg.Qdrant, embeddingClient)
-	reportService := NewReportService(database.DB, ragService, llm.NewClient(cfg.LLM))
+	reportCache := reportcache.NewReportCache(
+		database.RDB,
+		time.Duration(cfg.ReportCache.TTLSeconds)*time.Second,
+		cfg.ReportCache.Enabled,
+	)
+	reportService := NewReportService(database.DB, ragService, llm.NewClient(cfg.LLM), reportCache)
 	return reportService.AnalyzeDiff(projectID, diffID, topK)
 }
 
@@ -75,13 +77,6 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 	if s.projectRepo == nil || s.diffRepo == nil || s.riskReportRepo == nil {
 		return nil, errors.New("report repository is not initialized")
 	}
-	if s.ragService == nil {
-		return nil, errors.New("rag service is not initialized")
-	}
-	if s.llmClient == nil {
-		return nil, errors.New("llm client is not initialized")
-	}
-
 	project, err := s.projectRepo.GetByID(projectID)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -99,6 +94,24 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 	}
 	if diff.ProjectID != project.ID {
 		return nil, ErrDiffProjectMismatch
+	}
+
+	cacheKey := reportcache.BuildReportCacheKey(project.ID, project.CodeVersionHash, diff.DiffHash)
+	if s.reportCache != nil && s.reportCache.Enabled() {
+		cachedResult, cacheErr := s.reportCache.Get(ctx, cacheKey)
+		if cacheErr != nil {
+			log.Printf("report cache get failed, continue analysis: %v", cacheErr)
+		} else if cachedResult != nil {
+			cachedResult.Cached = true
+			return cachedResult, nil
+		}
+	}
+
+	if s.ragService == nil {
+		return nil, errors.New("rag service is not initialized")
+	}
+	if s.llmClient == nil {
+		return nil, errors.New("llm client is not initialized")
 	}
 
 	diffText := strings.TrimPrefix(diff.DiffText, "\uFEFF")
@@ -137,7 +150,7 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 		return nil, fmt.Errorf("save risk report failed: %w", err)
 	}
 
-	return &AnalyzeResult{
+	result := &AnalyzeResult{
 		ReportID:        riskReport.ID,
 		ProjectID:       project.ID,
 		DiffID:          diff.ID,
@@ -150,7 +163,15 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 		RelatedSymbols:  report.RelatedSymbols,
 		Confidence:      report.Confidence,
 		Cached:          false,
-	}, nil
+	}
+
+	if s.reportCache != nil && s.reportCache.Enabled() {
+		if cacheErr := s.reportCache.Set(ctx, cacheKey, result); cacheErr != nil {
+			log.Printf("report cache set failed, return analysis result: %v", cacheErr)
+		}
+	}
+
+	return result, nil
 }
 
 func toLLMContextChunks(chunks []ContextChunkResult) []llm.ContextChunk {

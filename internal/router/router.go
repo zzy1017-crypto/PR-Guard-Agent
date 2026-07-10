@@ -7,11 +7,12 @@ import (
 	"pr-guard-agent/internal/database"
 	"pr-guard-agent/internal/handler"
 	"pr-guard-agent/internal/service"
+	reportcache "pr-guard-agent/pkg/cache"
 	"pr-guard-agent/pkg/embedding"
 	"pr-guard-agent/pkg/llm"
 )
 
-func SetupRouter(cfg *config.Config) *gin.Engine {
+func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache) *gin.Engine {
 	r := gin.Default()
 	embeddingClient := embedding.NewClient(cfg.Embedding)
 	llmClient := llm.NewClient(cfg.LLM)
@@ -35,6 +36,7 @@ func SetupRouter(cfg *config.Config) *gin.Engine {
 			database.DB,
 			service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
 			llmClient,
+			reportCache,
 		),
 	)
 

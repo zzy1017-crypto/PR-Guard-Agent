@@ -3,12 +3,13 @@ package config
 import "github.com/spf13/viper"
 
 type Config struct {
-	Server    ServerConfig    `mapstructure:"server"`
-	MySQL     MySQLConfig     `mapstructure:"mysql"`
-	Redis     RedisConfig     `mapstructure:"redis"`
-	Qdrant    QdrantConfig    `mapstructure:"qdrant"`
-	Embedding EmbeddingConfig `mapstructure:"embedding"`
-	LLM       LLMConfig       `mapstructure:"llm"`
+	Server      ServerConfig      `mapstructure:"server"`
+	MySQL       MySQLConfig       `mapstructure:"mysql"`
+	Redis       RedisConfig       `mapstructure:"redis"`
+	ReportCache ReportCacheConfig `mapstructure:"report_cache"`
+	Qdrant      QdrantConfig      `mapstructure:"qdrant"`
+	Embedding   EmbeddingConfig   `mapstructure:"embedding"`
+	LLM         LLMConfig         `mapstructure:"llm"`
 }
 
 type ServerConfig struct {
@@ -28,6 +29,11 @@ type RedisConfig struct {
 	Addr     string `mapstructure:"addr"`
 	Password string `mapstructure:"password"`
 	DB       int    `mapstructure:"db"`
+}
+
+type ReportCacheConfig struct {
+	Enabled    bool `mapstructure:"enabled"`
+	TTLSeconds int  `mapstructure:"ttl_seconds"`
 }
 
 type QdrantConfig struct {
@@ -74,6 +80,8 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("redis.addr", "localhost:6379")
 	v.SetDefault("redis.password", "")
 	v.SetDefault("redis.db", 0)
+	v.SetDefault("report_cache.enabled", true)
+	v.SetDefault("report_cache.ttl_seconds", 3600)
 	v.SetDefault("qdrant.host", "localhost")
 	v.SetDefault("qdrant.port", 6334)
 	v.SetDefault("qdrant.collection_name", "pr_guard_code_chunks")

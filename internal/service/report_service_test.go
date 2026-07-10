@@ -3,9 +3,20 @@ package service
 import (
 	"encoding/json"
 	"testing"
+	"time"
 
+	reportcache "pr-guard-agent/pkg/cache"
 	"pr-guard-agent/pkg/llm"
 )
+
+func TestNewReportServiceInjectsReportCache(t *testing.T) {
+	want := reportcache.NewReportCache(nil, time.Hour, true)
+	service := NewReportService(nil, nil, nil, want)
+
+	if service.reportCache != want {
+		t.Fatalf("reportCache = %p, want %p", service.reportCache, want)
+	}
+}
 
 func TestBuildRiskReportModel(t *testing.T) {
 	report := &llm.RiskReport{

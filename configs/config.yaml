@@ -10,9 +10,13 @@ mysql:
   password: "123456"
 
 redis:
-  addr : localhost:6379
+  addr : localhost:16379
   password: ""
   db: 0
+
+report_cache:
+  enabled: true
+  ttl_seconds: 3600
 
 qdrant:
   host: localhost
