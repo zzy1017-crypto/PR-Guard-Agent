@@ -23,6 +23,8 @@ type AnalyzeResult struct {
 	RelatedSymbols  []string `json:"related_symbols"`
 	Confidence      float64  `json:"confidence"`
 	Cached          bool     `json:"cached"`
+	Degraded        bool     `json:"degraded"`
+	DegradedReason  string   `json:"degraded_reason,omitempty"`
 }
 
 type ReportCache struct {
@@ -79,6 +81,9 @@ func (c *ReportCache) Set(ctx context.Context, key string, result *AnalyzeResult
 	}
 	if result == nil {
 		return errors.New("report cache result is nil")
+	}
+	if result.Degraded {
+		return errors.New("degraded report must not be cached")
 	}
 
 	value, err := json.Marshal(result)

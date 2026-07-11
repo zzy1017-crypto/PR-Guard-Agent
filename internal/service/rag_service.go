@@ -82,27 +82,34 @@ func NewRAGService(db *gorm.DB, qdrantCfg config.QdrantConfig, embeddingClient *
 	}
 }
 
-func RetrieveRelatedChunks(projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
+func RetrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
 	cfg, err := config.Load("configs/config.yaml")
 	if err != nil {
 		return nil, fmt.Errorf("load config failed: %w", err)
 	}
 
 	return NewRAGService(database.DB, cfg.Qdrant, embedding.NewClient(cfg.Embedding)).
-		RetrieveRelatedChunks(projectID, diffID, topK)
+		RetrieveRelatedChunks(ctx, projectID, diffID, topK)
 }
 
-func (s *RAGService) RetrieveRelatedChunks(projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
-	return s.RetrieveRelatedChunksWithContext(context.Background(), projectID, diffID, topK)
+func (s *RAGService) RetrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
+	return s.retrieveRelatedChunks(ctx, projectID, diffID, topK)
 }
 
 func (s *RAGService) RetrieveRelatedChunksWithContext(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
+	return s.retrieveRelatedChunks(ctx, projectID, diffID, topK)
+}
+
+func (s *RAGService) retrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
 	if s == nil || s.db == nil {
 		return nil, errors.New("database is not initialized")
 	}
+	if ctx == nil {
+		return nil, errors.New("rag context is nil")
+	}
 	topK = normalizeRetrieveTopK(topK)
 
-	project, err := s.projectRepo.GetByID(projectID)
+	project, err := s.projectRepo.GetByIDWithContext(ctx, projectID)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, ErrProjectNotFound
@@ -110,7 +117,7 @@ func (s *RAGService) RetrieveRelatedChunksWithContext(ctx context.Context, proje
 		return nil, fmt.Errorf("query project failed: %w", err)
 	}
 
-	diff, err := s.diffRepo.GetByID(diffID)
+	diff, err := s.diffRepo.GetByIDWithContext(ctx, diffID)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, ErrDiffNotFound
@@ -145,7 +152,7 @@ func (s *RAGService) RetrieveRelatedChunksWithContext(ctx context.Context, proje
 		return nil, fmt.Errorf("qdrant search failed: %w", err)
 	}
 
-	chunksByID, err := s.loadChunksBySearchResults(searchResults, project)
+	chunksByID, err := s.loadChunksBySearchResults(ctx, searchResults, project)
 	if err != nil {
 		return nil, err
 	}
@@ -179,13 +186,13 @@ func (s *RAGService) RetrieveRelatedChunksWithContext(ctx context.Context, proje
 	return result, nil
 }
 
-func (s *RAGService) loadChunksBySearchResults(searchResults []vector.SearchResult, project *model.Project) (map[uint]model.CodeChunk, error) {
+func (s *RAGService) loadChunksBySearchResults(ctx context.Context, searchResults []vector.SearchResult, project *model.Project) (map[uint]model.CodeChunk, error) {
 	chunkIDs := uniqueSearchResultChunkIDs(searchResults)
 	if len(chunkIDs) == 0 {
 		return map[uint]model.CodeChunk{}, nil
 	}
 
-	chunks, err := s.codeChunkRepo.ListByIDs(chunkIDs)
+	chunks, err := s.codeChunkRepo.ListByIDsWithContext(ctx, chunkIDs)
 	if err != nil {
 		return nil, fmt.Errorf("query code_chunks failed: %w", err)
 	}

@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"context"
+
 	"pr-guard-agent/internal/model"
 
 	"gorm.io/gorm"
@@ -16,6 +18,10 @@ func NewRiskReportRepository(db *gorm.DB) *RiskReportRepository {
 
 func (r *RiskReportRepository) Create(report *model.RiskReport) error {
 	return r.db.Create(report).Error
+}
+
+func (r *RiskReportRepository) CreateWithContext(ctx context.Context, report *model.RiskReport) error {
+	return r.db.WithContext(ctx).Create(report).Error
 }
 
 func (r *RiskReportRepository) FindByID(id uint) (*model.RiskReport, error) {

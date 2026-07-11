@@ -42,7 +42,7 @@ func (h *ReportHandler) AnalyzeDiff(c *gin.Context) {
 		return
 	}
 
-	result, err := h.service.AnalyzeDiffWithContext(c.Request.Context(), uint(projectID64), uint(diffID64), topK)
+	result, err := h.service.AnalyzeDiff(c.Request.Context(), uint(projectID64), uint(diffID64), topK)
 	if err != nil {
 		status := analyzeErrorStatus(err)
 		c.JSON(status, gin.H{"code": 1, "msg": err.Error()})

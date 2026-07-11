@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"context"
+
 	"pr-guard-agent/internal/model"
 
 	"gorm.io/gorm"
@@ -15,8 +17,12 @@ func NewDiffRepository(db *gorm.DB) *DiffRepository {
 }
 
 func (r *DiffRepository) GetByID(diffID uint) (*model.DiffRecord, error) {
+	return r.GetByIDWithContext(context.Background(), diffID)
+}
+
+func (r *DiffRepository) GetByIDWithContext(ctx context.Context, diffID uint) (*model.DiffRecord, error) {
 	var diffRecord model.DiffRecord
-	if err := r.db.First(&diffRecord, diffID).Error; err != nil {
+	if err := r.db.WithContext(ctx).First(&diffRecord, diffID).Error; err != nil {
 		return nil, err
 	}
 	return &diffRecord, nil

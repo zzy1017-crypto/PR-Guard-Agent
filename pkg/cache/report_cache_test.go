@@ -123,6 +123,14 @@ func TestDisabledReportCacheDoesNotRequireRedis(t *testing.T) {
 	}
 }
 
+func TestReportCacheRejectsDegradedResult(t *testing.T) {
+	cache := NewReportCache(newHookedRedisClient(), time.Hour, true)
+	err := cache.Set(context.Background(), "key", &AnalyzeResult{Degraded: true})
+	if err == nil {
+		t.Fatal("Set() error = nil, want degraded report rejection")
+	}
+}
+
 type redisCommandHook struct {
 	process func(redis.Cmder) error
 }

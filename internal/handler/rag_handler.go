@@ -42,7 +42,7 @@ func (h *RAGHandler) RetrieveRelatedChunks(c *gin.Context) {
 		return
 	}
 
-	result, err := h.service.RetrieveRelatedChunksWithContext(c.Request.Context(), uint(projectID64), uint(diffID64), topK)
+	result, err := h.service.RetrieveRelatedChunks(c.Request.Context(), uint(projectID64), uint(diffID64), topK)
 	if err != nil {
 		status := retrieveErrorStatus(err)
 		c.JSON(status, gin.H{"code": 1, "msg": err.Error()})

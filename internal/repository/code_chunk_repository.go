@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"context"
+
 	"pr-guard-agent/internal/model"
 
 	"gorm.io/gorm"
@@ -26,12 +28,16 @@ func (r *CodeChunkRepository) DeleteByProjectID(projectID uint) error {
 }
 
 func (r *CodeChunkRepository) ListByIDs(chunkIDs []uint) ([]model.CodeChunk, error) {
+	return r.ListByIDsWithContext(context.Background(), chunkIDs)
+}
+
+func (r *CodeChunkRepository) ListByIDsWithContext(ctx context.Context, chunkIDs []uint) ([]model.CodeChunk, error) {
 	if len(chunkIDs) == 0 {
 		return []model.CodeChunk{}, nil
 	}
 
 	var chunks []model.CodeChunk
-	if err := r.db.Where("id IN ?", chunkIDs).Find(&chunks).Error; err != nil {
+	if err := r.db.WithContext(ctx).Where("id IN ?", chunkIDs).Find(&chunks).Error; err != nil {
 		return nil, err
 	}
 	return chunks, nil

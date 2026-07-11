@@ -37,9 +37,11 @@ embedding:
 
 llm:
   provider: mock
+  mock_mode: normal
+  mock_delay_ms: 0
   base_url: ""
   api_key: ""
   model: "mock-llm"
-  timeout_seconds: 20
+  timeout_seconds: 2
   max_tokens: 1200
   temperature: 0.2

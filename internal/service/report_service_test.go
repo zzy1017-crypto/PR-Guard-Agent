@@ -48,6 +48,34 @@ func TestBuildRiskReportModel(t *testing.T) {
 	assertJSONStringSlice(t, "related_symbols", model.RelatedSymbols, report.RelatedSymbols)
 }
 
+func TestBuildFallbackReport(t *testing.T) {
+	retrieveResult := &RetrieveResult{
+		RelatedFiles: []string{"internal/service/order.go"},
+		RelatedSymbols: []RelatedSymbolResult{
+			{SymbolName: "OrderService.CreateOrder"},
+			{SymbolName: "OrderService.CreateOrder"},
+			{SymbolName: ""},
+		},
+	}
+
+	result := BuildFallbackReport(3, 7, retrieveResult, "LLM request timed out")
+	if result.ReportID != 0 || result.ProjectID != 3 || result.DiffID != 7 {
+		t.Fatalf("unexpected fallback identity: %#v", result)
+	}
+	if !result.Degraded || result.DegradedReason != "LLM request timed out" || result.Cached {
+		t.Fatalf("unexpected fallback state: %#v", result)
+	}
+	if result.RiskLevel != "medium" || result.Confidence != 0.2 {
+		t.Fatalf("unexpected fallback risk: %#v", result)
+	}
+	if result.AffectedModules == nil || len(result.AffectedModules) != 0 {
+		t.Fatalf("AffectedModules = %#v, want non-nil empty slice", result.AffectedModules)
+	}
+	if len(result.RelatedFiles) != 1 || len(result.RelatedSymbols) != 1 {
+		t.Fatalf("unexpected fallback sources: files=%#v symbols=%#v", result.RelatedFiles, result.RelatedSymbols)
+	}
+}
+
 func assertJSONStringSlice(t *testing.T, field string, raw string, want []string) {
 	t.Helper()
 

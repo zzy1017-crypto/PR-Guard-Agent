@@ -24,6 +24,8 @@ const (
 
 type Client struct {
 	provider    string
+	mockMode    string
+	mockDelay   time.Duration
 	baseURL     string
 	apiKey      string
 	model       string
@@ -61,6 +63,8 @@ func NewClient(cfg config.LLMConfig) *Client {
 
 	return &Client{
 		provider:    provider,
+		mockMode:    strings.ToLower(strings.TrimSpace(cfg.MockMode)),
+		mockDelay:   time.Duration(cfg.MockDelayMS) * time.Millisecond,
 		baseURL:     strings.TrimSpace(cfg.BaseURL),
 		apiKey:      strings.TrimSpace(cfg.APIKey),
 		model:       model,
@@ -72,14 +76,14 @@ func NewClient(cfg config.LLMConfig) *Client {
 }
 
 func (c *Client) Generate(ctx context.Context, prompt string) (string, error) {
-	if strings.TrimSpace(prompt) == "" {
-		return "", errors.New("llm prompt is empty")
-	}
 	if c == nil {
 		return "", errors.New("llm client is nil")
 	}
 	if ctx == nil {
-		ctx = context.Background()
+		return "", errors.New("llm context is nil")
+	}
+	if strings.TrimSpace(prompt) == "" {
+		return "", errors.New("llm prompt is empty")
 	}
 
 	timeout := c.timeout
@@ -93,7 +97,11 @@ func (c *Client) Generate(ctx context.Context, prompt string) (string, error) {
 	if c.provider == ProviderMock {
 		return c.generateMock(reqCtx)
 	}
-	return c.generateHTTP(reqCtx, prompt)
+	output, err := c.generateHTTP(reqCtx, prompt)
+	if err != nil {
+		return "", classifyClientError(reqCtx, err)
+	}
+	return output, nil
 }
 
 func (c *Client) Provider() string {
@@ -108,18 +116,37 @@ func (c *Client) IsMock() bool {
 }
 
 func (c *Client) generateMock(ctx context.Context) (string, error) {
+	delay := c.mockDelay
+	if delay < 0 {
+		delay = 0
+	}
+	timer := time.NewTimer(delay)
+	defer timer.Stop()
+
 	select {
 	case <-ctx.Done():
-		return "", ctx.Err()
-	default:
+		return "", classifyClientError(ctx, ctx.Err())
+	case <-timer.C:
 	}
 
-	return `{"risk_level":"medium","summary":"CreateOrder now depends on stock deduction before order persistence; verify transaction boundaries and failure handling.","affected_modules":["order","stock"],"possible_risks":["Stock may be deducted while order creation later fails, causing inconsistent inventory.","Context is limited, so rollback or transaction handling could not be fully verified."],"suggested_tests":["Test CreateOrder returns an error and does not create an order when DeductStock fails.","Test inventory remains consistent when stock deduction succeeds but order persistence fails."],"related_files":["internal/service/order_service.go","internal/service/stock_service.go"],"related_symbols":["OrderService.CreateOrder","StockService.DeductStock"],"confidence":0.78}`, nil
+	valid := `{"risk_level":"medium","summary":"Mock risk analysis completed.","affected_modules":[],"possible_risks":["Review the changed behavior and its failure paths."],"suggested_tests":["Run focused regression tests for the changed code."],"related_files":[],"related_symbols":[],"confidence":0.78}`
+	switch c.mockMode {
+	case "", "normal":
+		return valid, nil
+	case "marksown_json", "markdown_json":
+		return "```json\n" + valid + "\n```", nil
+	case "invalid_json":
+		return "this is not valid json", nil
+	case "invented_source":
+		return `{"risk_level":"medium","summary":"Mock report with invented sources.","affected_modules":[],"possible_risks":[],"suggested_tests":[],"related_files":["invented/file.go"],"related_symbols":["Invented.Symbol"],"confidence":0.5}`, nil
+	default:
+		return "", fmt.Errorf("%w: unsupported mock_mode %q", ErrLLMProvider, c.mockMode)
+	}
 }
 
 func (c *Client) generateHTTP(ctx context.Context, prompt string) (string, error) {
 	if c.baseURL == "" {
-		return "", errors.New("llm base_url is required")
+		return "", fmt.Errorf("%w: base_url is required", ErrLLMProvider)
 	}
 
 	body, err := json.Marshal(Request{
@@ -157,19 +184,35 @@ func (c *Client) generateHTTP(ctx context.Context, prompt string) (string, error
 
 	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
 		respBody, _ := io.ReadAll(io.LimitReader(resp.Body, 4096))
-		return "", fmt.Errorf("llm api returned status %d: %s", resp.StatusCode, strings.TrimSpace(string(respBody)))
+		return "", fmt.Errorf("%w: api returned status %d: %s", ErrLLMProvider, resp.StatusCode, strings.TrimSpace(string(respBody)))
 	}
 
 	var llmResp Response
 	if err := json.NewDecoder(resp.Body).Decode(&llmResp); err != nil {
-		return "", fmt.Errorf("decode llm response failed: %w", err)
+		return "", fmt.Errorf("%w: decode response failed: %w", ErrLLMProvider, err)
 	}
 
 	output := extractResponseText(llmResp)
 	if strings.TrimSpace(output) == "" {
-		return "", errors.New("llm response text is empty")
+		return "", fmt.Errorf("%w: response text is empty", ErrLLMProvider)
 	}
 	return output, nil
+}
+
+func classifyClientError(ctx context.Context, err error) error {
+	if err == nil {
+		return nil
+	}
+	if errors.Is(err, ErrLLMTimeout) || errors.Is(err, ErrLLMProvider) {
+		return err
+	}
+	if errors.Is(err, context.DeadlineExceeded) || (ctx != nil && errors.Is(ctx.Err(), context.DeadlineExceeded)) {
+		return fmt.Errorf("%w: %w", ErrLLMTimeout, context.DeadlineExceeded)
+	}
+	if errors.Is(err, context.Canceled) {
+		return fmt.Errorf("llm request canceled: %w", err)
+	}
+	return fmt.Errorf("%w: %w", ErrLLMProvider, err)
 }
 
 func extractResponseText(resp Response) string {

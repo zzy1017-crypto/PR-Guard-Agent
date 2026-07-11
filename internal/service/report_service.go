@@ -49,7 +49,7 @@ func NewReportService(
 	}
 }
 
-func AnalyzeDiff(projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
+func AnalyzeDiff(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
 	cfg, err := config.Load("configs/config.yaml")
 	if err != nil {
 		return nil, fmt.Errorf("load config failed: %w", err)
@@ -63,21 +63,28 @@ func AnalyzeDiff(projectID uint, diffID uint, topK int) (*AnalyzeResult, error) 
 		cfg.ReportCache.Enabled,
 	)
 	reportService := NewReportService(database.DB, ragService, llm.NewClient(cfg.LLM), reportCache)
-	return reportService.AnalyzeDiff(projectID, diffID, topK)
+	return reportService.AnalyzeDiff(ctx, projectID, diffID, topK)
 }
 
-func (s *ReportService) AnalyzeDiff(projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
-	return s.AnalyzeDiffWithContext(context.Background(), projectID, diffID, topK)
+func (s *ReportService) AnalyzeDiff(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
+	return s.analyzeDiff(ctx, projectID, diffID, topK)
 }
 
 func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
+	return s.analyzeDiff(ctx, projectID, diffID, topK)
+}
+
+func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
 	if s == nil || s.db == nil {
 		return nil, errors.New("report service is not initialized")
+	}
+	if ctx == nil {
+		return nil, errors.New("report context is nil")
 	}
 	if s.projectRepo == nil || s.diffRepo == nil || s.riskReportRepo == nil {
 		return nil, errors.New("report repository is not initialized")
 	}
-	project, err := s.projectRepo.GetByID(projectID)
+	project, err := s.projectRepo.GetByIDWithContext(ctx, projectID)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, ErrProjectNotFound
@@ -85,7 +92,7 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 		return nil, fmt.Errorf("query project failed: %w", err)
 	}
 
-	diff, err := s.diffRepo.GetByID(diffID)
+	diff, err := s.diffRepo.GetByIDWithContext(ctx, diffID)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, ErrDiffNotFound
@@ -101,7 +108,7 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 		cachedResult, cacheErr := s.reportCache.Get(ctx, cacheKey)
 		if cacheErr != nil {
 			log.Printf("report cache get failed, continue analysis: %v", cacheErr)
-		} else if cachedResult != nil {
+		} else if cachedResult != nil && !cachedResult.Degraded {
 			cachedResult.Cached = true
 			return cachedResult, nil
 		}
@@ -119,14 +126,15 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 		return nil, ErrDiffTextEmpty
 	}
 
-	retrieveResult, err := s.ragService.RetrieveRelatedChunksWithContext(ctx, project.ID, diff.ID, topK)
+	retrieveResult, err := s.ragService.RetrieveRelatedChunks(ctx, project.ID, diff.ID, topK)
 	if err != nil {
 		return nil, fmt.Errorf("retrieve related chunks failed: %w", err)
 	}
 
+	contextChunks := toLLMContextChunks(retrieveResult.ContextChunks)
 	prompt, err := llm.BuildRiskAnalysisPrompt(llm.RiskPromptInput{
 		DiffText:      diffText,
-		ContextChunks: toLLMContextChunks(retrieveResult.ContextChunks),
+		ContextChunks: contextChunks,
 	})
 	if err != nil {
 		return nil, fmt.Errorf("build risk analysis prompt failed: %w", err)
@@ -134,19 +142,31 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 
 	rawOutput, err := s.llmClient.Generate(ctx, prompt)
 	if err != nil {
+		if reason, ok := fallbackReason(err); ok {
+			return BuildFallbackReport(project.ID, diff.ID, retrieveResult, reason), nil
+		}
 		return nil, fmt.Errorf("generate risk report failed: %w", err)
 	}
 
 	report, err := llm.ParseRiskReport(rawOutput)
 	if err != nil {
-		return nil, fmt.Errorf("llm returned invalid risk report JSON: %w", err)
+		if reason, ok := fallbackReason(err); ok {
+			return BuildFallbackReport(project.ID, diff.ID, retrieveResult, reason), nil
+		}
+		return nil, fmt.Errorf("parse risk report failed: %w", err)
+	}
+	if err := llm.ValidateRiskReportSources(report, contextChunks); err != nil {
+		if reason, ok := fallbackReason(err); ok {
+			return BuildFallbackReport(project.ID, diff.ID, retrieveResult, reason), nil
+		}
+		return nil, fmt.Errorf("validate risk report sources failed: %w", err)
 	}
 
 	riskReport, err := buildRiskReportModel(project.ID, diff.ID, report, rawOutput)
 	if err != nil {
 		return nil, err
 	}
-	if err := s.riskReportRepo.Create(riskReport); err != nil {
+	if err := s.riskReportRepo.CreateWithContext(ctx, riskReport); err != nil {
 		return nil, fmt.Errorf("save risk report failed: %w", err)
 	}
 
@@ -163,6 +183,8 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 		RelatedSymbols:  report.RelatedSymbols,
 		Confidence:      report.Confidence,
 		Cached:          false,
+		Degraded:        false,
+		DegradedReason:  "",
 	}
 
 	if s.reportCache != nil && s.reportCache.Enabled() {
@@ -172,6 +194,62 @@ func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID ui
 	}
 
 	return result, nil
+}
+
+func fallbackReason(err error) (string, bool) {
+	switch {
+	case errors.Is(err, llm.ErrLLMTimeout):
+		return "LLM request timed out", true
+	case errors.Is(err, llm.ErrLLMProvider):
+		return "LLM provider is unavailable", true
+	case errors.Is(err, llm.ErrLLMInvalidJSON):
+		return "LLM returned invalid JSON", true
+	case errors.Is(err, llm.ErrLLMInvalidReport):
+		return "LLM risk report or related sources failed validation", true
+	default:
+		return "", false
+	}
+}
+
+func BuildFallbackReport(projectID uint, diffID uint, retrieveResult *RetrieveResult, reason string) *AnalyzeResult {
+	reason = strings.TrimSpace(reason)
+	if reason == "" {
+		reason = "LLM analysis is unavailable"
+	}
+	relatedFiles := make([]string, 0)
+	relatedSymbols := make([]string, 0)
+	if retrieveResult != nil {
+		relatedFiles = append(relatedFiles, retrieveResult.RelatedFiles...)
+		seenSymbols := make(map[string]struct{}, len(retrieveResult.RelatedSymbols))
+		for _, symbol := range retrieveResult.RelatedSymbols {
+			name := strings.TrimSpace(symbol.SymbolName)
+			if name == "" {
+				continue
+			}
+			if _, exists := seenSymbols[name]; exists {
+				continue
+			}
+			seenSymbols[name] = struct{}{}
+			relatedSymbols = append(relatedSymbols, name)
+		}
+	}
+
+	return &AnalyzeResult{
+		ReportID:        0,
+		ProjectID:       projectID,
+		DiffID:          diffID,
+		RiskLevel:       "medium",
+		Summary:         "模型分析暂不可用，已返回基于检索上下文的降级结果，需要人工复核。",
+		AffectedModules: make([]string, 0),
+		PossibleRisks:   []string{"当前无法完成可靠的模型风险判断，请人工检查diff和相关代码上下文。"},
+		SuggestedTests:  []string{"优先回归变更文件对应的接口和核心业务链路。"},
+		RelatedFiles:    relatedFiles,
+		RelatedSymbols:  relatedSymbols,
+		Confidence:      0.2,
+		Cached:          false,
+		Degraded:        true,
+		DegradedReason:  reason,
+	}
 }
 
 func toLLMContextChunks(chunks []ContextChunkResult) []llm.ContextChunk {

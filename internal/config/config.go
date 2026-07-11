@@ -57,6 +57,8 @@ type EmbeddingConfig struct {
 
 type LLMConfig struct {
 	Provider       string  `mapstructure:"provider"`
+	MockMode       string  `mapstructure:"mock_mode"`
+	MockDelayMS    int     `mapstructure:"mock_delay_ms"`
 	BaseURL        string  `mapstructure:"base_url"`
 	APIKey         string  `mapstructure:"api_key"`
 	Model          string  `mapstructure:"model"`
@@ -96,6 +98,8 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("embedding.timeout_seconds", 10)
 	v.SetDefault("embedding.batch_size", 16)
 	v.SetDefault("llm.provider", "mock")
+	v.SetDefault("llm.mock_mode", "normal")
+	v.SetDefault("llm.mock_delay_ms", 0)
 	v.SetDefault("llm.base_url", "")
 	v.SetDefault("llm.api_key", "")
 	v.SetDefault("llm.model", "mock-llm")

@@ -1,6 +1,8 @@
 package repository
 
 import (
+	"context"
+
 	"pr-guard-agent/internal/model"
 
 	"gorm.io/gorm"
@@ -15,8 +17,12 @@ func NewProjectRepository(db *gorm.DB) *ProjectRepository {
 }
 
 func (r *ProjectRepository) GetByID(projectID uint) (*model.Project, error) {
+	return r.GetByIDWithContext(context.Background(), projectID)
+}
+
+func (r *ProjectRepository) GetByIDWithContext(ctx context.Context, projectID uint) (*model.Project, error) {
 	var project model.Project
-	if err := r.db.First(&project, projectID).Error; err != nil {
+	if err := r.db.WithContext(ctx).First(&project, projectID).Error; err != nil {
 		return nil, err
 	}
 	return &project, nil
