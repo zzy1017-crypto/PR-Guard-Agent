@@ -1,19 +1,33 @@
 package router
 
 import (
+	"time"
+
 	"github.com/gin-gonic/gin"
+	"go.uber.org/zap"
 
 	"pr-guard-agent/internal/config"
 	"pr-guard-agent/internal/database"
 	"pr-guard-agent/internal/handler"
+	"pr-guard-agent/internal/middleware"
+	"pr-guard-agent/internal/ratelimit"
 	"pr-guard-agent/internal/service"
 	reportcache "pr-guard-agent/pkg/cache"
 	"pr-guard-agent/pkg/embedding"
 	"pr-guard-agent/pkg/llm"
 )
 
-func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache) *gin.Engine {
-	r := gin.Default()
+func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache, loggers ...*zap.Logger) *gin.Engine {
+	logger := zap.NewNop()
+	if len(loggers) > 0 && loggers[0] != nil {
+		logger = loggers[0]
+	}
+	r := gin.New()
+	r.Use(
+		middleware.RequestID(),
+		middleware.AccessLog(logger),
+		middleware.Recovery(logger),
+	)
 	embeddingClient := embedding.NewClient(cfg.Embedding)
 	llmClient := llm.NewClient(cfg.LLM)
 	embeddingHandler := handler.NewEmbeddingHandler(
@@ -37,7 +51,16 @@ func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache) *gin.
 			service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
 			llmClient,
 			reportCache,
+			logger,
 		),
+	)
+	limiter := ratelimit.NewFixedWindowLimiter(
+		database.RDB,
+		cfg.RateLimit.Limit,
+		time.Duration(cfg.RateLimit.WindowSeconds)*time.Second,
+		cfg.RateLimit.Enabled,
+		cfg.RateLimit.FailOpen,
+		logger,
 	)
 
 	r.GET("/health", handler.Health)
@@ -46,7 +69,11 @@ func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache) *gin.
 	r.POST("/projects/:id/index", indexHandler.IndexProject)
 	r.POST("/projects/:id/diffs", handler.UploadDiff)
 	r.POST("/projects/:id/diffs/:diff_id/retrieve", ragHandler.RetrieveRelatedChunks)
-	r.POST("/projects/:id/diffs/:diff_id/analyze", reportHandler.AnalyzeDiff)
+	r.POST(
+		"/projects/:id/diffs/:diff_id/analyze",
+		middleware.RateLimit(limiter, logger),
+		reportHandler.AnalyzeDiff,
+	)
 	r.POST("/embedding/test", embeddingHandler.Test)
 	r.POST("/vector/collection/init", vectorHandler.InitCollection)
 	r.POST("/vectoe/collection/init", vectorHandler.InitCollection)

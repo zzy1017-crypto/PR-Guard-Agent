@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"log"
 	"strings"
 	"time"
 
@@ -16,7 +15,9 @@ import (
 	reportcache "pr-guard-agent/pkg/cache"
 	"pr-guard-agent/pkg/embedding"
 	"pr-guard-agent/pkg/llm"
+	"pr-guard-agent/pkg/requestid"
 
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
 
@@ -28,6 +29,7 @@ type ReportService struct {
 	ragService     *RAGService
 	llmClient      *llm.Client
 	reportCache    *reportcache.ReportCache
+	logger         *zap.Logger
 }
 
 type AnalyzeResult = reportcache.AnalyzeResult
@@ -37,7 +39,12 @@ func NewReportService(
 	ragService *RAGService,
 	llmClient *llm.Client,
 	reportCache *reportcache.ReportCache,
+	loggers ...*zap.Logger,
 ) *ReportService {
+	logger := zap.NewNop()
+	if len(loggers) > 0 && loggers[0] != nil {
+		logger = loggers[0]
+	}
 	return &ReportService{
 		db:             db,
 		projectRepo:    repository.NewProjectRepository(db),
@@ -46,6 +53,7 @@ func NewReportService(
 		ragService:     ragService,
 		llmClient:      llmClient,
 		reportCache:    reportCache,
+		logger:         logger,
 	}
 }
 
@@ -84,6 +92,14 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 	if s.projectRepo == nil || s.diffRepo == nil || s.riskReportRepo == nil {
 		return nil, errors.New("report repository is not initialized")
 	}
+	startedAt := time.Now()
+	baseFields := []zap.Field{
+		zap.String("request_id", requestid.FromContext(ctx)),
+		zap.Uint("project_id", projectID),
+		zap.Uint("diff_id", diffID),
+	}
+	s.logger.Info("analyze_started", baseFields...)
+
 	project, err := s.projectRepo.GetByIDWithContext(ctx, projectID)
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -107,10 +123,16 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 	if s.reportCache != nil && s.reportCache.Enabled() {
 		cachedResult, cacheErr := s.reportCache.Get(ctx, cacheKey)
 		if cacheErr != nil {
-			log.Printf("report cache get failed, continue analysis: %v", cacheErr)
+			s.logger.Warn("report_cache_miss", append(baseFields, zap.Error(cacheErr))...)
 		} else if cachedResult != nil && !cachedResult.Degraded {
 			cachedResult.Cached = true
+			s.logger.Info("report_cache_hit", append(baseFields,
+				zap.Bool("cached", true),
+				zap.Int64("latency_ms", time.Since(startedAt).Milliseconds()),
+			)...)
 			return cachedResult, nil
+		} else {
+			s.logger.Info("report_cache_miss", baseFields...)
 		}
 	}
 
@@ -130,6 +152,10 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 	if err != nil {
 		return nil, fmt.Errorf("retrieve related chunks failed: %w", err)
 	}
+	s.logger.Info("rag_retrieve_completed", append(baseFields,
+		zap.Int("context_chunk_count", len(retrieveResult.ContextChunks)),
+		zap.Int64("latency_ms", time.Since(startedAt).Milliseconds()),
+	)...)
 
 	contextChunks := toLLMContextChunks(retrieveResult.ContextChunks)
 	prompt, err := llm.BuildRiskAnalysisPrompt(llm.RiskPromptInput{
@@ -143,7 +169,7 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 	rawOutput, err := s.llmClient.Generate(ctx, prompt)
 	if err != nil {
 		if reason, ok := fallbackReason(err); ok {
-			return BuildFallbackReport(project.ID, diff.ID, retrieveResult, reason), nil
+			return s.buildFallbackReport(project.ID, diff.ID, retrieveResult, reason, baseFields, startedAt), nil
 		}
 		return nil, fmt.Errorf("generate risk report failed: %w", err)
 	}
@@ -151,13 +177,13 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 	report, err := llm.ParseRiskReport(rawOutput)
 	if err != nil {
 		if reason, ok := fallbackReason(err); ok {
-			return BuildFallbackReport(project.ID, diff.ID, retrieveResult, reason), nil
+			return s.buildFallbackReport(project.ID, diff.ID, retrieveResult, reason, baseFields, startedAt), nil
 		}
 		return nil, fmt.Errorf("parse risk report failed: %w", err)
 	}
 	if err := llm.ValidateRiskReportSources(report, contextChunks); err != nil {
 		if reason, ok := fallbackReason(err); ok {
-			return BuildFallbackReport(project.ID, diff.ID, retrieveResult, reason), nil
+			return s.buildFallbackReport(project.ID, diff.ID, retrieveResult, reason, baseFields, startedAt), nil
 		}
 		return nil, fmt.Errorf("validate risk report sources failed: %w", err)
 	}
@@ -169,6 +195,11 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 	if err := s.riskReportRepo.CreateWithContext(ctx, riskReport); err != nil {
 		return nil, fmt.Errorf("save risk report failed: %w", err)
 	}
+	s.logger.Info("risk_report_saved", append(baseFields,
+		zap.Bool("cached", false),
+		zap.Bool("degraded", false),
+		zap.Int64("latency_ms", time.Since(startedAt).Milliseconds()),
+	)...)
 
 	result := &AnalyzeResult{
 		ReportID:        riskReport.ID,
@@ -189,11 +220,33 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 
 	if s.reportCache != nil && s.reportCache.Enabled() {
 		if cacheErr := s.reportCache.Set(ctx, cacheKey, result); cacheErr != nil {
-			log.Printf("report cache set failed, return analysis result: %v", cacheErr)
+			s.logger.Warn("report_cache_set_failed", append(baseFields, zap.Error(cacheErr))...)
 		}
 	}
 
 	return result, nil
+}
+
+func (s *ReportService) buildFallbackReport(
+	projectID uint,
+	diffID uint,
+	retrieveResult *RetrieveResult,
+	reason string,
+	baseFields []zap.Field,
+	startedAt time.Time,
+) *AnalyzeResult {
+	contextChunkCount := 0
+	if retrieveResult != nil {
+		contextChunkCount = len(retrieveResult.ContextChunks)
+	}
+	s.logger.Warn("fallback_report_generated", append(baseFields,
+		zap.Bool("cached", false),
+		zap.Bool("degraded", true),
+		zap.String("degraded_reason", reason),
+		zap.Int("context_chunk_count", contextChunkCount),
+		zap.Int64("latency_ms", time.Since(startedAt).Milliseconds()),
+	)...)
+	return BuildFallbackReport(projectID, diffID, retrieveResult, reason)
 }
 
 func fallbackReason(err error) (string, bool) {

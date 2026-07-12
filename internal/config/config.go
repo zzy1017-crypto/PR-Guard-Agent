@@ -4,12 +4,19 @@ import "github.com/spf13/viper"
 
 type Config struct {
 	Server      ServerConfig      `mapstructure:"server"`
+	Logger      LoggerConfig      `mapstructure:"logger"`
 	MySQL       MySQLConfig       `mapstructure:"mysql"`
 	Redis       RedisConfig       `mapstructure:"redis"`
+	RateLimit   RateLimitConfig   `mapstructure:"rate_limit"`
 	ReportCache ReportCacheConfig `mapstructure:"report_cache"`
 	Qdrant      QdrantConfig      `mapstructure:"qdrant"`
 	Embedding   EmbeddingConfig   `mapstructure:"embedding"`
 	LLM         LLMConfig         `mapstructure:"llm"`
+}
+
+type LoggerConfig struct {
+	Level    string `mapstructure:"level"`
+	Encoding string `mapstructure:"encoding"`
 }
 
 type ServerConfig struct {
@@ -29,6 +36,13 @@ type RedisConfig struct {
 	Addr     string `mapstructure:"addr"`
 	Password string `mapstructure:"password"`
 	DB       int    `mapstructure:"db"`
+}
+
+type RateLimitConfig struct {
+	Enabled       bool  `mapstructure:"enabled"`
+	Limit         int64 `mapstructure:"limit"`
+	WindowSeconds int64 `mapstructure:"window_seconds"`
+	FailOpen      bool  `mapstructure:"fail_open"`
 }
 
 type ReportCacheConfig struct {
@@ -74,6 +88,8 @@ func Load(path string) (*Config, error) {
 
 	v.SetDefault("server.port", 8080)
 	v.SetDefault("server.mode", "debug")
+	v.SetDefault("logger.level", "debug")
+	v.SetDefault("logger.encoding", "console")
 	v.SetDefault("mysql.host", "localhost")
 	v.SetDefault("mysql.port", 3306)
 	v.SetDefault("mysql.database", "pr_guard")
@@ -82,6 +98,10 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("redis.addr", "localhost:6379")
 	v.SetDefault("redis.password", "")
 	v.SetDefault("redis.db", 0)
+	v.SetDefault("rate_limit.enabled", true)
+	v.SetDefault("rate_limit.limit", 10)
+	v.SetDefault("rate_limit.window_seconds", 60)
+	v.SetDefault("rate_limit.fail_open", true)
 	v.SetDefault("report_cache.enabled", true)
 	v.SetDefault("report_cache.ttl_seconds", 3600)
 	v.SetDefault("qdrant.host", "localhost")

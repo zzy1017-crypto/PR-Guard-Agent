@@ -2,7 +2,6 @@ package database
 
 import (
 	"fmt"
-	"log"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -32,7 +31,6 @@ func InitMySQL(cfg *config.Config) error {
 	}
 
 	DB = db
-	log.Println("mysql connected successfully")
 
 	return nil
 }
@@ -52,8 +50,6 @@ func AutoMigrate() error {
 	); err != nil {
 		return err
 	}
-
-	log.Println("mysql auto migrate completed")
 
 	return nil
 }

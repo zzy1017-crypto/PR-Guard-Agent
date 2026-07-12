@@ -2,7 +2,6 @@ package database
 
 import (
 	"context"
-	"log"
 	"time"
 
 	"github.com/redis/go-redis/v9"
@@ -32,7 +31,6 @@ func InitRedis(cfg *config.Config) error {
 	}
 
 	RDB = client
-	log.Println("redis connected successfully")
 
 	return nil
 }

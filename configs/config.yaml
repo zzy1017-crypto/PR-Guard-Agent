@@ -2,6 +2,10 @@ server:
   port: 8080
   mode: debug
 
+logger:
+  level: debug
+  encoding: console
+
 mysql:
   host: localhost
   port: 13306
@@ -10,9 +14,15 @@ mysql:
   password: "123456"
 
 redis:
-  addr : localhost:16379
+  addr: localhost:16379
   password: ""
   db: 0
+
+rate_limit:
+  enabled: true
+  limit: 10
+  window_seconds: 60
+  fail_open: true
 
 report_cache:
   enabled: true
