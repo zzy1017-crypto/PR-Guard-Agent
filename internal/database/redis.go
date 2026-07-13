@@ -9,8 +9,9 @@ import (
 	"pr-guard-agent/internal/config"
 )
 
-var RDB *redis.Client // Redis客户端实例
+var RDB *redis.Client // RDB是一个全局变量，用于存储Redis客户端实例，类型为*redis.Client。
 
+// InitRedis 初始化Redis连接
 func InitRedis(cfg *config.Config) error {
 	redisCfg := cfg.Redis
 
@@ -30,7 +31,7 @@ func InitRedis(cfg *config.Config) error {
 		return err
 	}
 
-	RDB = client
+	RDB = client // 将Redis客户端实例赋值给全局变量RDB，以便在其他地方使用。
 
 	return nil
 }
