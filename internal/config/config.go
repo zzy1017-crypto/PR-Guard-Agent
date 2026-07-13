@@ -1,17 +1,50 @@
 package config
 
-import "github.com/spf13/viper"
+import (
+	"fmt"
+
+	"github.com/spf13/viper"
+)
 
 type Config struct {
-	Server      ServerConfig      `mapstructure:"server"`
-	Logger      LoggerConfig      `mapstructure:"logger"`
-	MySQL       MySQLConfig       `mapstructure:"mysql"`
-	Redis       RedisConfig       `mapstructure:"redis"`
-	RateLimit   RateLimitConfig   `mapstructure:"rate_limit"`
-	ReportCache ReportCacheConfig `mapstructure:"report_cache"`
-	Qdrant      QdrantConfig      `mapstructure:"qdrant"`
-	Embedding   EmbeddingConfig   `mapstructure:"embedding"`
-	LLM         LLMConfig         `mapstructure:"llm"`
+	Server         ServerConfig         `mapstructure:"server"`
+	Logger         LoggerConfig         `mapstructure:"logger"`
+	MySQL          MySQLConfig          `mapstructure:"mysql"`
+	Redis          RedisConfig          `mapstructure:"redis"`
+	RateLimit      RateLimitConfig      `mapstructure:"rate_limit"`
+	ReportCache    ReportCacheConfig    `mapstructure:"report_cache"`
+	Qdrant         QdrantConfig         `mapstructure:"qdrant"`
+	Embedding      EmbeddingConfig      `mapstructure:"embedding"`
+	LLM            LLMConfig            `mapstructure:"llm"`
+	AnalysisWorker AnalysisWorkerConfig `mapstructure:"analysis_worker"`
+}
+
+type AnalysisWorkerConfig struct {
+	Enabled            bool `mapstructure:"enabled"`
+	WorkerCount        int  `mapstructure:"worker_count"`
+	PollIntervalMS     int  `mapstructure:"poll_interval_ms"`
+	TaskTimeoutSeconds int  `mapstructure:"task_timeout_seconds"`
+	StaleAfterSeconds  int  `mapstructure:"stale_after_seconds"`
+	MaxAttempts        int  `mapstructure:"max_attempts"`
+}
+
+func (c AnalysisWorkerConfig) Validate() error {
+	if c.WorkerCount < 1 || c.WorkerCount > 20 {
+		return fmt.Errorf("analysis_worker.worker_count must be between 1 and 20")
+	}
+	if c.PollIntervalMS <= 0 {
+		return fmt.Errorf("analysis_worker.poll_interval_ms must be greater than 0")
+	}
+	if c.TaskTimeoutSeconds <= 0 {
+		return fmt.Errorf("analysis_worker.task_timeout_seconds must be greater than 0")
+	}
+	if c.StaleAfterSeconds <= 0 {
+		return fmt.Errorf("analysis_worker.stale_after_seconds must be greater than 0")
+	}
+	if c.MaxAttempts <= 0 {
+		return fmt.Errorf("analysis_worker.max_attempts must be greater than 0")
+	}
+	return nil
 }
 
 type LoggerConfig struct {
@@ -126,6 +159,12 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("llm.timeout_seconds", 20)
 	v.SetDefault("llm.max_tokens", 1200)
 	v.SetDefault("llm.temperature", 0.2)
+	v.SetDefault("analysis_worker.enabled", true)
+	v.SetDefault("analysis_worker.worker_count", 2)
+	v.SetDefault("analysis_worker.poll_interval_ms", 500)
+	v.SetDefault("analysis_worker.task_timeout_seconds", 90)
+	v.SetDefault("analysis_worker.stale_after_seconds", 180)
+	v.SetDefault("analysis_worker.max_attempts", 3)
 
 	if err := v.ReadInConfig(); err != nil {
 		return nil, err
@@ -133,6 +172,9 @@ func Load(path string) (*Config, error) {
 
 	var cfg Config
 	if err := v.Unmarshal(&cfg); err != nil {
+		return nil, err
+	}
+	if err := cfg.AnalysisWorker.Validate(); err != nil {
 		return nil, err
 	}
 

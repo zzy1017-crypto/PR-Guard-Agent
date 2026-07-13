@@ -1,8 +1,13 @@
 package main
 
 import (
+	"context"
+	"errors"
 	"fmt"
 	"log"
+	"net/http"
+	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -58,10 +63,46 @@ func main() {
 		zap.Int("ttl_seconds", cfg.ReportCache.TTLSeconds),
 	)
 
-	r := router.SetupRouter(cfg, reportCache, logger)
-	addr := fmt.Sprintf(":%d", cfg.Server.Port)
-
-	if err := r.Run(addr); err != nil {
-		logger.Error("server_stopped", zap.Error(err))
+	r, workerManager := router.SetupRouterWithWorker(cfg, reportCache, logger)
+	appCtx := context.Background()
+	if err := workerManager.Start(appCtx); err != nil {
+		logger.Error("analysis_worker_start_failed", zap.Error(err))
+		return
 	}
+	addr := fmt.Sprintf(":%d", cfg.Server.Port)
+	server := &http.Server{Addr: addr, Handler: r}
+	serverErr := make(chan error, 1)
+	go func() {
+		serverErr <- server.ListenAndServe()
+	}()
+
+	signalCtx, stopSignals := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+	defer stopSignals()
+
+	select {
+	case <-signalCtx.Done():
+		logger.Info("shutdown_signal_received")
+	case err := <-serverErr:
+		if err != nil && !errors.Is(err, http.ErrServerClosed) {
+			logger.Error("server_stopped", zap.Error(err))
+		}
+	}
+
+	workerWait := time.Duration(cfg.AnalysisWorker.TaskTimeoutSeconds+5) * time.Second
+	workerShutdownCtx, cancelWorkers := context.WithTimeout(context.Background(), workerWait)
+	workerShutdownDone := make(chan error, 1)
+	go func() {
+		workerShutdownDone <- workerManager.Shutdown(workerShutdownCtx)
+	}()
+
+	httpShutdownCtx, cancelHTTP := context.WithTimeout(context.Background(), 10*time.Second)
+	if err := server.Shutdown(httpShutdownCtx); err != nil {
+		logger.Warn("http_server_shutdown_failed", zap.Error(err))
+	}
+	cancelHTTP()
+
+	if err := <-workerShutdownDone; err != nil {
+		logger.Warn("analysis_worker_shutdown_failed", zap.Error(err))
+	}
+	cancelWorkers()
 }

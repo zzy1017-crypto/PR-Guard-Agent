@@ -11,13 +11,24 @@ import (
 	"pr-guard-agent/internal/handler"
 	"pr-guard-agent/internal/middleware"
 	"pr-guard-agent/internal/ratelimit"
+	"pr-guard-agent/internal/repository"
 	"pr-guard-agent/internal/service"
+	"pr-guard-agent/internal/worker"
 	reportcache "pr-guard-agent/pkg/cache"
 	"pr-guard-agent/pkg/embedding"
 	"pr-guard-agent/pkg/llm"
 )
 
 func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache, loggers ...*zap.Logger) *gin.Engine {
+	r, _ := SetupRouterWithWorker(cfg, reportCache, loggers...)
+	return r
+}
+
+func SetupRouterWithWorker(
+	cfg *config.Config,
+	reportCache *reportcache.ReportCache,
+	loggers ...*zap.Logger,
+) (*gin.Engine, *worker.AnalysisWorkerManager) {
 	logger := zap.NewNop()
 	if len(loggers) > 0 && loggers[0] != nil {
 		logger = loggers[0]
@@ -45,14 +56,21 @@ func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache, logge
 	llmHandler := handler.NewLLMHandler(
 		service.NewLLMService(llmClient),
 	)
-	reportHandler := handler.NewReportHandler(
-		service.NewReportService(
-			database.DB,
-			service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
-			llmClient,
-			reportCache,
-			logger,
-		),
+	reportService := service.NewReportService(
+		database.DB,
+		service.NewRAGService(database.DB, cfg.Qdrant, embeddingClient),
+		llmClient,
+		reportCache,
+		logger,
+	)
+	reportHandler := handler.NewReportHandler(reportService)
+	analysisTaskService := service.NewAnalysisTaskService(database.DB, cfg.AnalysisWorker.MaxAttempts, logger)
+	analysisTaskHandler := handler.NewAnalysisTaskHandler(analysisTaskService)
+	workerManager := worker.NewAnalysisWorkerManager(
+		repository.NewAnalysisTaskRepository(database.DB),
+		reportService,
+		cfg.AnalysisWorker,
+		logger,
 	)
 	limiter := ratelimit.NewFixedWindowLimiter(
 		database.RDB,
@@ -74,6 +92,12 @@ func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache, logge
 		middleware.RateLimit(limiter, logger),
 		reportHandler.AnalyzeDiff,
 	)
+	r.POST(
+		"/projects/:id/diffs/:diff_id/analysis-tasks",
+		middleware.RateLimit(limiter, logger),
+		analysisTaskHandler.Submit,
+	)
+	r.GET("/analysis-tasks/:id", analysisTaskHandler.Get)
 	r.POST("/embedding/test", embeddingHandler.Test)
 	r.POST("/vector/collection/init", vectorHandler.InitCollection)
 	r.POST("/vectoe/collection/init", vectorHandler.InitCollection)
@@ -81,5 +105,5 @@ func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache, logge
 	r.POST("/vector/test/search", vectorHandler.TestSearch)
 	r.POST("/llm/risk/test", llmHandler.RiskTest)
 
-	return r
+	return r, workerManager
 }

@@ -47,6 +47,7 @@ func AutoMigrate() error {
 		&model.CodeChunk{},
 		&model.DiffRecord{},
 		&model.RiskReport{},
+		&model.AnalysisTask{},
 	); err != nil {
 		return err
 	}
