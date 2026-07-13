@@ -9,9 +9,9 @@ const (
 	AnalysisTaskStatusFailed    = "failed"    // 任务执行失败
 )
 
-//分析任务模型，包含任务的唯一标识符、任务键、关联的项目ID、关联的差异ID、TopK值、任务状态、尝试次数、最大尝试次数、工作节点ID、报告ID、结果JSON表示、降级处理标志、错误码、错误信息、提交请求ID以及任务的开始时间和结束时间等信息
+// 分析任务模型，包含任务的唯一标识符、任务键、关联的项目ID、关联的差异ID、TopK值、任务状态、尝试次数、最大尝试次数、工作节点ID、报告ID、结果JSON表示、降级处理标志、错误码、错误信息、提交请求ID以及任务的开始时间和结束时间等信息
 type AnalysisTask struct {
-	ID              uint64     `gorm:"primaryKey"`                                                                                                                                                 // 任务的唯一标识符，类型为uint64，作为主键使用。
+	ID              uint64     `gorm:"primaryKey"`                                                                                                                                                 // 一次异步分析任务的唯一标识符，类型为uint64，作为主键使用。
 	TaskKey         string     `gorm:"type:char(64);not null;uniqueIndex"`                                                                                                                         // 任务的唯一键，用于标识任务，类型为字符串，长度为64个字符，不能为空，并且在数据库中具有唯一索引约束。
 	ProjectID       uint       `gorm:"not null;index"`                                                                                                                                             // 关联的项目ID，类型为uint，不能为空，并且在数据库中具有索引约束。
 	DiffID          uint       `gorm:"not null;index"`                                                                                                                                             // 关联的差异ID，类型为uint，不能为空，并且在数据库中具有索引约束。
