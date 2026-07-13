@@ -26,10 +26,14 @@ type ReportService struct {
 	projectRepo    *repository.ProjectRepository
 	diffRepo       *repository.DiffRepository
 	riskReportRepo *repository.RiskReportRepository
-	ragService     *RAGService
+	ragService     reportRAGService
 	llmClient      *llm.Client
 	reportCache    *reportcache.ReportCache
 	logger         *zap.Logger
+}
+
+type reportRAGService interface {
+	RetrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error)
 }
 
 type AnalyzeResult = reportcache.AnalyzeResult
@@ -97,6 +101,7 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 		zap.String("request_id", requestid.FromContext(ctx)),
 		zap.Uint("project_id", projectID),
 		zap.Uint("diff_id", diffID),
+		zap.Int("top_k", topK),
 	}
 	s.logger.Info("analyze_started", baseFields...)
 
@@ -119,20 +124,21 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 		return nil, ErrDiffProjectMismatch
 	}
 
-	cacheKey := reportcache.BuildReportCacheKey(project.ID, project.CodeVersionHash, diff.DiffHash)
+	cacheKey := reportcache.BuildReportCacheKey(project.ID, project.CodeVersionHash, diff.DiffHash, topK)
+	cacheFields := append(append([]zap.Field(nil), baseFields...), zap.String("cache_key", cacheKey))
 	if s.reportCache != nil && s.reportCache.Enabled() {
 		cachedResult, cacheErr := s.reportCache.Get(ctx, cacheKey)
 		if cacheErr != nil {
-			s.logger.Warn("report_cache_miss", append(baseFields, zap.Error(cacheErr))...)
+			s.logger.Warn("report_cache_miss", append(cacheFields, zap.Error(cacheErr))...)
 		} else if cachedResult != nil && !cachedResult.Degraded {
 			cachedResult.Cached = true
-			s.logger.Info("report_cache_hit", append(baseFields,
+			s.logger.Info("report_cache_hit", append(cacheFields,
 				zap.Bool("cached", true),
 				zap.Int64("latency_ms", time.Since(startedAt).Milliseconds()),
 			)...)
 			return cachedResult, nil
 		} else {
-			s.logger.Info("report_cache_miss", baseFields...)
+			s.logger.Info("report_cache_miss", cacheFields...)
 		}
 	}
 

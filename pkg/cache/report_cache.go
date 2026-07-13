@@ -41,8 +41,8 @@ func NewReportCache(redisClient *redis.Client, ttl time.Duration, enabled bool) 
 	}
 }
 
-func BuildReportCacheKey(projectID uint, codeVersionHash string, diffHash string) string {
-	return fmt.Sprintf("prguard:report:%d:%s:%s", projectID, codeVersionHash, diffHash)
+func BuildReportCacheKey(projectID uint, codeVersionHash string, diffHash string, topK int) string {
+	return fmt.Sprintf("prguard:report:%d:%s:%s:topk:%d", projectID, codeVersionHash, diffHash, topK)
 }
 
 func (c *ReportCache) Enabled() bool {

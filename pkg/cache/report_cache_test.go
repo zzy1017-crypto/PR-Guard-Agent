@@ -11,10 +11,70 @@ import (
 )
 
 func TestBuildReportCacheKey(t *testing.T) {
-	got := BuildReportCacheKey(42, "code-hash", "diff-hash")
-	want := "prguard:report:42:code-hash:diff-hash"
-	if got != want {
-		t.Fatalf("BuildReportCacheKey() = %q, want %q", got, want)
+	tests := []struct {
+		name            string
+		projectID       uint
+		codeVersionHash string
+		diffHash        string
+		topK            int
+		want            string
+	}{
+		{
+			name:            "expected format",
+			projectID:       6,
+			codeVersionHash: "version-a",
+			diffHash:        "diff-a",
+			topK:            5,
+			want:            "prguard:report:6:version-a:diff-a:topk:5",
+		},
+		{
+			name:            "different code version",
+			projectID:       6,
+			codeVersionHash: "version-b",
+			diffHash:        "diff-a",
+			topK:            5,
+			want:            "prguard:report:6:version-b:diff-a:topk:5",
+		},
+		{
+			name:            "different diff",
+			projectID:       6,
+			codeVersionHash: "version-a",
+			diffHash:        "diff-b",
+			topK:            5,
+			want:            "prguard:report:6:version-a:diff-b:topk:5",
+		},
+		{
+			name:            "different top k",
+			projectID:       6,
+			codeVersionHash: "version-a",
+			diffHash:        "diff-a",
+			topK:            8,
+			want:            "prguard:report:6:version-a:diff-a:topk:8",
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			got := BuildReportCacheKey(test.projectID, test.codeVersionHash, test.diffHash, test.topK)
+			if got != test.want {
+				t.Fatalf("BuildReportCacheKey() = %q, want %q", got, test.want)
+			}
+		})
+	}
+
+	first := BuildReportCacheKey(6, "version-a", "diff-a", 5)
+	second := BuildReportCacheKey(6, "version-a", "diff-a", 5)
+	if first != second {
+		t.Fatalf("same inputs produced different keys: %q != %q", first, second)
+	}
+	if first == BuildReportCacheKey(6, "version-a", "diff-a", 8) {
+		t.Fatal("different top_k values produced the same cache key")
+	}
+	if first == BuildReportCacheKey(6, "version-b", "diff-a", 5) {
+		t.Fatal("different code version hashes produced the same cache key")
+	}
+	if first == BuildReportCacheKey(6, "version-a", "diff-b", 5) {
+		t.Fatal("different diff hashes produced the same cache key")
 	}
 }
 
