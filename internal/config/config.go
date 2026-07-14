@@ -28,6 +28,9 @@ type AnalysisWorkerConfig struct {
 	TaskTimeoutSeconds int  `mapstructure:"task_timeout_seconds"`
 	StaleAfterSeconds  int  `mapstructure:"stale_after_seconds"`
 	MaxAttempts        int  `mapstructure:"max_attempts"`
+	RetryBaseSeconds   int  `mapstructure:"retry_base_seconds"`
+	RetryMaxSeconds    int  `mapstructure:"retry_max_seconds"`
+	RetryJitterPercent int  `mapstructure:"retry_jitter_percent"`
 }
 
 // Validate方法用于验证AnalysisWorkerConfig结构体的字段值是否合法。如果字段值不合法，则返回一个错误。
@@ -56,6 +59,15 @@ func (c AnalysisWorkerConfig) Validate() error {
 	// 验证分析任务工作者的最大尝试次数是否大于0
 	if c.MaxAttempts <= 0 {
 		return fmt.Errorf("analysis_worker.max_attempts must be greater than 0")
+	}
+	if c.RetryBaseSeconds <= 0 {
+		return fmt.Errorf("analysis_worker.retry_base_seconds must be greater than 0")
+	}
+	if c.RetryMaxSeconds < c.RetryBaseSeconds {
+		return fmt.Errorf("analysis_worker.retry_max_seconds must be greater than or equal to retry_base_seconds")
+	}
+	if c.RetryJitterPercent < 0 || c.RetryJitterPercent > 50 {
+		return fmt.Errorf("analysis_worker.retry_jitter_percent must be between 0 and 50")
 	}
 	return nil
 }
@@ -188,6 +200,9 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("analysis_worker.task_timeout_seconds", 90)       // 设置分析任务工作者任务超时时间的默认值为90秒
 	v.SetDefault("analysis_worker.stale_after_seconds", 180)       // 设置分析任务工作者过期时间的默认值为180秒
 	v.SetDefault("analysis_worker.max_attempts", 3)                // 设置分析任务工作者最大尝试次数的默认值为3
+	v.SetDefault("analysis_worker.retry_base_seconds", 2)
+	v.SetDefault("analysis_worker.retry_max_seconds", 30)
+	v.SetDefault("analysis_worker.retry_jitter_percent", 20)
 
 	// 读取配置文件
 	if err := v.ReadInConfig(); err != nil {

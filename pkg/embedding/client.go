@@ -10,11 +10,13 @@ import (
 	"fmt"
 	"io"
 	"math"
+	"net"
 	"net/http"
 	"strings"
 	"time"
 
 	"pr-guard-agent/internal/config"
+	"pr-guard-agent/internal/taskerror"
 )
 
 const (
@@ -22,6 +24,11 @@ const (
 	defaultDimension = 1536
 	defaultTimeout   = 10 * time.Second
 	defaultBatchSize = 16
+)
+
+var (
+	ErrEmbeddingTimeout       = taskerror.ErrEmbeddingTimeout
+	ErrEmbeddingProviderError = taskerror.ErrEmbeddingProviderError
 )
 
 type Client struct {
@@ -102,6 +109,9 @@ func (c *Client) EmbedTexts(ctx context.Context, texts []string) ([][]float32, e
 		batchVectors, err := c.embedBatch(batchCtx, texts[start:end])
 		cancel()
 		if err != nil {
+			if errors.Is(err, context.DeadlineExceeded) {
+				return nil, fmt.Errorf("%w: %w", ErrEmbeddingTimeout, err)
+			}
 			return nil, err
 		}
 		results = append(results, batchVectors...)
@@ -171,12 +181,25 @@ func (c *Client) embedHTTPBatch(ctx context.Context, texts []string) ([][]float3
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
+		if errors.Is(err, context.DeadlineExceeded) {
+			return nil, fmt.Errorf("%w: %w", ErrEmbeddingTimeout, err)
+		}
+		var netErr net.Error
+		if errors.As(err, &netErr) && (netErr.Timeout() || netErr.Temporary()) {
+			return nil, fmt.Errorf("%w: %w", ErrEmbeddingProviderError, err)
+		}
 		return nil, fmt.Errorf("embedding request failed: %w", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
 		respBody, _ := io.ReadAll(io.LimitReader(resp.Body, 4096))
+		if resp.StatusCode == http.StatusRequestTimeout {
+			return nil, fmt.Errorf("%w: embedding api returned status %d: %s", ErrEmbeddingTimeout, resp.StatusCode, strings.TrimSpace(string(respBody)))
+		}
+		if resp.StatusCode == http.StatusTooManyRequests || resp.StatusCode >= http.StatusInternalServerError {
+			return nil, fmt.Errorf("%w: embedding api returned status %d: %s", ErrEmbeddingProviderError, resp.StatusCode, strings.TrimSpace(string(respBody)))
+		}
 		return nil, fmt.Errorf("embedding api returned status %d: %s", resp.StatusCode, strings.TrimSpace(string(respBody)))
 	}
 

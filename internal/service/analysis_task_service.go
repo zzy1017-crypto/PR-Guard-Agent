@@ -13,12 +13,13 @@ import (
 
 	"pr-guard-agent/internal/model"
 	"pr-guard-agent/internal/repository"
+	"pr-guard-agent/internal/taskerror"
 )
 
 var (
-	ErrInvalidAnalysisTopK        = errors.New("top_k must be between 1 and 20")
+	ErrInvalidAnalysisTopK        = taskerror.ErrInvalidTopK
 	ErrAnalysisTaskRetryExhausted = errors.New("analysis task retry attempts exhausted")
-	ErrAnalysisTaskInvalidStatus  = errors.New("analysis task has invalid status")
+	ErrAnalysisTaskInvalidStatus  = taskerror.ErrInvalidTaskState
 )
 
 type SubmitAnalysisTaskResult struct {

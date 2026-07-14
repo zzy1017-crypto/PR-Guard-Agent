@@ -94,13 +94,20 @@ func (h *AnalysisTaskHandler) Get(c *gin.Context) {
 	}
 
 	data := gin.H{
-		"task_id":       task.ID,
-		"status":        task.Status,
-		"attempt_count": task.AttemptCount,
+		"task_id":         task.ID,
+		"status":          task.Status,
+		"attempt_count":   task.AttemptCount,
+		"max_attempts":    task.MaxAttempts,
+		"next_run_at":     task.NextRunAt,
+		"retry_scheduled": task.Status == model.AnalysisTaskStatusPending && task.AttemptCount > 0 && task.NextRunAt != nil,
 	}
 	switch task.Status {
 	case model.AnalysisTaskStatusPending:
 		data["created_at"] = task.CreatedAt
+		if task.AttemptCount > 0 && task.NextRunAt != nil {
+			data["last_error_code"] = task.ErrorCode
+			data["last_error_message"] = task.ErrorMessage
+		}
 	case model.AnalysisTaskStatusRunning:
 		data["started_at"] = task.StartedAt
 	case model.AnalysisTaskStatusSucceeded:
@@ -114,8 +121,8 @@ func (h *AnalysisTaskHandler) Get(c *gin.Context) {
 		}
 		data["result"] = result
 	case model.AnalysisTaskStatusFailed:
-		data["error_code"] = task.ErrorCode
-		data["error_message"] = task.ErrorMessage
+		data["last_error_code"] = task.ErrorCode
+		data["last_error_message"] = task.ErrorMessage
 		data["finished_at"] = task.FinishedAt
 	default:
 		c.JSON(http.StatusInternalServerError, gin.H{"code": 1, "msg": "analysis task status is invalid"})

@@ -63,3 +63,6 @@ analysis_worker:
   task_timeout_seconds: 90
   stale_after_seconds: 180
   max_attempts: 3
+  retry_base_seconds: 2
+  retry_max_seconds: 30
+  retry_jitter_percent: 20

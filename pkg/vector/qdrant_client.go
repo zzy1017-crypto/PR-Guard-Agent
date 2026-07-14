@@ -10,6 +10,10 @@ import (
 	qdrantapi "github.com/qdrant/go-client/qdrant"
 
 	"pr-guard-agent/internal/config"
+	"pr-guard-agent/internal/taskerror"
+
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 const (
@@ -28,6 +32,11 @@ const (
 	payloadStartLine       = "start_line"
 	payloadEndLine         = "end_line"
 	payloadContentHash     = "content_hash"
+)
+
+var (
+	ErrQdrantTimeout     = taskerror.ErrQdrantTimeout
+	ErrQdrantUnavailable = taskerror.ErrQdrantUnavailable
 )
 
 type Client struct {
@@ -103,7 +112,7 @@ func (c *Client) EnsureCollection(ctx context.Context) error {
 
 	exists, err := c.client.CollectionExists(requestCtx, c.collectionName)
 	if err != nil {
-		return fmt.Errorf("check qdrant collection failed: %w", err)
+		return fmt.Errorf("check qdrant collection failed: %w", classifyQdrantError(err))
 	}
 	if exists {
 		return nil
@@ -116,7 +125,7 @@ func (c *Client) EnsureCollection(ctx context.Context) error {
 			Distance: c.distance,
 		}),
 	}); err != nil {
-		return fmt.Errorf("create qdrant collection failed: %w", err)
+		return fmt.Errorf("create qdrant collection failed: %w", classifyQdrantError(err))
 	}
 
 	return nil
@@ -156,7 +165,7 @@ func (c *Client) UpsertChunks(ctx context.Context, points []ChunkPoint) error {
 		Wait:           &wait,
 		Timeout:        &requestTimeout,
 	}); err != nil {
-		return fmt.Errorf("upsert qdrant points failed: %w", err)
+		return fmt.Errorf("upsert qdrant points failed: %w", classifyQdrantError(err))
 	}
 
 	return nil
@@ -195,7 +204,7 @@ func (c *Client) SearchTopK(ctx context.Context, vector []float32, filter Search
 		Timeout:     &requestTimeout,
 	})
 	if err != nil {
-		return nil, fmt.Errorf("search qdrant points failed: %w", err)
+		return nil, fmt.Errorf("search qdrant points failed: %w", classifyQdrantError(err))
 	}
 
 	results := make([]SearchResult, 0, len(scoredPoints))
@@ -214,6 +223,19 @@ func (c *Client) SearchTopK(ctx context.Context, vector []float32, filter Search
 	}
 
 	return results, nil
+}
+
+func classifyQdrantError(err error) error {
+	switch {
+	case errors.Is(err, context.DeadlineExceeded), status.Code(err) == codes.DeadlineExceeded:
+		return fmt.Errorf("%w: %w", ErrQdrantTimeout, err)
+	case status.Code(err) == codes.Unavailable,
+		status.Code(err) == codes.ResourceExhausted,
+		status.Code(err) == codes.Aborted:
+		return fmt.Errorf("%w: %w", ErrQdrantUnavailable, err)
+	default:
+		return err
+	}
 }
 
 func parseDistance(distance string) qdrantapi.Distance {

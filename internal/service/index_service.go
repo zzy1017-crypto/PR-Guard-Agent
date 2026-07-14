@@ -12,6 +12,7 @@ import (
 	"pr-guard-agent/internal/database"
 	"pr-guard-agent/internal/model"
 	"pr-guard-agent/internal/repository"
+	"pr-guard-agent/internal/taskerror"
 	"pr-guard-agent/pkg/chunker"
 	"pr-guard-agent/pkg/embedding"
 	"pr-guard-agent/pkg/vector"
@@ -19,7 +20,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var ErrProjectNotFound = errors.New("project not found")
+var ErrProjectNotFound = taskerror.ErrProjectNotFound
 
 type IndexProjectResult struct {
 	ProjectID           uint   `json:"project_id"`

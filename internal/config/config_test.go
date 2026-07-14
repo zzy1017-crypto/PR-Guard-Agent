@@ -28,7 +28,8 @@ func TestLoadReportCacheConfig(t *testing.T) {
 		t.Fatalf("unexpected rate limit config: %#v", cfg.RateLimit)
 	}
 	if !cfg.AnalysisWorker.Enabled || cfg.AnalysisWorker.WorkerCount != 2 || cfg.AnalysisWorker.PollIntervalMS != 500 ||
-		cfg.AnalysisWorker.TaskTimeoutSeconds != 90 || cfg.AnalysisWorker.StaleAfterSeconds != 180 || cfg.AnalysisWorker.MaxAttempts != 3 {
+		cfg.AnalysisWorker.TaskTimeoutSeconds != 90 || cfg.AnalysisWorker.StaleAfterSeconds != 180 || cfg.AnalysisWorker.MaxAttempts != 3 ||
+		cfg.AnalysisWorker.RetryBaseSeconds != 2 || cfg.AnalysisWorker.RetryMaxSeconds != 30 || cfg.AnalysisWorker.RetryJitterPercent != 20 {
 		t.Fatalf("unexpected analysis worker config: %#v", cfg.AnalysisWorker)
 	}
 }
@@ -37,6 +38,7 @@ func TestAnalysisWorkerConfigValidation(t *testing.T) {
 	valid := AnalysisWorkerConfig{
 		Enabled: true, WorkerCount: 2, PollIntervalMS: 500,
 		TaskTimeoutSeconds: 90, StaleAfterSeconds: 180, MaxAttempts: 3,
+		RetryBaseSeconds: 2, RetryMaxSeconds: 30, RetryJitterPercent: 20,
 	}
 	if err := valid.Validate(); err != nil {
 		t.Fatalf("valid config error = %v", err)
@@ -51,6 +53,10 @@ func TestAnalysisWorkerConfigValidation(t *testing.T) {
 		{"task_timeout", func(c *AnalysisWorkerConfig) { c.TaskTimeoutSeconds = 0 }},
 		{"stale_after", func(c *AnalysisWorkerConfig) { c.StaleAfterSeconds = 0 }},
 		{"max_attempts", func(c *AnalysisWorkerConfig) { c.MaxAttempts = 0 }},
+		{"retry_base", func(c *AnalysisWorkerConfig) { c.RetryBaseSeconds = 0 }},
+		{"retry_max", func(c *AnalysisWorkerConfig) { c.RetryMaxSeconds = 1 }},
+		{"retry_jitter_low", func(c *AnalysisWorkerConfig) { c.RetryJitterPercent = -1 }},
+		{"retry_jitter_high", func(c *AnalysisWorkerConfig) { c.RetryJitterPercent = 51 }},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {

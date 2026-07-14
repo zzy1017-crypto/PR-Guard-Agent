@@ -10,6 +10,7 @@ import (
 	"pr-guard-agent/internal/database"
 	"pr-guard-agent/internal/model"
 	"pr-guard-agent/internal/repository"
+	"pr-guard-agent/internal/taskerror"
 	"pr-guard-agent/pkg/embedding"
 	"pr-guard-agent/pkg/vector"
 
@@ -23,9 +24,9 @@ const (
 )
 
 var (
-	ErrDiffNotFound        = errors.New("diff not found")
-	ErrDiffProjectMismatch = errors.New("diff does not belong to project")
-	ErrDiffTextEmpty       = errors.New("diff text is empty")
+	ErrDiffNotFound        = taskerror.ErrDiffNotFound
+	ErrDiffProjectMismatch = taskerror.ErrDiffProjectMismatch
+	ErrDiffTextEmpty       = taskerror.ErrEmptyDiff
 )
 
 type RAGService struct {

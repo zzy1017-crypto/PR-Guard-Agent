@@ -17,6 +17,7 @@ import (
 	"pr-guard-agent/internal/model"
 	"pr-guard-agent/internal/repository"
 	"pr-guard-agent/internal/service"
+	"pr-guard-agent/internal/taskerror"
 	"pr-guard-agent/pkg/requestid"
 )
 
@@ -26,9 +27,10 @@ type ReportAnalyzer interface {
 
 type AnalysisTaskRepository interface {
 	ClaimNextPending(ctx context.Context, workerID string) (*model.AnalysisTask, error)
-	MarkSucceeded(ctx context.Context, id uint64, resultJSON string, reportID *uint, degraded bool) error
-	MarkFailed(ctx context.Context, id uint64, errorCode, errorMessage string) error
-	RecoverStaleTasks(ctx context.Context, cutoff time.Time) (repository.StaleRecoveryResult, error)
+	MarkSucceeded(ctx context.Context, id uint64, workerID string, expectedAttempt int, resultJSON string, reportID *uint, degraded bool) error
+	RequeueWithBackoff(ctx context.Context, taskID uint64, workerID string, expectedAttempt int, nextRunAt time.Time, errorCode string, errorMessage string) error
+	MarkFailedFinal(ctx context.Context, taskID uint64, workerID string, expectedAttempt int, errorCode string, errorMessage string) error
+	RecoverStaleTasks(ctx context.Context, cutoff time.Time, policy taskerror.RetryPolicy) (repository.StaleRecoveryResult, error)
 }
 
 type AnalysisWorkerManager struct {
@@ -87,7 +89,7 @@ func (m *AnalysisWorkerManager) Start(ctx context.Context) error {
 	}
 
 	cutoff := time.Now().Add(-time.Duration(m.config.StaleAfterSeconds) * time.Second)
-	recovered, err := m.repository.RecoverStaleTasks(ctx, cutoff)
+	recovered, err := m.repository.RecoverStaleTasks(ctx, cutoff, m.retryPolicy())
 	if err != nil {
 		return fmt.Errorf("recover stale analysis tasks failed: %w", err)
 	}
@@ -96,6 +98,22 @@ func (m *AnalysisWorkerManager) Start(ctx context.Context) error {
 		zap.Int64("pending_count", recovered.Pending),
 		zap.Int64("failed_count", recovered.Failed),
 	)
+	for _, item := range recovered.Scheduled {
+		m.logger.Warn("stale_task_retry_scheduled",
+			zap.Uint64("task_id", item.TaskID),
+			zap.String("worker_id", item.WorkerID),
+			zap.Int("attempt_count", item.AttemptCount),
+			zap.Int("max_attempts", item.MaxAttempts),
+			zap.Timep("next_run_at", item.NextRunAt),
+		)
+	}
+	for _, item := range recovered.Exhausted {
+		m.logger.Warn("stale_task_retry_exhausted",
+			zap.Uint64("task_id", item.TaskID),
+			zap.Int("attempt_count", item.AttemptCount),
+			zap.Int("max_attempts", item.MaxAttempts),
+		)
+	}
 
 	m.started = true
 	for index := 1; index <= m.config.WorkerCount; index++ {
@@ -164,26 +182,38 @@ func (m *AnalysisWorkerManager) runWorker(workerID string) {
 }
 
 func (m *AnalysisWorkerManager) processTask(task *model.AnalysisTask, workerID string) {
+	if task == nil {
+		m.logger.Error("analysis_task_invalid_data", zap.String("worker_id", workerID), zap.String("error_code", taskerror.CodeInvalidTaskData))
+		return
+	}
 	fields := workerTaskLogFields(task, workerID)
 	m.logger.Info("analysis_task_started", fields...)
+	if classification, invalid := classifyTaskData(task, workerID); invalid {
+		m.handleFailure(task, workerID, classification)
+		return
+	}
 
 	taskCtx, cancel := context.WithTimeout(context.Background(), time.Duration(m.config.TaskTimeoutSeconds)*time.Second)
 	taskCtx = requestid.WithContext(taskCtx, fmt.Sprintf("analysis-task-%d", task.ID))
 	result, err := m.analyzer.AnalyzeDiff(taskCtx, task.ProjectID, task.DiffID, task.TopK)
+	timedOut := errors.Is(taskCtx.Err(), context.DeadlineExceeded)
 	cancel()
 	if err != nil {
-		code, message := safeAnalysisError(err, taskCtx)
-		m.failTask(task, workerID, code, message)
+		classification := taskerror.Classify(err)
+		if timedOut && classification.Code == taskerror.CodeInternalAnalysisError {
+			classification = taskerror.Classify(context.DeadlineExceeded)
+		}
+		m.handleFailure(task, workerID, classification)
 		return
 	}
 	if result == nil {
-		m.failTask(task, workerID, "invalid_analysis_result", "analysis task did not produce a valid result")
+		m.handleFailure(task, workerID, taskerror.Classify(taskerror.ErrInvalidTaskData))
 		return
 	}
 
 	resultJSON, err := json.Marshal(result)
 	if err != nil {
-		m.failTask(task, workerID, "result_encode_failed", "analysis task result could not be encoded")
+		m.handleFailure(task, workerID, taskerror.Classify(taskerror.ErrInvalidTaskData))
 		return
 	}
 	var reportID *uint
@@ -193,10 +223,11 @@ func (m *AnalysisWorkerManager) processTask(task *model.AnalysisTask, workerID s
 	}
 
 	persistCtx, persistCancel := context.WithTimeout(context.Background(), 5*time.Second)
-	err = m.repository.MarkSucceeded(persistCtx, task.ID, string(resultJSON), reportID, result.Degraded)
+	err = m.repository.MarkSucceeded(persistCtx, task.ID, workerID, task.AttemptCount, string(resultJSON), reportID, result.Degraded)
 	persistCancel()
 	if err != nil {
 		m.logger.Error("analysis_task_success_update_failed", append(fields, zap.Error(err))...)
+		m.logStateConflict(err, task, workerID)
 		return
 	}
 	m.logger.Info("analysis_task_succeeded", append(fields,
@@ -205,18 +236,57 @@ func (m *AnalysisWorkerManager) processTask(task *model.AnalysisTask, workerID s
 	)...)
 }
 
-func (m *AnalysisWorkerManager) failTask(task *model.AnalysisTask, workerID, code, message string) {
-	code = sanitizeErrorCode(code)
-	message = sanitizeErrorMessage(message)
+func (m *AnalysisWorkerManager) handleFailure(task *model.AnalysisTask, workerID string, classification taskerror.Classification) {
+	code := sanitizeErrorCode(classification.Code)
+	message := sanitizeErrorMessage(classification.PublicMessage)
+	if classification.Retryable && task.AttemptCount < task.MaxAttempts {
+		delay := m.retryPolicy().NextDelay(task.AttemptCount)
+		nextRunAt := time.Now().Add(delay)
+		persistCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		err := m.repository.RequeueWithBackoff(persistCtx, task.ID, workerID, task.AttemptCount, nextRunAt, code, message)
+		cancel()
+		fields := workerTaskLogFields(task, workerID)
+		if err != nil {
+			m.logger.Error("analysis_task_retry_update_failed", append(fields, zap.Error(err))...)
+			m.logStateConflict(err, task, workerID)
+			return
+		}
+		m.logger.Warn("analysis_task_retry_scheduled", append(fields,
+			zap.Int("attempt_count", task.AttemptCount),
+			zap.Int("max_attempts", task.MaxAttempts),
+			zap.String("error_code", code),
+			zap.Int64("retry_delay_ms", delay.Milliseconds()),
+			zap.Time("next_run_at", nextRunAt),
+		)...)
+		return
+	}
+
+	logEvent := "analysis_task_permanent_failure"
+	if classification.Retryable {
+		logEvent = "analysis_task_retry_exhausted"
+		code = taskerror.CodeRetryExhausted
+		message = sanitizeErrorMessage("analysis failed after maximum attempts: " + classification.PublicMessage)
+	}
 	persistCtx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	err := m.repository.MarkFailed(persistCtx, task.ID, code, message)
+	err := m.repository.MarkFailedFinal(persistCtx, task.ID, workerID, task.AttemptCount, code, message)
 	cancel()
 	fields := workerTaskLogFields(task, workerID)
 	if err != nil {
 		m.logger.Error("analysis_task_failure_update_failed", append(fields, zap.Error(err))...)
+		m.logStateConflict(err, task, workerID)
 		return
 	}
-	m.logger.Warn("analysis_task_failed", append(fields, zap.String("error_code", code))...)
+	if classification.Retryable {
+		m.logger.Warn(logEvent, append(fields,
+			zap.Int("attempt_count", task.AttemptCount),
+			zap.String("last_error_code", classification.Code),
+		)...)
+		return
+	}
+	m.logger.Warn(logEvent, append(fields,
+		zap.Int("attempt_count", task.AttemptCount),
+		zap.String("error_code", code),
+	)...)
 }
 
 func (m *AnalysisWorkerManager) waitForNextPoll() bool {
@@ -239,28 +309,10 @@ func (m *AnalysisWorkerManager) stopping() bool {
 	}
 }
 
-func safeAnalysisError(err error, taskCtx context.Context) (string, string) {
-	if errors.Is(err, context.DeadlineExceeded) || errors.Is(taskCtx.Err(), context.DeadlineExceeded) {
-		return "analysis_task_timeout", "analysis task timed out"
-	}
-	switch {
-	case errors.Is(err, service.ErrProjectNotFound):
-		return "project_not_found", "analysis project no longer exists"
-	case errors.Is(err, service.ErrDiffNotFound):
-		return "diff_not_found", "analysis diff no longer exists"
-	case errors.Is(err, service.ErrDiffProjectMismatch):
-		return "diff_project_mismatch", "analysis diff does not belong to project"
-	case strings.Contains(strings.ToLower(err.Error()), "retrieve related chunks"):
-		return "qdrant_search_failed", "analysis context retrieval failed"
-	default:
-		return "analysis_failed", "analysis task failed"
-	}
-}
-
 func sanitizeErrorCode(value string) string {
 	value = strings.TrimSpace(value)
 	if value == "" {
-		return "analysis_failed"
+		return taskerror.CodeInternalAnalysisError
 	}
 	if len(value) > 64 {
 		value = value[:64]
@@ -292,6 +344,38 @@ func workerTaskLogFields(task *model.AnalysisTask, workerID string) []zap.Field 
 		zap.Uint("project_id", task.ProjectID),
 		zap.Uint("diff_id", task.DiffID),
 	}
+}
+
+func (m *AnalysisWorkerManager) retryPolicy() taskerror.RetryPolicy {
+	return taskerror.RetryPolicy{
+		BaseDelay:     time.Duration(m.config.RetryBaseSeconds) * time.Second,
+		MaxDelay:      time.Duration(m.config.RetryMaxSeconds) * time.Second,
+		JitterPercent: m.config.RetryJitterPercent,
+	}
+}
+
+func (m *AnalysisWorkerManager) logStateConflict(err error, task *model.AnalysisTask, workerID string) {
+	if !errors.Is(err, repository.ErrTaskStateConflict) {
+		return
+	}
+	m.logger.Warn("analysis_task_state_conflict",
+		zap.Uint64("task_id", task.ID),
+		zap.String("worker_id", workerID),
+		zap.Int("expected_attempt", task.AttemptCount),
+	)
+}
+
+func classifyTaskData(task *model.AnalysisTask, workerID string) (taskerror.Classification, bool) {
+	if task == nil || task.ID == 0 || task.ProjectID == 0 || task.DiffID == 0 || task.MaxAttempts < 1 || task.AttemptCount < 1 {
+		return taskerror.Classify(taskerror.ErrInvalidTaskData), true
+	}
+	if task.TopK < 1 || task.TopK > 20 {
+		return taskerror.Classify(taskerror.ErrInvalidTopK), true
+	}
+	if task.Status != model.AnalysisTaskStatusRunning || task.WorkerID != workerID {
+		return taskerror.Classify(taskerror.ErrInvalidTaskState), true
+	}
+	return taskerror.Classification{}, false
 }
 
 func buildWorkerID(index int) string {
