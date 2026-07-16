@@ -66,12 +66,21 @@ func SetupRouterWithWorker(
 	reportHandler := handler.NewReportHandler(reportService)
 	analysisTaskService := service.NewAnalysisTaskService(database.DB, cfg.AnalysisWorker.MaxAttempts, logger)
 	analysisTaskHandler := handler.NewAnalysisTaskHandler(analysisTaskService)
+	analysisTaskRepository := repository.NewAnalysisTaskRepository(database.DB)
 	workerManager := worker.NewAnalysisWorkerManager(
-		repository.NewAnalysisTaskRepository(database.DB),
+		analysisTaskRepository,
 		reportService,
 		cfg.AnalysisWorker,
 		logger,
 	)
+	analysisTaskOpsService := service.NewAnalysisTaskOpsService(
+		analysisTaskRepository,
+		cfg.Ops,
+		cfg.AnalysisWorker,
+		workerManager.RuntimeRegistry(),
+		workerManager.Stopping,
+	)
+	analysisTaskOpsHandler := handler.NewAnalysisTaskOpsHandler(analysisTaskOpsService, cfg.Ops, logger)
 	limiter := ratelimit.NewFixedWindowLimiter(
 		database.RDB,
 		cfg.RateLimit.Limit,
@@ -98,6 +107,15 @@ func SetupRouterWithWorker(
 		analysisTaskHandler.Submit,
 	)
 	r.GET("/analysis-tasks/:id", analysisTaskHandler.Get)
+	if cfg.Ops.Enabled {
+		logger.Warn("ops_routes_enabled_without_authentication",
+			zap.String("warning", "protect operations endpoints with authentication or internal network access control in production"),
+		)
+		opsGroup := r.Group("/ops")
+		opsGroup.GET("/analysis-tasks", analysisTaskOpsHandler.ListTasks)
+		opsGroup.GET("/analysis-tasks/metrics", analysisTaskOpsHandler.GetMetrics)
+		opsGroup.GET("/workers", analysisTaskOpsHandler.GetWorkers)
+	}
 	r.POST("/embedding/test", embeddingHandler.Test)
 	r.POST("/vector/collection/init", vectorHandler.InitCollection)
 	r.POST("/vectoe/collection/init", vectorHandler.InitCollection)

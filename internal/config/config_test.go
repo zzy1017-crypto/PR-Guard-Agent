@@ -32,6 +32,41 @@ func TestLoadReportCacheConfig(t *testing.T) {
 		cfg.AnalysisWorker.RetryBaseSeconds != 2 || cfg.AnalysisWorker.RetryMaxSeconds != 30 || cfg.AnalysisWorker.RetryJitterPercent != 20 {
 		t.Fatalf("unexpected analysis worker config: %#v", cfg.AnalysisWorker)
 	}
+	if !cfg.Ops.Enabled || cfg.Ops.DefaultPageSize != 20 || cfg.Ops.MaxPageSize != 100 ||
+		cfg.Ops.DefaultMetricsWindowHours != 24 || cfg.Ops.MaxMetricsWindowHours != 168 ||
+		cfg.Ops.QueryTimeoutSeconds != 3 {
+		t.Fatalf("unexpected ops config: %#v", cfg.Ops)
+	}
+}
+
+func TestOpsConfigValidation(t *testing.T) {
+	valid := OpsConfig{
+		Enabled: true, DefaultPageSize: 20, MaxPageSize: 100,
+		DefaultMetricsWindowHours: 24, MaxMetricsWindowHours: 168,
+		QueryTimeoutSeconds: 3,
+	}
+	if err := valid.Validate(); err != nil {
+		t.Fatalf("valid config error = %v", err)
+	}
+	tests := []struct {
+		name string
+		edit func(*OpsConfig)
+	}{
+		{"default_page_size", func(c *OpsConfig) { c.DefaultPageSize = 0 }},
+		{"max_page_size", func(c *OpsConfig) { c.MaxPageSize = 19 }},
+		{"default_metrics_window", func(c *OpsConfig) { c.DefaultMetricsWindowHours = 0 }},
+		{"max_metrics_window", func(c *OpsConfig) { c.MaxMetricsWindowHours = 23 }},
+		{"query_timeout", func(c *OpsConfig) { c.QueryTimeoutSeconds = 0 }},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			cfg := valid
+			test.edit(&cfg)
+			if err := cfg.Validate(); err == nil {
+				t.Fatal("Validate() error = nil")
+			}
+		})
+	}
 }
 
 func TestAnalysisWorkerConfigValidation(t *testing.T) {

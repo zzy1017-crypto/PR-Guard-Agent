@@ -66,3 +66,11 @@ analysis_worker:
   retry_base_seconds: 2
   retry_max_seconds: 30
   retry_jitter_percent: 20
+
+ops:
+  enabled: true
+  default_page_size: 20
+  max_page_size: 100
+  default_metrics_window_hours: 24
+  max_metrics_window_hours: 168
+  query_timeout_seconds: 3

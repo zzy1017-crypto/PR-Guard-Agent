@@ -18,6 +18,35 @@ type Config struct {
 	Embedding      EmbeddingConfig      `mapstructure:"embedding"`
 	LLM            LLMConfig            `mapstructure:"llm"`
 	AnalysisWorker AnalysisWorkerConfig `mapstructure:"analysis_worker"`
+	Ops            OpsConfig            `mapstructure:"ops"`
+}
+
+type OpsConfig struct {
+	Enabled                   bool `mapstructure:"enabled"`
+	DefaultPageSize           int  `mapstructure:"default_page_size"`
+	MaxPageSize               int  `mapstructure:"max_page_size"`
+	DefaultMetricsWindowHours int  `mapstructure:"default_metrics_window_hours"`
+	MaxMetricsWindowHours     int  `mapstructure:"max_metrics_window_hours"`
+	QueryTimeoutSeconds       int  `mapstructure:"query_timeout_seconds"`
+}
+
+func (c OpsConfig) Validate() error {
+	if c.DefaultPageSize <= 0 {
+		return fmt.Errorf("ops.default_page_size must be greater than 0")
+	}
+	if c.MaxPageSize < c.DefaultPageSize {
+		return fmt.Errorf("ops.max_page_size must be greater than or equal to default_page_size")
+	}
+	if c.DefaultMetricsWindowHours <= 0 {
+		return fmt.Errorf("ops.default_metrics_window_hours must be greater than 0")
+	}
+	if c.MaxMetricsWindowHours < c.DefaultMetricsWindowHours {
+		return fmt.Errorf("ops.max_metrics_window_hours must be greater than or equal to default_metrics_window_hours")
+	}
+	if c.QueryTimeoutSeconds <= 0 {
+		return fmt.Errorf("ops.query_timeout_seconds must be greater than 0")
+	}
+	return nil
 }
 
 // 定义了一个AnalysisWorkerConfig结构体，用于存储分析任务工作者的配置参数。该结构体包含了多个字段，如Enabled、WorkerCount、PollIntervalMS等，用于控制分析任务工作者的行为。
@@ -203,6 +232,12 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("analysis_worker.retry_base_seconds", 2)
 	v.SetDefault("analysis_worker.retry_max_seconds", 30)
 	v.SetDefault("analysis_worker.retry_jitter_percent", 20)
+	v.SetDefault("ops.enabled", true)
+	v.SetDefault("ops.default_page_size", 20)
+	v.SetDefault("ops.max_page_size", 100)
+	v.SetDefault("ops.default_metrics_window_hours", 24)
+	v.SetDefault("ops.max_metrics_window_hours", 168)
+	v.SetDefault("ops.query_timeout_seconds", 3)
 
 	// 读取配置文件
 	if err := v.ReadInConfig(); err != nil {
@@ -218,6 +253,9 @@ func Load(path string) (*Config, error) {
 
 	// 验证分析任务工作者的配置参数是否合法
 	if err := cfg.AnalysisWorker.Validate(); err != nil {
+		return nil, err
+	}
+	if err := cfg.Ops.Validate(); err != nil {
 		return nil, err
 	}
 

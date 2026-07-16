@@ -38,6 +38,7 @@ type AnalysisWorkerManager struct {
 	analyzer   ReportAnalyzer
 	config     config.AnalysisWorkerConfig
 	logger     *zap.Logger
+	registry   *WorkerRuntimeRegistry
 
 	mu          sync.Mutex
 	started     bool
@@ -54,9 +55,14 @@ func NewAnalysisWorkerManager(
 	analyzer ReportAnalyzer,
 	cfg config.AnalysisWorkerConfig,
 	logger *zap.Logger,
+	registries ...*WorkerRuntimeRegistry,
 ) *AnalysisWorkerManager {
 	if logger == nil {
 		logger = zap.NewNop()
+	}
+	registry := NewWorkerRuntimeRegistry()
+	if len(registries) > 0 && registries[0] != nil {
+		registry = registries[0]
 	}
 	claimCtx, cancelClaim := context.WithCancel(context.Background())
 	return &AnalysisWorkerManager{
@@ -64,6 +70,7 @@ func NewAnalysisWorkerManager(
 		analyzer:    analyzer,
 		config:      cfg,
 		logger:      logger,
+		registry:    registry,
 		stopCh:      make(chan struct{}),
 		doneCh:      make(chan struct{}),
 		claimCtx:    claimCtx,
@@ -150,6 +157,8 @@ func (m *AnalysisWorkerManager) Shutdown(ctx context.Context) error {
 
 func (m *AnalysisWorkerManager) runWorker(workerID string) {
 	defer m.wg.Done()
+	m.registry.RegisterWorker(workerID)
+	defer m.registry.MarkIdle(workerID)
 	m.logger.Info("worker_started", zap.String("worker_id", workerID))
 	defer m.logger.Info("worker_stopped", zap.String("worker_id", workerID))
 
@@ -157,6 +166,7 @@ func (m *AnalysisWorkerManager) runWorker(workerID string) {
 		if m.stopping() {
 			return
 		}
+		m.registry.MarkPoll(workerID)
 		task, err := m.repository.ClaimNextPending(m.claimCtx, workerID)
 		if err != nil {
 			switch {
@@ -177,20 +187,37 @@ func (m *AnalysisWorkerManager) runWorker(workerID string) {
 
 		fields := workerTaskLogFields(task, workerID)
 		m.logger.Info("analysis_task_claimed", fields...)
-		m.processTask(task, workerID)
+		taskID := uint64(0)
+		if task != nil {
+			taskID = task.ID
+		}
+		m.registry.MarkBusy(workerID, taskID)
+		if m.processTask(task, workerID) == attemptSucceeded {
+			m.registry.MarkSuccess(workerID)
+		} else {
+			m.registry.MarkFailure(workerID)
+		}
+		m.registry.MarkIdle(workerID)
 	}
 }
 
-func (m *AnalysisWorkerManager) processTask(task *model.AnalysisTask, workerID string) {
+type attemptOutcome uint8
+
+const (
+	attemptFailed attemptOutcome = iota
+	attemptSucceeded
+)
+
+func (m *AnalysisWorkerManager) processTask(task *model.AnalysisTask, workerID string) attemptOutcome {
 	if task == nil {
 		m.logger.Error("analysis_task_invalid_data", zap.String("worker_id", workerID), zap.String("error_code", taskerror.CodeInvalidTaskData))
-		return
+		return attemptFailed
 	}
 	fields := workerTaskLogFields(task, workerID)
 	m.logger.Info("analysis_task_started", fields...)
 	if classification, invalid := classifyTaskData(task, workerID); invalid {
 		m.handleFailure(task, workerID, classification)
-		return
+		return attemptFailed
 	}
 
 	taskCtx, cancel := context.WithTimeout(context.Background(), time.Duration(m.config.TaskTimeoutSeconds)*time.Second)
@@ -204,17 +231,17 @@ func (m *AnalysisWorkerManager) processTask(task *model.AnalysisTask, workerID s
 			classification = taskerror.Classify(context.DeadlineExceeded)
 		}
 		m.handleFailure(task, workerID, classification)
-		return
+		return attemptFailed
 	}
 	if result == nil {
 		m.handleFailure(task, workerID, taskerror.Classify(taskerror.ErrInvalidTaskData))
-		return
+		return attemptFailed
 	}
 
 	resultJSON, err := json.Marshal(result)
 	if err != nil {
 		m.handleFailure(task, workerID, taskerror.Classify(taskerror.ErrInvalidTaskData))
-		return
+		return attemptFailed
 	}
 	var reportID *uint
 	if result.ReportID > 0 {
@@ -228,12 +255,13 @@ func (m *AnalysisWorkerManager) processTask(task *model.AnalysisTask, workerID s
 	if err != nil {
 		m.logger.Error("analysis_task_success_update_failed", append(fields, zap.Error(err))...)
 		m.logStateConflict(err, task, workerID)
-		return
+		return attemptFailed
 	}
 	m.logger.Info("analysis_task_succeeded", append(fields,
 		zap.Bool("degraded", result.Degraded),
 		zap.Uint("report_id", result.ReportID),
 	)...)
+	return attemptSucceeded
 }
 
 func (m *AnalysisWorkerManager) handleFailure(task *model.AnalysisTask, workerID string, classification taskerror.Classification) {
@@ -307,6 +335,20 @@ func (m *AnalysisWorkerManager) stopping() bool {
 	default:
 		return false
 	}
+}
+
+func (m *AnalysisWorkerManager) RuntimeRegistry() *WorkerRuntimeRegistry {
+	if m == nil {
+		return nil
+	}
+	return m.registry
+}
+
+func (m *AnalysisWorkerManager) Stopping() bool {
+	if m == nil {
+		return false
+	}
+	return m.stopping()
 }
 
 func sanitizeErrorCode(value string) string {
