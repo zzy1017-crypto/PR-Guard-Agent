@@ -29,7 +29,7 @@ func InitMySQL(cfg *config.Config) error {
 	// 使用GORM的mysql驱动打开数据库连接
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		return err
+		return fmt.Errorf("open mysql connection failed: %w", err)
 	}
 
 	DB = db // 将数据库连接实例赋值给全局变量DB，以便在其他地方使用。
@@ -54,7 +54,7 @@ func AutoMigrate() error {
 		&model.RiskReport{},
 		&model.AnalysisTask{},
 	); err != nil {
-		return err
+		return fmt.Errorf("auto migrate mysql schema failed: %w", err)
 	}
 
 	return nil

@@ -1,0 +1,47 @@
+2026-07-17T15:48:47.015+0800	info	cmd/main.go:52	mysql_connected
+2026-07-17T15:48:47.092+0800	info	cmd/main.go:63	redis_connected	{"addr": "localhost:16379", "db": 0}
+2026-07-17T15:48:47.364+0800	info	cmd/main.go:69	auto_migrate_completed
+2026-07-17T15:48:47.365+0800	info	cmd/main.go:76	report_cache_initialized	{"enabled": false, "ttl_seconds": 3600}
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /health                   --> pr-guard-agent/internal/handler.Health (4 handlers)
+[GIN-debug] POST   /projects/upload          --> pr-guard-agent/internal/handler.UploadProject (4 handlers)
+[GIN-debug] POST   /projects/:id/chunks/ast  --> pr-guard-agent/internal/handler.GenerateASTChunks (4 handlers)
+[GIN-debug] POST   /projects/:id/index       --> pr-guard-agent/internal/handler.(*IndexHandler).IndexProject-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs       --> pr-guard-agent/internal/handler.UploadDiff (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/retrieve --> pr-guard-agent/internal/handler.(*RAGHandler).RetrieveRelatedChunks-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analyze --> pr-guard-agent/internal/handler.(*ReportHandler).AnalyzeDiff-fm (5 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analysis-tasks --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Submit-fm (5 handlers)
+[GIN-debug] GET    /analysis-tasks/:id       --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Get-fm (4 handlers)
+2026-07-17T15:48:47.368+0800	warn	router/router.go:111	ops_routes_enabled_without_authentication	{"warning": "protect operations endpoints with authentication or internal network access control in production"}
+pr-guard-agent/internal/router.SetupRouterWithWorker
+	D:/GO-STUDY/pr-guard-agent/internal/router/router.go:111
+main.main
+	D:/GO-STUDY/pr-guard-agent/cmd/main.go:81
+runtime.main
+	E:/src/runtime/proc.go:285
+[GIN-debug] GET    /ops/analysis-tasks       --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).ListTasks-fm (4 handlers)
+[GIN-debug] GET    /ops/analysis-tasks/metrics --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).GetMetrics-fm (4 handlers)
+[GIN-debug] GET    /ops/workers              --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).GetWorkers-fm (4 handlers)
+[GIN-debug] POST   /embedding/test           --> pr-guard-agent/internal/handler.(*EmbeddingHandler).Test-fm (4 handlers)
+[GIN-debug] POST   /vector/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vectoe/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vector/test/upsert       --> pr-guard-agent/internal/handler.(*VectorHandler).TestUpsert-fm (4 handlers)
+[GIN-debug] POST   /vector/test/search       --> pr-guard-agent/internal/handler.(*VectorHandler).TestSearch-fm (4 handlers)
+[GIN-debug] POST   /llm/risk/test            --> pr-guard-agent/internal/handler.(*LLMHandler).RiskTest-fm (4 handlers)
+2026-07-17T15:48:47.376+0800	info	worker/analysis_worker_manager.go:103	stale_tasks_recovered	{"recovered_count": 0, "pending_count": 0, "failed_count": 0}
+2026-07-17T15:48:47.377+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-10928-1-e9cd85cd"}
+2026-07-17T15:48:47.377+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-10928-2-dc72ef50"}
+
+2026/07/17 15:49:14 [31;1mD:/GO-STUDY/pr-guard-agent/internal/repository/analysis_task_repository.go:61 [35;1mrecord not found
+[0m[33m[2.740ms] [34;1m[rows:0][0m SELECT * FROM `analysis_tasks` WHERE task_key = '70d6c0c09f46fd7b551e2f788c7419b8d2fe27e28e9504d03f2915191d678b8e' ORDER BY `analysis_tasks`.`id` LIMIT 1
+2026-07-17T15:49:14.249+0800	info	service/analysis_task_service.go:138	analysis_task_created	{"task_id": 23, "project_id": 6, "diff_id": 5}
+2026-07-17T15:49:14.250+0800	info	middleware/access_log.go:37	http_request	{"request_id": "ac6349e2-e047-43bc-9eb5-b1ef84b88f6f", "method": "POST", "path": "/projects/6/diffs/5/analysis-tasks", "route": "/projects/:id/diffs/:diff_id/analysis-tasks", "status": 202, "latency_ms": 19, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:49:14.313+0800	info	middleware/access_log.go:37	http_request	{"request_id": "23d68a14-24aa-431d-8355-e9c7c3de3487", "method": "GET", "path": "/analysis-tasks/23", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 2, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:49:14.331+0800	info	worker/analysis_worker_manager.go:189	analysis_task_claimed	{"task_id": 23, "worker_id": "zzy-10928-2-dc72ef50", "project_id": 6, "diff_id": 5}
+2026-07-17T15:49:14.331+0800	info	worker/analysis_worker_manager.go:217	analysis_task_started	{"task_id": 23, "worker_id": "zzy-10928-2-dc72ef50", "project_id": 6, "diff_id": 5}
+2026-07-17T15:49:14.331+0800	info	service/report_service.go:106	analyze_started	{"request_id": "analysis-task-23", "project_id": 6, "diff_id": 5, "top_k": 17}
+2026-07-17T15:49:14.416+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "analysis-task-23", "project_id": 6, "diff_id": 5, "top_k": 17, "context_chunk_count": 17, "latency_ms": 83}
+2026-07-17T15:49:14.545+0800	info	middleware/access_log.go:37	http_request	{"request_id": "f18cb7ab-3bf9-494b-a924-fec3c95e8720", "method": "GET", "path": "/analysis-tasks/23", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 4, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}

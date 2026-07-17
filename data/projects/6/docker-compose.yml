@@ -20,7 +20,7 @@ services:
     container_name: flash-sale-mysql
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Zzy20061017
+      MYSQL_ROOT_PASSWORD: <MYSQL_PASSWORD>
       MYSQL_DATABASE: flash_sale
     ports:
       - "3307:3306"

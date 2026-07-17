@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/spf13/viper"
 )
@@ -182,6 +183,9 @@ func Load(path string) (*Config, error) {
 	v := viper.New()
 	v.SetConfigFile(path)   // 设置配置文件路径
 	v.SetConfigType("yaml") // 设置配置文件类型为YAML
+	v.SetEnvPrefix("PRGUARD")
+	v.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+	v.AutomaticEnv()
 
 	v.SetDefault("server.port", 8080)                              // 设置服务器端口的默认值为8080
 	v.SetDefault("server.mode", "debug")                           // 设置服务器运行模式的默认值为debug
@@ -191,7 +195,7 @@ func Load(path string) (*Config, error) {
 	v.SetDefault("mysql.port", 3306)                               // 设置MySQL数据库端口的默认值为3306
 	v.SetDefault("mysql.database", "pr_guard")                     // 设置MySQL数据库名称的默认值为pr_guard
 	v.SetDefault("mysql.username", "root")                         // 设置MySQL数据库用户名的默认值为root
-	v.SetDefault("mysql.password", "123456")                       // 设置MySQL数据库密码的默认值为123456
+	v.SetDefault("mysql.password", "")                             // 密码必须通过本地配置或环境变量提供
 	v.SetDefault("redis.addr", "localhost:6379")                   // 设置Redis数据库地址的默认值为localhost:6379
 	v.SetDefault("redis.password", "")                             // 设置Redis数据库密码的默认值为空字符串
 	v.SetDefault("redis.db", 0)                                    // 设置Redis数据库编号的默认值为0

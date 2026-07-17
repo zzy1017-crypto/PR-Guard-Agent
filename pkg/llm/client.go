@@ -183,8 +183,8 @@ func (c *Client) generateHTTP(ctx context.Context, prompt string) (string, error
 	defer resp.Body.Close()
 
 	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
-		respBody, _ := io.ReadAll(io.LimitReader(resp.Body, 4096))
-		return "", fmt.Errorf("%w: api returned status %d: %s", ErrLLMProvider, resp.StatusCode, strings.TrimSpace(string(respBody)))
+		_, _ = io.Copy(io.Discard, io.LimitReader(resp.Body, 4096))
+		return "", fmt.Errorf("%w: api returned status %d", ErrLLMProvider, resp.StatusCode)
 	}
 
 	var llmResp Response

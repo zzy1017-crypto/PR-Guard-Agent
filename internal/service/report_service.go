@@ -258,13 +258,13 @@ func (s *ReportService) buildFallbackReport(
 func fallbackReason(err error) (string, bool) {
 	switch {
 	case errors.Is(err, llm.ErrLLMTimeout):
-		return "LLM request timed out", true
+		return "llm_timeout", true
 	case errors.Is(err, llm.ErrLLMProvider):
-		return "LLM provider is unavailable", true
+		return "llm_provider_error", true
 	case errors.Is(err, llm.ErrLLMInvalidJSON):
-		return "LLM returned invalid JSON", true
+		return "llm_invalid_json", true
 	case errors.Is(err, llm.ErrLLMInvalidReport):
-		return "LLM risk report or related sources failed validation", true
+		return "llm_invalid_report", true
 	default:
 		return "", false
 	}

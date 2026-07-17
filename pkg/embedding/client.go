@@ -193,14 +193,14 @@ func (c *Client) embedHTTPBatch(ctx context.Context, texts []string) ([][]float3
 	defer resp.Body.Close()
 
 	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
-		respBody, _ := io.ReadAll(io.LimitReader(resp.Body, 4096))
+		_, _ = io.Copy(io.Discard, io.LimitReader(resp.Body, 4096))
 		if resp.StatusCode == http.StatusRequestTimeout {
-			return nil, fmt.Errorf("%w: embedding api returned status %d: %s", ErrEmbeddingTimeout, resp.StatusCode, strings.TrimSpace(string(respBody)))
+			return nil, fmt.Errorf("%w: embedding api returned status %d", ErrEmbeddingTimeout, resp.StatusCode)
 		}
 		if resp.StatusCode == http.StatusTooManyRequests || resp.StatusCode >= http.StatusInternalServerError {
-			return nil, fmt.Errorf("%w: embedding api returned status %d: %s", ErrEmbeddingProviderError, resp.StatusCode, strings.TrimSpace(string(respBody)))
+			return nil, fmt.Errorf("%w: embedding api returned status %d", ErrEmbeddingProviderError, resp.StatusCode)
 		}
-		return nil, fmt.Errorf("embedding api returned status %d: %s", resp.StatusCode, strings.TrimSpace(string(respBody)))
+		return nil, fmt.Errorf("embedding api returned status %d", resp.StatusCode)
 	}
 
 	var embeddingResp Response

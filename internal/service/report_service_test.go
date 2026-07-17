@@ -68,11 +68,11 @@ func TestBuildFallbackReport(t *testing.T) {
 		},
 	}
 
-	result := BuildFallbackReport(3, 7, retrieveResult, "LLM request timed out")
+	result := BuildFallbackReport(3, 7, retrieveResult, "llm_timeout")
 	if result.ReportID != 0 || result.ProjectID != 3 || result.DiffID != 7 {
 		t.Fatalf("unexpected fallback identity: %#v", result)
 	}
-	if !result.Degraded || result.DegradedReason != "LLM request timed out" || result.Cached {
+	if !result.Degraded || result.DegradedReason != "llm_timeout" || result.Cached {
 		t.Fatalf("unexpected fallback state: %#v", result)
 	}
 	if result.RiskLevel != "medium" || result.Confidence != 0.2 {

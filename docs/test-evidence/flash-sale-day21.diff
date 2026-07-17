@@ -1,0 +1,10 @@
+diff --git a/internal/service/order.go b/internal/service/order.go
+index cd92c42..f56b318 100644
+--- a/internal/service/order.go
++++ b/internal/service/order.go
+@@ -87,3 +87,5 @@ func isDupilicateEntryError(err error) bool {
+ 
+ 	return false
+ }
++
++// pr-guard-test: simulate order service change

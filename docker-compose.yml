@@ -4,7 +4,7 @@ services:
     container_name: prguard-mysql
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_ROOT_PASSWORD: "${PRGUARD_MYSQL_PASSWORD:?set PRGUARD_MYSQL_PASSWORD before starting Docker Compose}"
       MYSQL_DATABASE: pr_guard
     ports:
       - "13306:3306"

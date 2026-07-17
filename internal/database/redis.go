@@ -2,6 +2,7 @@ package database
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/redis/go-redis/v9"
@@ -28,7 +29,8 @@ func InitRedis(cfg *config.Config) error {
 
 	//使用Ping方法测试与Redis服务器的连接，如果连接失败，返回错误信息
 	if err := client.Ping(ctx).Err(); err != nil {
-		return err
+		_ = client.Close()
+		return fmt.Errorf("ping redis failed: %w", err)
 	}
 
 	RDB = client // 将Redis客户端实例赋值给全局变量RDB，以便在其他地方使用。

@@ -1,0 +1,200 @@
+2026-07-17T15:34:37.640+0800	info	cmd/main.go:52	mysql_connected
+2026-07-17T15:34:37.717+0800	info	cmd/main.go:63	redis_connected	{"addr": "localhost:16379", "db": 0}
+2026-07-17T15:34:38.040+0800	info	cmd/main.go:69	auto_migrate_completed
+2026-07-17T15:34:38.041+0800	info	cmd/main.go:76	report_cache_initialized	{"enabled": true, "ttl_seconds": 3600}
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /health                   --> pr-guard-agent/internal/handler.Health (4 handlers)
+[GIN-debug] POST   /projects/upload          --> pr-guard-agent/internal/handler.UploadProject (4 handlers)
+[GIN-debug] POST   /projects/:id/chunks/ast  --> pr-guard-agent/internal/handler.GenerateASTChunks (4 handlers)
+[GIN-debug] POST   /projects/:id/index       --> pr-guard-agent/internal/handler.(*IndexHandler).IndexProject-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs       --> pr-guard-agent/internal/handler.UploadDiff (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/retrieve --> pr-guard-agent/internal/handler.(*RAGHandler).RetrieveRelatedChunks-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analyze --> pr-guard-agent/internal/handler.(*ReportHandler).AnalyzeDiff-fm (5 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analysis-tasks --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Submit-fm (5 handlers)
+[GIN-debug] GET    /analysis-tasks/:id       --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Get-fm (4 handlers)
+2026-07-17T15:34:38.045+0800	warn	router/router.go:111	ops_routes_enabled_without_authentication	{"warning": "protect operations endpoints with authentication or internal network access control in production"}
+pr-guard-agent/internal/router.SetupRouterWithWorker
+	D:/GO-STUDY/pr-guard-agent/internal/router/router.go:111
+main.main
+	D:/GO-STUDY/pr-guard-agent/cmd/main.go:81
+runtime.main
+	E:/src/runtime/proc.go:285
+[GIN-debug] GET    /ops/analysis-tasks       --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).ListTasks-fm (4 handlers)
+[GIN-debug] GET    /ops/analysis-tasks/metrics --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).GetMetrics-fm (4 handlers)
+[GIN-debug] GET    /ops/workers              --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).GetWorkers-fm (4 handlers)
+[GIN-debug] POST   /embedding/test           --> pr-guard-agent/internal/handler.(*EmbeddingHandler).Test-fm (4 handlers)
+[GIN-debug] POST   /vector/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vectoe/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vector/test/upsert       --> pr-guard-agent/internal/handler.(*VectorHandler).TestUpsert-fm (4 handlers)
+[GIN-debug] POST   /vector/test/search       --> pr-guard-agent/internal/handler.(*VectorHandler).TestSearch-fm (4 handlers)
+[GIN-debug] POST   /llm/risk/test            --> pr-guard-agent/internal/handler.(*LLMHandler).RiskTest-fm (4 handlers)
+2026-07-17T15:34:38.055+0800	info	worker/analysis_worker_manager.go:103	stale_tasks_recovered	{"recovered_count": 0, "pending_count": 0, "failed_count": 0}
+2026-07-17T15:34:38.055+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-46308-1-75e46672"}
+2026-07-17T15:34:38.056+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-46308-2-cb473b5d"}
+2026-07-17T15:34:40.068+0800	info	middleware/access_log.go:37	http_request	{"request_id": "4392554b-6edf-444d-9bd1-620542f4f705", "method": "GET", "path": "/health", "route": "/health", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:35:02.509+0800	info	middleware/access_log.go:37	http_request	{"request_id": "c851a6e5-d9a0-420a-85fa-19185acf5732", "method": "GET", "path": "/health", "route": "/health", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:35:23.102+0800	info	middleware/access_log.go:37	http_request	{"request_id": "bb4005a5-6a45-4d9a-92b7-a779f82dda13", "method": "GET", "path": "/health", "route": "/health", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:35:23.132+0800	info	middleware/access_log.go:37	http_request	{"request_id": "day21-health-001", "method": "GET", "path": "/health", "route": "/health", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:35:23.148+0800	info	middleware/access_log.go:37	http_request	{"request_id": "22fc2182-5f8c-4319-b00e-37fc7aa090c2", "method": "GET", "path": "/health", "route": "/health", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:35:23.277+0800	info	middleware/access_log.go:37	http_request	{"request_id": "dfcf79f3-74ed-4bb4-a5ff-a3fc3fe8663d", "method": "POST", "path": "/projects/upload", "route": "/projects/upload", "status": 200, "latency_ms": 76, "client_ip": "127.0.0.1", "user_agent": "", "error_count": 0}
+2026-07-17T15:35:47.048+0800	info	middleware/access_log.go:37	http_request	{"request_id": "742fb1c1-2f4a-4802-b208-81efa81c75d0", "method": "POST", "path": "/projects/8/index", "route": "/projects/:id/index", "status": 200, "latency_ms": 855, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:35:47.883+0800	info	middleware/access_log.go:37	http_request	{"request_id": "410c164f-5a65-46be-9600-10eedfbb1e6a", "method": "POST", "path": "/projects/8/index", "route": "/projects/:id/index", "status": 200, "latency_ms": 769, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:36:22.402+0800	info	middleware/access_log.go:37	http_request	{"request_id": "ddfe9892-463e-4faa-8528-ada12d6ea073", "method": "POST", "path": "/projects/8/diffs", "route": "/projects/:id/diffs", "status": 200, "latency_ms": 16, "client_ip": "127.0.0.1", "user_agent": "", "error_count": 0}
+
+2026/07/17 15:36:22 [31;1mD:/GO-STUDY/pr-guard-agent/internal/repository/project_repository.go:25 [35;1mrecord not found
+[0m[33m[4.632ms] [34;1m[rows:0][0m SELECT * FROM `projects` WHERE `projects`.`id` = 3 ORDER BY `projects`.`id` LIMIT 1
+2026-07-17T15:36:22.484+0800	warn	middleware/access_log.go:35	http_request	{"request_id": "cea43794-b1a6-4723-ac71-374ed7fd19ba", "method": "POST", "path": "/projects/3/diffs/6/retrieve", "route": "/projects/:id/diffs/:diff_id/retrieve", "status": 404, "latency_ms": 5, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+pr-guard-agent/internal/router.SetupRouterWithWorker.AccessLog.func2
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/access_log.go:35
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.RequestID.func1
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/request_id.go:21
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+net/http.serverHandler.ServeHTTP
+	E:/src/net/http/server.go:3340
+net/http.(*conn).serve
+	E:/src/net/http/server.go:2109
+2026-07-17T15:36:22.620+0800	error	middleware/access_log.go:33	http_request	{"request_id": "cdfbc002-1332-49d0-b1b2-a6be380132f5", "method": "POST", "path": "/projects/8/diffs/6/retrieve", "route": "/projects/:id/diffs/:diff_id/retrieve", "status": 500, "latency_ms": 98, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+pr-guard-agent/internal/router.SetupRouterWithWorker.AccessLog.func2
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/access_log.go:33
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.RequestID.func1
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/request_id.go:21
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+net/http.serverHandler.ServeHTTP
+	E:/src/net/http/server.go:3340
+net/http.(*conn).serve
+	E:/src/net/http/server.go:2109
+2026-07-17T15:36:40.429+0800	warn	middleware/access_log.go:35	http_request	{"request_id": "10dd6a90-29f2-4456-b010-e2a400145c75", "method": "POST", "path": "/projects/7/diffs/6/retrieve", "route": "/projects/:id/diffs/:diff_id/retrieve", "status": 400, "latency_ms": 7, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+pr-guard-agent/internal/router.SetupRouterWithWorker.AccessLog.func2
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/access_log.go:35
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.RequestID.func1
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/request_id.go:21
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+net/http.serverHandler.ServeHTTP
+	E:/src/net/http/server.go:3340
+net/http.(*conn).serve
+	E:/src/net/http/server.go:2109
+2026-07-17T15:36:40.512+0800	info	middleware/access_log.go:37	http_request	{"request_id": "3bd722e5-0c9f-4085-ae7f-ae21a0377382", "method": "POST", "path": "/projects/6/diffs/5/retrieve", "route": "/projects/:id/diffs/:diff_id/retrieve", "status": 200, "latency_ms": 59, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:37:07.382+0800	info	service/report_service.go:106	analyze_started	{"request_id": "6edd1fde-6848-4a56-a60e-8370159737be", "project_id": 6, "diff_id": 5, "top_k": 5}
+2026-07-17T15:37:07.391+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "6edd1fde-6848-4a56-a60e-8370159737be", "project_id": 6, "diff_id": 5, "top_k": 5, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:5"}
+2026-07-17T15:37:07.469+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "6edd1fde-6848-4a56-a60e-8370159737be", "project_id": 6, "diff_id": 5, "top_k": 5, "context_chunk_count": 5, "latency_ms": 87}
+2026-07-17T15:37:08.484+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "6edd1fde-6848-4a56-a60e-8370159737be", "project_id": 6, "diff_id": 5, "top_k": 5, "cached": false, "degraded": false, "latency_ms": 1101}
+2026-07-17T15:37:08.486+0800	info	middleware/access_log.go:37	http_request	{"request_id": "6edd1fde-6848-4a56-a60e-8370159737be", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 1112, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:37:52.515+0800	info	service/report_service.go:106	analyze_started	{"request_id": "2c30415a-be63-4394-9e1f-2a5bdace4918", "project_id": 6, "diff_id": 5, "top_k": 5}
+2026-07-17T15:37:52.522+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "2c30415a-be63-4394-9e1f-2a5bdace4918", "project_id": 6, "diff_id": 5, "top_k": 5, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:5"}
+2026-07-17T15:37:52.598+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "2c30415a-be63-4394-9e1f-2a5bdace4918", "project_id": 6, "diff_id": 5, "top_k": 5, "context_chunk_count": 5, "latency_ms": 83}
+2026-07-17T15:37:53.614+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "2c30415a-be63-4394-9e1f-2a5bdace4918", "project_id": 6, "diff_id": 5, "top_k": 5, "cached": false, "degraded": false, "latency_ms": 1099}
+2026-07-17T15:37:53.617+0800	info	middleware/access_log.go:37	http_request	{"request_id": "2c30415a-be63-4394-9e1f-2a5bdace4918", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 1106, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:37:54.300+0800	info	service/report_service.go:106	analyze_started	{"request_id": "fec7966f-2628-4332-bef2-cc3d1e24e117", "project_id": 6, "diff_id": 5, "top_k": 5}
+2026-07-17T15:37:54.307+0800	info	service/report_service.go:135	report_cache_hit	{"request_id": "fec7966f-2628-4332-bef2-cc3d1e24e117", "project_id": 6, "diff_id": 5, "top_k": 5, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:5", "cached": true, "latency_ms": 7}
+2026-07-17T15:37:54.308+0800	info	middleware/access_log.go:37	http_request	{"request_id": "fec7966f-2628-4332-bef2-cc3d1e24e117", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 10, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:37:54.315+0800	info	service/report_service.go:106	analyze_started	{"request_id": "9966250c-0cae-4f00-be24-000fdeaba729", "project_id": 6, "diff_id": 5, "top_k": 8}
+2026-07-17T15:37:54.324+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "9966250c-0cae-4f00-be24-000fdeaba729", "project_id": 6, "diff_id": 5, "top_k": 8, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:8"}
+2026-07-17T15:37:54.346+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "9966250c-0cae-4f00-be24-000fdeaba729", "project_id": 6, "diff_id": 5, "top_k": 8, "context_chunk_count": 8, "latency_ms": 31}
+2026-07-17T15:37:55.357+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "9966250c-0cae-4f00-be24-000fdeaba729", "project_id": 6, "diff_id": 5, "top_k": 8, "cached": false, "degraded": false, "latency_ms": 1042}
+2026-07-17T15:37:55.360+0800	info	middleware/access_log.go:37	http_request	{"request_id": "9966250c-0cae-4f00-be24-000fdeaba729", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 1048, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:31.786+0800	info	service/report_service.go:106	analyze_started	{"request_id": "e083525f-44b7-478a-a5c3-ada8fa6fd03a", "project_id": 6, "diff_id": 5, "top_k": 5}
+2026-07-17T15:38:31.791+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "e083525f-44b7-478a-a5c3-ada8fa6fd03a", "project_id": 6, "diff_id": 5, "top_k": 5, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:5"}
+2026-07-17T15:38:31.865+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "e083525f-44b7-478a-a5c3-ada8fa6fd03a", "project_id": 6, "diff_id": 5, "top_k": 5, "context_chunk_count": 5, "latency_ms": 79}
+2026-07-17T15:38:32.876+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "e083525f-44b7-478a-a5c3-ada8fa6fd03a", "project_id": 6, "diff_id": 5, "top_k": 5, "cached": false, "degraded": false, "latency_ms": 1089}
+2026-07-17T15:38:32.877+0800	info	middleware/access_log.go:37	http_request	{"request_id": "e083525f-44b7-478a-a5c3-ada8fa6fd03a", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 1094, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:33.477+0800	info	service/report_service.go:106	analyze_started	{"request_id": "d99ca41b-9abf-48ef-8c23-c9e1262e9e52", "project_id": 6, "diff_id": 5, "top_k": 5}
+2026-07-17T15:38:33.483+0800	info	service/report_service.go:135	report_cache_hit	{"request_id": "d99ca41b-9abf-48ef-8c23-c9e1262e9e52", "project_id": 6, "diff_id": 5, "top_k": 5, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:5", "cached": true, "latency_ms": 6}
+2026-07-17T15:38:33.484+0800	info	middleware/access_log.go:37	http_request	{"request_id": "d99ca41b-9abf-48ef-8c23-c9e1262e9e52", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 8, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:33.489+0800	info	service/report_service.go:106	analyze_started	{"request_id": "9261a285-7b5d-4448-85a8-6d8499ad58a7", "project_id": 6, "diff_id": 5, "top_k": 8}
+2026-07-17T15:38:33.495+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "9261a285-7b5d-4448-85a8-6d8499ad58a7", "project_id": 6, "diff_id": 5, "top_k": 8, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:8"}
+2026-07-17T15:38:33.509+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "9261a285-7b5d-4448-85a8-6d8499ad58a7", "project_id": 6, "diff_id": 5, "top_k": 8, "context_chunk_count": 8, "latency_ms": 20}
+2026-07-17T15:38:34.519+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "9261a285-7b5d-4448-85a8-6d8499ad58a7", "project_id": 6, "diff_id": 5, "top_k": 8, "cached": false, "degraded": false, "latency_ms": 1030}
+2026-07-17T15:38:34.521+0800	info	middleware/access_log.go:37	http_request	{"request_id": "9261a285-7b5d-4448-85a8-6d8499ad58a7", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 1033, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:53.800+0800	info	middleware/access_log.go:37	http_request	{"request_id": "92bf4bd3-8464-4387-8464-05f207638a6d", "method": "GET", "path": "/health", "route": "/health", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:53.943+0800	info	middleware/access_log.go:37	http_request	{"request_id": "a8e479e6-a162-4254-849d-45f82dee93aa", "method": "POST", "path": "/projects/6/diffs/5/retrieve", "route": "/projects/:id/diffs/:diff_id/retrieve", "status": 200, "latency_ms": 84, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:53.958+0800	info	service/report_service.go:106	analyze_started	{"request_id": "29e2fdf3-bf45-42de-b005-1d999a6f5491", "project_id": 6, "diff_id": 5, "top_k": 11}
+2026-07-17T15:38:53.964+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "29e2fdf3-bf45-42de-b005-1d999a6f5491", "project_id": 6, "diff_id": 5, "top_k": 11, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:11"}
+2026-07-17T15:38:53.979+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "29e2fdf3-bf45-42de-b005-1d999a6f5491", "project_id": 6, "diff_id": 5, "top_k": 11, "context_chunk_count": 11, "latency_ms": 21}
+
+2026/07/17 15:38:55 [32mD:/GO-STUDY/pr-guard-agent/internal/repository/risk_report_repository.go:24 [33mSLOW SQL >= 200ms
+[0m[31;1m[201.480ms] [33m[rows:1][35m INSERT INTO `risk_reports` (`project_id`,`diff_id`,`risk_level`,`summary`,`affected_modules`,`possible_risks`,`suggested_tests`,`related_files`,`related_symbols`,`confidence`,`raw_json`,`created_at`,`update_at`) VALUES (6,5,'medium','Mock risk analysis completed.','[]','["Review the changed behavior and its failure paths."]','["Run focused regression tests for the changed code."]','[]','[]',0.78,'{"risk_level":"medium","summary":"Mock risk analysis completed.","affected_modules":[],"possible_risks":["Review the changed behavior and its failure paths."],"suggested_tests":["Run focused regression tests for the changed code."],"related_files":[],"related_symbols":[],"confidence":0.78}','2026-07-17 15:38:54.983','2026-07-17 15:38:54.983')[0m
+2026-07-17T15:38:55.201+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "29e2fdf3-bf45-42de-b005-1d999a6f5491", "project_id": 6, "diff_id": 5, "top_k": 11, "cached": false, "degraded": false, "latency_ms": 1242}
+2026-07-17T15:38:55.209+0800	info	middleware/access_log.go:37	http_request	{"request_id": "29e2fdf3-bf45-42de-b005-1d999a6f5491", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 1253, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:55.220+0800	info	service/report_service.go:106	analyze_started	{"request_id": "9102810b-7f68-45bf-b671-cd0b77114d80", "project_id": 6, "diff_id": 5, "top_k": 11}
+2026-07-17T15:38:55.226+0800	info	service/report_service.go:135	report_cache_hit	{"request_id": "9102810b-7f68-45bf-b671-cd0b77114d80", "project_id": 6, "diff_id": 5, "top_k": 11, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:11", "cached": true, "latency_ms": 6}
+2026-07-17T15:38:55.226+0800	info	middleware/access_log.go:37	http_request	{"request_id": "9102810b-7f68-45bf-b671-cd0b77114d80", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 8, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:55.232+0800	info	service/report_service.go:106	analyze_started	{"request_id": "f74868a0-f5f5-4bbb-ad97-a41c47789465", "project_id": 6, "diff_id": 5, "top_k": 12}
+2026-07-17T15:38:55.236+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "f74868a0-f5f5-4bbb-ad97-a41c47789465", "project_id": 6, "diff_id": 5, "top_k": 12, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:12"}
+2026-07-17T15:38:55.249+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "f74868a0-f5f5-4bbb-ad97-a41c47789465", "project_id": 6, "diff_id": 5, "top_k": 12, "context_chunk_count": 12, "latency_ms": 17}
+2026-07-17T15:38:56.265+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "f74868a0-f5f5-4bbb-ad97-a41c47789465", "project_id": 6, "diff_id": 5, "top_k": 12, "cached": false, "degraded": false, "latency_ms": 1033}
+2026-07-17T15:38:56.267+0800	info	middleware/access_log.go:37	http_request	{"request_id": "f74868a0-f5f5-4bbb-ad97-a41c47789465", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 1036, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+
+2026/07/17 15:38:56 [31;1mD:/GO-STUDY/pr-guard-agent/internal/repository/analysis_task_repository.go:61 [35;1mrecord not found
+[0m[33m[3.258ms] [34;1m[rows:0][0m SELECT * FROM `analysis_tasks` WHERE task_key = 'dad15a2fa36e7bd80dd81d86e16efac05470038e2d229414db9a6c5b22c51af7' ORDER BY `analysis_tasks`.`id` LIMIT 1
+2026-07-17T15:38:56.294+0800	info	service/analysis_task_service.go:138	analysis_task_created	{"task_id": 17, "project_id": 6, "diff_id": 5}
+2026-07-17T15:38:56.294+0800	info	middleware/access_log.go:37	http_request	{"request_id": "e64ab4cc-c7c9-41f4-a405-0a86a14f7683", "method": "POST", "path": "/projects/6/diffs/5/analysis-tasks", "route": "/projects/:id/diffs/:diff_id/analysis-tasks", "status": 202, "latency_ms": 23, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:56.314+0800	info	middleware/access_log.go:37	http_request	{"request_id": "9d52e160-c141-43f2-9a9a-c4f19ca06eec", "method": "GET", "path": "/analysis-tasks/17", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 3, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:56.631+0800	info	worker/analysis_worker_manager.go:189	analysis_task_claimed	{"task_id": 17, "worker_id": "zzy-46308-1-75e46672", "project_id": 6, "diff_id": 5}
+2026-07-17T15:38:56.631+0800	info	worker/analysis_worker_manager.go:217	analysis_task_started	{"task_id": 17, "worker_id": "zzy-46308-1-75e46672", "project_id": 6, "diff_id": 5}
+2026-07-17T15:38:56.632+0800	info	service/report_service.go:106	analyze_started	{"request_id": "analysis-task-17", "project_id": 6, "diff_id": 5, "top_k": 11}
+2026-07-17T15:38:56.639+0800	info	service/report_service.go:135	report_cache_hit	{"request_id": "analysis-task-17", "project_id": 6, "diff_id": 5, "top_k": 11, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:11", "cached": true, "latency_ms": 7}
+2026-07-17T15:38:56.652+0800	info	worker/analysis_worker_manager.go:260	analysis_task_succeeded	{"task_id": 17, "worker_id": "zzy-46308-1-75e46672", "project_id": 6, "diff_id": 5, "degraded": false, "report_id": 23}
+2026-07-17T15:38:57.327+0800	info	middleware/access_log.go:37	http_request	{"request_id": "f2e83856-3f95-4c81-b82c-d2280bf81b17", "method": "GET", "path": "/analysis-tasks/17", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 2, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:57.340+0800	info	middleware/access_log.go:37	http_request	{"request_id": "e964144d-85b6-4f62-be9e-647a88a88d93", "method": "GET", "path": "/ops/analysis-tasks/metrics", "route": "/ops/analysis-tasks/metrics", "status": 200, "latency_ms": 7, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:38:57.345+0800	info	middleware/access_log.go:37	http_request	{"request_id": "751f02c9-9794-407b-bc42-cffb5e60a7e3", "method": "GET", "path": "/ops/workers", "route": "/ops/workers", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+
+2026/07/17 15:39:15 [31;1mD:/GO-STUDY/pr-guard-agent/internal/repository/analysis_task_repository.go:61 [35;1mrecord not found
+[0m[33m[2.120ms] [34;1m[rows:0][0m SELECT * FROM `analysis_tasks` WHERE task_key = '38e1f9f4d511cc23873fed479935fe70a1c80dd539a6ad82a50bda332b1dd901' ORDER BY `analysis_tasks`.`id` LIMIT 1
+2026-07-17T15:39:15.852+0800	info	service/analysis_task_service.go:138	analysis_task_created	{"task_id": 18, "project_id": 6, "diff_id": 5}
+2026-07-17T15:39:15.853+0800	info	middleware/access_log.go:37	http_request	{"request_id": "c1b56d6a-e3a1-4a10-9b19-9dcf24181bc7", "method": "POST", "path": "/projects/6/diffs/5/analysis-tasks", "route": "/projects/:id/diffs/:diff_id/analysis-tasks", "status": 202, "latency_ms": 22, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:15.879+0800	info	worker/analysis_worker_manager.go:189	analysis_task_claimed	{"task_id": 18, "worker_id": "zzy-46308-1-75e46672", "project_id": 6, "diff_id": 5}
+2026-07-17T15:39:15.880+0800	info	worker/analysis_worker_manager.go:217	analysis_task_started	{"task_id": 18, "worker_id": "zzy-46308-1-75e46672", "project_id": 6, "diff_id": 5}
+2026-07-17T15:39:15.880+0800	info	service/report_service.go:106	analyze_started	{"request_id": "analysis-task-18", "project_id": 6, "diff_id": 5, "top_k": 13}
+2026-07-17T15:39:15.890+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "analysis-task-18", "project_id": 6, "diff_id": 5, "top_k": 13, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:13"}
+2026-07-17T15:39:15.948+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "analysis-task-18", "project_id": 6, "diff_id": 5, "top_k": 13, "context_chunk_count": 13, "latency_ms": 67}
+2026-07-17T15:39:15.966+0800	info	service/analysis_task_service.go:149	analysis_task_reused	{"task_id": 18, "project_id": 6, "diff_id": 5}
+2026-07-17T15:39:15.967+0800	info	middleware/access_log.go:37	http_request	{"request_id": "28de5750-ad05-4abf-be2c-6f52243915fb", "method": "POST", "path": "/projects/6/diffs/5/analysis-tasks", "route": "/projects/:id/diffs/:diff_id/analysis-tasks", "status": 202, "latency_ms": 9, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+
+2026/07/17 15:39:15 [31;1mD:/GO-STUDY/pr-guard-agent/internal/repository/analysis_task_repository.go:61 [35;1mrecord not found
+[0m[33m[2.155ms] [34;1m[rows:0][0m SELECT * FROM `analysis_tasks` WHERE task_key = '70a59b0e4f7231f84439488685e182cca94a5efb03ca4608d62c42d2e91ce7bc' ORDER BY `analysis_tasks`.`id` LIMIT 1
+2026-07-17T15:39:15.995+0800	info	service/analysis_task_service.go:138	analysis_task_created	{"task_id": 19, "project_id": 6, "diff_id": 5}
+2026-07-17T15:39:15.996+0800	info	middleware/access_log.go:37	http_request	{"request_id": "16952c0f-e801-44ee-8ae0-b6e9e9fb936b", "method": "POST", "path": "/projects/6/diffs/5/analysis-tasks", "route": "/projects/:id/diffs/:diff_id/analysis-tasks", "status": 202, "latency_ms": 17, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:16.025+0800	info	middleware/access_log.go:37	http_request	{"request_id": "a1bd49bf-6b55-4aff-88b8-d1115a31ac13", "method": "GET", "path": "/analysis-tasks/18", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 4, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:16.034+0800	info	middleware/access_log.go:37	http_request	{"request_id": "7c388768-32f8-4c76-bd68-6cd0261161f7", "method": "GET", "path": "/ops/workers", "route": "/ops/workers", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:16.351+0800	info	worker/analysis_worker_manager.go:189	analysis_task_claimed	{"task_id": 19, "worker_id": "zzy-46308-2-cb473b5d", "project_id": 6, "diff_id": 5}
+2026-07-17T15:39:16.351+0800	info	worker/analysis_worker_manager.go:217	analysis_task_started	{"task_id": 19, "worker_id": "zzy-46308-2-cb473b5d", "project_id": 6, "diff_id": 5}
+2026-07-17T15:39:16.352+0800	info	service/report_service.go:106	analyze_started	{"request_id": "analysis-task-19", "project_id": 6, "diff_id": 5, "top_k": 14}
+2026-07-17T15:39:16.359+0800	info	service/report_service.go:141	report_cache_miss	{"request_id": "analysis-task-19", "project_id": 6, "diff_id": 5, "top_k": 14, "cache_key": "prguard:report:6:f2478e27d5528881db611d2241c67d71982286e30d9eb0b39f5243d94b10146a:089afeb0189c8123a4a92e0b1df1d8ec8fe239e545219dd20b2ba3c15a2c2341:topk:14"}
+2026-07-17T15:39:16.375+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "analysis-task-19", "project_id": 6, "diff_id": 5, "top_k": 14, "context_chunk_count": 14, "latency_ms": 23}
+2026-07-17T15:39:16.557+0800	info	middleware/access_log.go:37	http_request	{"request_id": "b55dc01a-17df-4622-80fd-9a3dfdbc907e", "method": "GET", "path": "/analysis-tasks/18", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 3, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:16.559+0800	info	middleware/access_log.go:37	http_request	{"request_id": "bdc978a0-4256-47d3-8242-3725f9d7dd41", "method": "GET", "path": "/ops/workers", "route": "/ops/workers", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:16.959+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "analysis-task-18", "project_id": 6, "diff_id": 5, "top_k": 13, "cached": false, "degraded": false, "latency_ms": 1079}
+2026-07-17T15:39:16.969+0800	info	worker/analysis_worker_manager.go:260	analysis_task_succeeded	{"task_id": 18, "worker_id": "zzy-46308-1-75e46672", "project_id": 6, "diff_id": 5, "degraded": false, "report_id": 25}
+2026-07-17T15:39:17.068+0800	info	middleware/access_log.go:37	http_request	{"request_id": "fa613f1b-4542-458c-b265-1e96a79db394", "method": "GET", "path": "/analysis-tasks/18", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 3, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:17.074+0800	info	middleware/access_log.go:37	http_request	{"request_id": "498aa2ef-2749-464a-9651-1f0787611845", "method": "GET", "path": "/ops/workers", "route": "/ops/workers", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:17.100+0800	info	middleware/access_log.go:37	http_request	{"request_id": "54be8aed-78a7-47d6-bd68-1c386ea3b086", "method": "GET", "path": "/analysis-tasks/19", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 3, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:17.105+0800	info	middleware/access_log.go:37	http_request	{"request_id": "2fc37c1d-c0d8-4065-9396-1f14a5cc1a9f", "method": "GET", "path": "/ops/workers", "route": "/ops/workers", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:17.385+0800	info	service/report_service.go:204	risk_report_saved	{"request_id": "analysis-task-19", "project_id": 6, "diff_id": 5, "top_k": 14, "cached": false, "degraded": false, "latency_ms": 1033}
+2026-07-17T15:39:17.394+0800	info	worker/analysis_worker_manager.go:260	analysis_task_succeeded	{"task_id": 19, "worker_id": "zzy-46308-2-cb473b5d", "project_id": 6, "diff_id": 5, "degraded": false, "report_id": 26}
+2026-07-17T15:39:17.623+0800	info	middleware/access_log.go:37	http_request	{"request_id": "9dd92129-1125-457e-9917-cf2a82e9fee8", "method": "GET", "path": "/analysis-tasks/19", "route": "/analysis-tasks/:id", "status": 200, "latency_ms": 2, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:17.626+0800	info	middleware/access_log.go:37	http_request	{"request_id": "c11bf1ae-1fa4-4b67-acd8-3d02aca5f73e", "method": "GET", "path": "/ops/workers", "route": "/ops/workers", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+2026-07-17T15:39:17.631+0800	info	middleware/access_log.go:37	http_request	{"request_id": "0a916866-416e-47ca-9255-f88bc671e7cd", "method": "GET", "path": "/ops/workers", "route": "/ops/workers", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}

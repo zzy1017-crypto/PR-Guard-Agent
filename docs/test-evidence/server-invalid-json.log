@@ -1,0 +1,74 @@
+2026-07-17T15:41:17.074+0800	info	cmd/main.go:52	mysql_connected
+2026-07-17T15:41:17.126+0800	info	cmd/main.go:63	redis_connected	{"addr": "localhost:16379", "db": 0}
+2026-07-17T15:41:17.346+0800	info	cmd/main.go:69	auto_migrate_completed
+2026-07-17T15:41:17.347+0800	info	cmd/main.go:76	report_cache_initialized	{"enabled": false, "ttl_seconds": 3600}
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /health                   --> pr-guard-agent/internal/handler.Health (4 handlers)
+[GIN-debug] POST   /projects/upload          --> pr-guard-agent/internal/handler.UploadProject (4 handlers)
+[GIN-debug] POST   /projects/:id/chunks/ast  --> pr-guard-agent/internal/handler.GenerateASTChunks (4 handlers)
+[GIN-debug] POST   /projects/:id/index       --> pr-guard-agent/internal/handler.(*IndexHandler).IndexProject-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs       --> pr-guard-agent/internal/handler.UploadDiff (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/retrieve --> pr-guard-agent/internal/handler.(*RAGHandler).RetrieveRelatedChunks-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analyze --> pr-guard-agent/internal/handler.(*ReportHandler).AnalyzeDiff-fm (5 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analysis-tasks --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Submit-fm (5 handlers)
+[GIN-debug] GET    /analysis-tasks/:id       --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Get-fm (4 handlers)
+2026-07-17T15:41:17.349+0800	warn	router/router.go:111	ops_routes_enabled_without_authentication	{"warning": "protect operations endpoints with authentication or internal network access control in production"}
+pr-guard-agent/internal/router.SetupRouterWithWorker
+	D:/GO-STUDY/pr-guard-agent/internal/router/router.go:111
+main.main
+	D:/GO-STUDY/pr-guard-agent/cmd/main.go:81
+runtime.main
+	E:/src/runtime/proc.go:285
+[GIN-debug] GET    /ops/analysis-tasks       --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).ListTasks-fm (4 handlers)
+[GIN-debug] GET    /ops/analysis-tasks/metrics --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).GetMetrics-fm (4 handlers)
+[GIN-debug] GET    /ops/workers              --> pr-guard-agent/internal/handler.(*AnalysisTaskOpsHandler).GetWorkers-fm (4 handlers)
+[GIN-debug] POST   /embedding/test           --> pr-guard-agent/internal/handler.(*EmbeddingHandler).Test-fm (4 handlers)
+[GIN-debug] POST   /vector/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vectoe/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vector/test/upsert       --> pr-guard-agent/internal/handler.(*VectorHandler).TestUpsert-fm (4 handlers)
+[GIN-debug] POST   /vector/test/search       --> pr-guard-agent/internal/handler.(*VectorHandler).TestSearch-fm (4 handlers)
+[GIN-debug] POST   /llm/risk/test            --> pr-guard-agent/internal/handler.(*LLMHandler).RiskTest-fm (4 handlers)
+2026-07-17T15:41:17.356+0800	info	worker/analysis_worker_manager.go:103	stale_tasks_recovered	{"recovered_count": 0, "pending_count": 0, "failed_count": 0}
+2026-07-17T15:41:17.356+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-26152-1-010e8a6d"}
+2026-07-17T15:41:17.356+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-26152-2-71b4e679"}
+2026-07-17T15:41:42.152+0800	info	service/report_service.go:106	analyze_started	{"request_id": "0dbcafa6-b658-47eb-ae7f-b676dd0ef2ec", "project_id": 6, "diff_id": 5, "top_k": 10}
+2026-07-17T15:41:42.212+0800	info	service/report_service.go:161	rag_retrieve_completed	{"request_id": "0dbcafa6-b658-47eb-ae7f-b676dd0ef2ec", "project_id": 6, "diff_id": 5, "top_k": 10, "context_chunk_count": 10, "latency_ms": 59}
+2026-07-17T15:41:42.213+0800	warn	service/report_service.go:248	fallback_report_generated	{"request_id": "0dbcafa6-b658-47eb-ae7f-b676dd0ef2ec", "project_id": 6, "diff_id": 5, "top_k": 10, "cached": false, "degraded": true, "degraded_reason": "llm_invalid_json", "context_chunk_count": 10, "latency_ms": 60}
+pr-guard-agent/internal/service.(*ReportService).buildFallbackReport
+	D:/GO-STUDY/pr-guard-agent/internal/service/report_service.go:248
+pr-guard-agent/internal/service.(*ReportService).analyzeDiff
+	D:/GO-STUDY/pr-guard-agent/internal/service/report_service.go:186
+pr-guard-agent/internal/service.(*ReportService).AnalyzeDiff
+	D:/GO-STUDY/pr-guard-agent/internal/service/report_service.go:82
+pr-guard-agent/internal/handler.(*ReportHandler).AnalyzeDiff
+	D:/GO-STUDY/pr-guard-agent/internal/handler/report_handler.go:45
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.RateLimit.func4
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/rate_limit.go:49
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.Recovery.func3
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/recovery.go:33
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.AccessLog.func2
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/access_log.go:16
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.RequestID.func1
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/request_id.go:21
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:722
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+net/http.serverHandler.ServeHTTP
+	E:/src/net/http/server.go:3340
+net/http.(*conn).serve
+	E:/src/net/http/server.go:2109
+2026-07-17T15:41:42.213+0800	info	middleware/access_log.go:37	http_request	{"request_id": "0dbcafa6-b658-47eb-ae7f-b676dd0ef2ec", "method": "POST", "path": "/projects/6/diffs/5/analyze", "route": "/projects/:id/diffs/:diff_id/analyze", "status": 200, "latency_ms": 63, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}

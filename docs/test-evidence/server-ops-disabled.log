@@ -1,0 +1,65 @@
+2026-07-17T15:55:05.102+0800	info	cmd/main.go:52	mysql_connected
+2026-07-17T15:55:05.154+0800	info	cmd/main.go:63	redis_connected	{"addr": "localhost:16379", "db": 0}
+2026-07-17T15:55:05.379+0800	info	cmd/main.go:69	auto_migrate_completed
+2026-07-17T15:55:05.379+0800	info	cmd/main.go:76	report_cache_initialized	{"enabled": true, "ttl_seconds": 3600}
+[GIN-debug] [WARNING] Running in "debug" mode. Switch to "release" mode in production.
+ - using env:	export GIN_MODE=release
+ - using code:	gin.SetMode(gin.ReleaseMode)
+
+[GIN-debug] GET    /health                   --> pr-guard-agent/internal/handler.Health (4 handlers)
+[GIN-debug] POST   /projects/upload          --> pr-guard-agent/internal/handler.UploadProject (4 handlers)
+[GIN-debug] POST   /projects/:id/chunks/ast  --> pr-guard-agent/internal/handler.GenerateASTChunks (4 handlers)
+[GIN-debug] POST   /projects/:id/index       --> pr-guard-agent/internal/handler.(*IndexHandler).IndexProject-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs       --> pr-guard-agent/internal/handler.UploadDiff (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/retrieve --> pr-guard-agent/internal/handler.(*RAGHandler).RetrieveRelatedChunks-fm (4 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analyze --> pr-guard-agent/internal/handler.(*ReportHandler).AnalyzeDiff-fm (5 handlers)
+[GIN-debug] POST   /projects/:id/diffs/:diff_id/analysis-tasks --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Submit-fm (5 handlers)
+[GIN-debug] GET    /analysis-tasks/:id       --> pr-guard-agent/internal/handler.(*AnalysisTaskHandler).Get-fm (4 handlers)
+[GIN-debug] POST   /embedding/test           --> pr-guard-agent/internal/handler.(*EmbeddingHandler).Test-fm (4 handlers)
+[GIN-debug] POST   /vector/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vectoe/collection/init   --> pr-guard-agent/internal/handler.(*VectorHandler).InitCollection-fm (4 handlers)
+[GIN-debug] POST   /vector/test/upsert       --> pr-guard-agent/internal/handler.(*VectorHandler).TestUpsert-fm (4 handlers)
+[GIN-debug] POST   /vector/test/search       --> pr-guard-agent/internal/handler.(*VectorHandler).TestSearch-fm (4 handlers)
+[GIN-debug] POST   /llm/risk/test            --> pr-guard-agent/internal/handler.(*LLMHandler).RiskTest-fm (4 handlers)
+2026-07-17T15:55:05.388+0800	info	worker/analysis_worker_manager.go:103	stale_tasks_recovered	{"recovered_count": 0, "pending_count": 0, "failed_count": 0}
+2026-07-17T15:55:05.389+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-26816-1-c3526a36"}
+2026-07-17T15:55:05.389+0800	info	worker/analysis_worker_manager.go:162	worker_started	{"worker_id": "zzy-26816-2-ce808ccc"}
+2026-07-17T15:55:05.910+0800	warn	middleware/access_log.go:35	http_request	{"request_id": "c88a6704-4ba4-4f68-b926-1c10ee8dee6d", "method": "GET", "path": "/ops/workers", "route": "", "status": 404, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+pr-guard-agent/internal/router.SetupRouterWithWorker.AccessLog.func2
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/access_log.go:35
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.RequestID.func1
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/request_id.go:21
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+github.com/gin-gonic/gin.serveError
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:766
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:759
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+net/http.serverHandler.ServeHTTP
+	E:/src/net/http/server.go:3340
+net/http.(*conn).serve
+	E:/src/net/http/server.go:2109
+2026-07-17T15:55:18.979+0800	warn	middleware/access_log.go:35	http_request	{"request_id": "0cb7b67b-c607-4fb7-8d4b-aa3e31aa77ce", "method": "GET", "path": "/ops/workers", "route": "", "status": 404, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}
+pr-guard-agent/internal/router.SetupRouterWithWorker.AccessLog.func2
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/access_log.go:35
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+pr-guard-agent/internal/router.SetupRouterWithWorker.RequestID.func1
+	D:/GO-STUDY/pr-guard-agent/internal/middleware/request_id.go:21
+github.com/gin-gonic/gin.(*Context).Next
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/context.go:192
+github.com/gin-gonic/gin.serveError
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:766
+github.com/gin-gonic/gin.(*Engine).handleHTTPRequest
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:759
+github.com/gin-gonic/gin.(*Engine).ServeHTTP
+	C:/Users/Lenovo/go/pkg/mod/github.com/gin-gonic/gin@v1.12.0/gin.go:672
+net/http.serverHandler.ServeHTTP
+	E:/src/net/http/server.go:3340
+net/http.(*conn).serve
+	E:/src/net/http/server.go:2109
+2026-07-17T15:55:19.006+0800	info	middleware/access_log.go:37	http_request	{"request_id": "28600234-78df-496b-a460-6bfcb949b248", "method": "GET", "path": "/health", "route": "/health", "status": 200, "latency_ms": 0, "client_ip": "127.0.0.1", "user_agent": "Mozilla/5.0 (Windows NT; Windows NT 10.0; zh-CN) WindowsPowerShell/5.1.26100.7920", "error_count": 0}

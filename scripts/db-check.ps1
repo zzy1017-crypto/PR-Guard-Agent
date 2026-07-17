@@ -2,7 +2,8 @@ param(
     [string]$Container = "prguard-mysql",
     [string]$Database = "pr_guard",
     [string]$User = "root",
-    [string]$Password = "123456",
+    [Parameter(Mandatory = $true)]
+    [string]$Password,
     [string]$ProjectId = "<PROJECT_ID>"
 )
 

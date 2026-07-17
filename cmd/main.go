@@ -39,12 +39,27 @@ func main() {
 		logger.Error("mysql_init_failed", zap.Error(err))
 		return
 	}
+	sqlDB, err := database.DB.DB()
+	if err != nil {
+		logger.Error("mysql_handle_failed", zap.Error(err))
+		return
+	}
+	defer func() {
+		if err := sqlDB.Close(); err != nil {
+			logger.Warn("mysql_close_failed", zap.Error(err))
+		}
+	}()
 	logger.Info("mysql_connected")
 
 	if err := database.InitRedis(cfg); err != nil {
 		logger.Error("redis_init_failed", zap.Error(err))
 		return
 	}
+	defer func() {
+		if err := database.RDB.Close(); err != nil {
+			logger.Warn("redis_close_failed", zap.Error(err))
+		}
+	}()
 	logger.Info("redis_connected", zap.String("addr", cfg.Redis.Addr), zap.Int("db", cfg.Redis.DB))
 
 	if err := database.AutoMigrate(); err != nil {

@@ -11,7 +11,7 @@ mysql:
   port: 13306
   database: pr_guard
   username: root
-  password: "123456"
+  password: ""
 
 redis:
   addr: localhost:16379
@@ -20,7 +20,7 @@ redis:
 
 rate_limit:
   enabled: true
-  limit: 10
+  limit: 100
   window_seconds: 60
   fail_open: true
 
@@ -48,11 +48,11 @@ embedding:
 llm:
   provider: mock
   mock_mode: normal
-  mock_delay_ms: 0
+  mock_delay_ms: 1000
   base_url: ""
   api_key: ""
   model: "mock-llm"
-  timeout_seconds: 2
+  timeout_seconds: 5
   max_tokens: 1200
   temperature: 0.2
 
@@ -60,12 +60,12 @@ analysis_worker:
   enabled: true
   worker_count: 2
   poll_interval_ms: 500
-  task_timeout_seconds: 90
-  stale_after_seconds: 180
+  task_timeout_seconds: 30
+  stale_after_seconds: 60
   max_attempts: 3
   retry_base_seconds: 2
-  retry_max_seconds: 30
-  retry_jitter_percent: 20
+  retry_max_seconds: 8
+  retry_jitter_percent: 0
 
 ops:
   enabled: true

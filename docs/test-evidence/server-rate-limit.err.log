@@ -1,0 +1,4 @@
+redis: 2026/07/17 15:44:56 pool.go:724: redis: connection pool: failed to dial after 5 attempts: dial tcp 127.0.0.1:16379: connectex: No connection could be made because the target machine actively refused it.
+redis: 2026/07/17 15:44:57 pool.go:724: redis: connection pool: failed to dial after 5 attempts: dial tcp 127.0.0.1:16379: connectex: No connection could be made because the target machine actively refused it.
+redis: 2026/07/17 15:44:57 pool.go:724: redis: connection pool: failed to dial after 5 attempts: dial tcp 127.0.0.1:16379: connectex: No connection could be made because the target machine actively refused it.
+exit status 0xffffffff

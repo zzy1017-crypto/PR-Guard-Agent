@@ -114,7 +114,7 @@ mysql:
   host: localhost
   port: 3307
   user: root
-  password: Zzy20061017
+password: <MYSQL_PASSWORD>
   dbname: flash_sale
 
 redis:
