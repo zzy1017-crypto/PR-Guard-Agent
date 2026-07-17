@@ -395,3 +395,1245 @@ pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
 2026-07-17T16:12:36.377+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
 pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
 	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:36.879+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:36.879+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:37.382+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:37.382+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:37.887+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:37.887+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:38.389+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:38.389+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:38.898+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:38.898+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:39.401+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:39.402+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:39.904+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:39.904+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:40.408+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:40.408+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:40.911+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:40.911+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:41.414+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:41.414+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:41.917+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:41.918+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:42.461+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:42.461+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:42.964+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:42.964+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:43.466+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:43.466+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:43.974+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:43.974+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:44.478+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:44.479+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:44.980+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:44.980+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:45.484+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:45.484+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:45.986+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:45.986+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:46.488+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:46.488+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:46.991+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:46.991+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:47.493+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:47.493+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:47.996+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:47.996+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:48.499+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:48.499+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:49.010+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:49.011+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:49.513+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:49.513+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:50.015+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:50.016+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:50.517+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:50.518+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:51.021+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:51.021+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:51.524+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:51.525+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:52.027+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:52.027+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:52.530+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:52.530+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:53.032+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:53.032+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:53.535+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:53.535+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:54.046+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:54.046+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:54.550+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:54.550+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:55.052+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:55.052+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:55.556+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:55.556+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:56.059+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:56.059+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:56.562+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:56.562+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:57.065+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:57.065+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:57.568+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:57.568+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:58.070+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:58.071+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:58.574+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:58.574+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:59.081+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:59.081+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:59.583+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:12:59.583+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:00.085+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:00.085+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:00.587+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:00.587+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:01.089+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:01.089+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:01.592+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:01.592+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:02.094+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:02.095+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:02.599+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:02.599+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:03.102+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:03.102+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:03.605+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:03.605+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:04.114+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:04.114+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:04.616+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:04.616+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:05.121+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:05.121+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:05.625+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:05.625+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:06.128+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:06.128+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:06.632+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:06.632+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:07.134+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:07.134+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:07.637+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:07.637+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:08.141+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:08.141+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:08.644+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:08.644+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:09.157+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:09.157+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:09.660+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:09.660+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:10.162+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:10.162+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:10.665+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:10.665+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:11.168+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:11.168+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:11.670+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:11.670+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:12.173+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:12.173+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:12.675+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:12.676+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:13.178+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:13.178+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:13.682+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:13.682+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:14.191+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:14.191+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:14.694+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:14.694+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:15.197+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:15.197+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:15.700+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:15.701+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:16.204+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:16.204+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:16.706+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:16.706+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:17.211+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:17.211+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:17.715+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:17.715+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:18.218+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:18.218+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:18.721+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:18.721+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:19.229+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:19.229+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:19.733+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:19.734+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:20.237+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:20.237+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:20.740+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:20.740+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:21.244+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:21.244+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:21.747+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:21.748+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:22.249+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:22.249+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:22.752+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:22.752+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:23.257+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:23.257+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:23.762+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:23.762+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:24.278+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:24.278+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:24.780+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:24.781+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:25.284+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:25.284+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:25.787+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:25.787+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:26.292+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:26.293+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:26.797+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:26.797+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:27.302+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:27.302+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:27.806+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:27.806+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:28.310+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:28.310+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:28.813+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:28.813+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:29.325+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:29.325+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:29.830+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:29.831+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:30.333+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:30.334+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:30.837+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:30.837+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:31.340+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:31.341+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:31.845+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:31.846+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:32.350+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:32.350+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:32.855+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:32.855+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:33.359+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:33.359+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:33.865+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:33.865+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:34.374+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:34.374+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:34.876+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:34.876+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:35.378+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:35.378+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:35.881+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:35.881+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:36.384+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:36.384+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:36.888+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:36.888+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:37.391+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:37.391+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:37.893+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:37.893+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:38.395+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:38.395+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:38.898+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:38.898+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:39.408+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:39.408+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:39.911+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:39.911+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:40.415+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:40.415+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:40.917+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:40.917+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:41.419+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:41.419+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:41.922+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:41.922+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:42.425+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:42.426+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:42.928+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:42.928+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:43.431+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:43.431+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:43.935+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:43.935+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:44.446+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:44.446+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:44.949+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:44.949+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:45.453+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:45.453+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:45.956+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:45.956+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:46.460+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:46.460+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:46.962+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:46.962+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:47.464+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:47.464+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:47.966+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:47.966+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:48.469+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:48.469+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:48.972+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:48.972+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:49.488+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:49.488+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:49.991+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:49.991+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:50.495+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:50.495+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:50.996+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:50.997+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:51.499+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:51.499+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:52.003+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:52.003+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:52.505+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:52.506+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:53.008+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:53.008+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:53.512+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:53.512+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:54.016+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:54.016+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:54.529+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:54.530+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:55.033+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:55.034+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:55.537+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:55.537+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:56.039+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:56.039+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:56.543+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:56.543+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:57.047+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:57.048+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:57.550+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:57.550+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:58.055+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:58.055+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:58.559+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:58.559+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:59.062+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:59.062+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:59.571+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:13:59.571+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:00.074+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:00.074+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:00.578+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:00.578+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:01.081+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:01.081+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:01.583+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:01.583+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:02.086+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:02.087+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:02.589+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:02.589+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:03.092+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:03.092+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:03.594+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:03.595+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:04.099+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:04.099+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:04.608+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:04.608+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:05.112+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:05.112+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:05.613+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:05.614+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:06.116+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:06.116+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:06.620+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:06.620+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:07.123+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:07.124+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:07.627+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:07.628+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:08.131+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:08.132+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:08.637+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:08.637+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:09.142+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:09.142+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:09.650+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:09.650+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:10.155+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:10.155+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:10.660+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:10.660+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:11.163+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:11.163+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:11.665+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:11.665+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:12.168+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:12.168+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:12.671+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:12.671+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:13.176+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:13.176+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:13.679+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:13.679+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:14.183+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:14.183+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:14.692+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:14.692+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:15.195+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:15.196+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:15.697+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:15.697+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:16.201+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:16.201+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:16.704+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:16.704+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:17.208+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:17.208+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:17.712+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:17.712+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:18.216+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:18.216+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:18.722+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:18.722+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:19.225+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:19.225+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:19.738+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:19.738+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:20.244+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:20.244+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:20.747+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-2-ce761663", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
+2026-07-17T16:14:20.747+0800	error	worker/analysis_worker_manager.go:180	analysis_task_claim_failed	{"worker_id": "zzy-36200-1-20e1540e", "error": "dial tcp 127.0.0.1:13306: connectex: No connection could be made because the target machine actively refused it."}
+pr-guard-agent/internal/worker.(*AnalysisWorkerManager).runWorker
+	D:/GO-STUDY/pr-guard-agent/internal/worker/analysis_worker_manager.go:180
