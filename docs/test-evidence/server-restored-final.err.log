@@ -12,3 +12,4 @@
 [mysql] 2026/07/17 16:12:09 connection.go:49: unexpected EOF
 [mysql] 2026/07/17 16:12:09 connection.go:49: unexpected EOF
 [mysql] 2026/07/17 16:12:09 connection.go:49: unexpected EOF
+exit status 0xffffffff
