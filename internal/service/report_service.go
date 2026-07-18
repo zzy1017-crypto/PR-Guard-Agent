@@ -38,6 +38,7 @@ type reportRAGService interface {
 
 type AnalyzeResult = reportcache.AnalyzeResult
 
+// 装配Repository、RAG、LLM、缓存和Logger。
 func NewReportService(
 	db *gorm.DB,
 	ragService *RAGService,
@@ -61,6 +62,7 @@ func NewReportService(
 	}
 }
 
+// 包级兼容入口，重新读取配置并使用全局DB
 func AnalyzeDiff(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
 	cfg, err := config.Load("configs/config.yaml")
 	if err != nil {
@@ -78,14 +80,17 @@ func AnalyzeDiff(ctx context.Context, projectID uint, diffID uint, topK int) (*A
 	return reportService.AnalyzeDiff(ctx, projectID, diffID, topK)
 }
 
+// 统一转入私有实现
 func (s *ReportService) AnalyzeDiff(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
 	return s.analyzeDiff(ctx, projectID, diffID, topK)
 }
 
+// 统一转入私有实现
 func (s *ReportService) AnalyzeDiffWithContext(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
 	return s.analyzeDiff(ctx, projectID, diffID, topK)
 }
 
+// 分析Diff，检索相关上下文，调用LLM生成风险报告，解析和验证结果，保存到数据库，并返回分析结果。
 func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID uint, topK int) (*AnalyzeResult, error) {
 	if s == nil || s.db == nil {
 		return nil, errors.New("report service is not initialized")
@@ -233,6 +238,7 @@ func (s *ReportService) analyzeDiff(ctx context.Context, projectID uint, diffID 
 	return result, nil
 }
 
+// 记录降级日志并并调用纯函数生成结果。
 func (s *ReportService) buildFallbackReport(
 	projectID uint,
 	diffID uint,
@@ -255,6 +261,7 @@ func (s *ReportService) buildFallbackReport(
 	return BuildFallbackReport(projectID, diffID, retrieveResult, reason)
 }
 
+// 只把LLM超时、Provider、非法JSON、非法报告映射为可降级原因。
 func fallbackReason(err error) (string, bool) {
 	switch {
 	case errors.Is(err, llm.ErrLLMTimeout):
@@ -270,6 +277,7 @@ func fallbackReason(err error) (string, bool) {
 	}
 }
 
+// 生成固定中风险、0.2置信度的人工复核报告，并沿用真实检索文件和去重符号。
 func BuildFallbackReport(projectID uint, diffID uint, retrieveResult *RetrieveResult, reason string) *AnalyzeResult {
 	reason = strings.TrimSpace(reason)
 	if reason == "" {
@@ -311,6 +319,7 @@ func BuildFallbackReport(projectID uint, diffID uint, retrieveResult *RetrieveRe
 	}
 }
 
+// 把ContextChunkResult切片转换为llm.ContextChunk切片
 func toLLMContextChunks(chunks []ContextChunkResult) []llm.ContextChunk {
 	result := make([]llm.ContextChunk, 0, len(chunks))
 	for _, chunk := range chunks {
@@ -328,6 +337,7 @@ func toLLMContextChunks(chunks []ContextChunkResult) []llm.ContextChunk {
 	return result
 }
 
+// 把报告数组序列化为JSON字段并构造数据库模型。
 func buildRiskReportModel(projectID uint, diffID uint, report *llm.RiskReport, rawOutput string) (*model.RiskReport, error) {
 	if report == nil {
 		return nil, errors.New("risk report is nil")
@@ -369,6 +379,7 @@ func buildRiskReportModel(projectID uint, diffID uint, report *llm.RiskReport, r
 	}, nil
 }
 
+// 统一数组JSON序列化和错误包装。
 func marshalStringSlice(field string, values []string) (string, error) {
 	raw, err := json.Marshal(values)
 	if err != nil {

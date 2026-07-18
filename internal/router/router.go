@@ -19,11 +19,15 @@ import (
 	"pr-guard-agent/pkg/llm"
 )
 
+// SetupRouter 创建并配置Gin路由器，注册所有的中间件和路由处理函数。
+// 返回配置好的Gin引擎实例。
 func SetupRouter(cfg *config.Config, reportCache *reportcache.ReportCache, loggers ...*zap.Logger) *gin.Engine {
 	r, _ := SetupRouterWithWorker(cfg, reportCache, loggers...)
 	return r
 }
 
+// SetupRouterWithWorker 创建并配置Gin路由器，注册所有的中间件和路由处理函数，同时返回分析任务工作管理器。
+// 返回配置好的Gin引擎实例和分析任务工作管理器。
 func SetupRouterWithWorker(
 	cfg *config.Config,
 	reportCache *reportcache.ReportCache,

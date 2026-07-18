@@ -17,10 +17,12 @@ type RiskTestResult struct {
 	RawOutput string          `json:"raw_output"`
 }
 
+// 注入LLM客户端，创建LLMService实例。
 func NewLLMService(client *llm.Client) *LLMService {
 	return &LLMService{client: client}
 }
 
+// 用内置订单/库存场景构造Prompt，调用LLM生成风险分析报告，并返回报告和原始输出。
 func (s *LLMService) TestRiskReport(ctx context.Context) (*RiskTestResult, error) {
 	if s == nil || s.client == nil {
 		return nil, errors.New("llm service is not initialized")
@@ -71,6 +73,7 @@ func (s *LLMService) TestRiskReport(ctx context.Context) (*RiskTestResult, error
 	}, nil
 }
 
+// 返回固定测试diff，保证Mock/Provider联调可重复。
 func testRiskDiffText() string {
 	return `diff --git a/internal/service/order_service.go b/internal/service/order_service.go
 index 1a2b3c4..5d6e7f8 100644

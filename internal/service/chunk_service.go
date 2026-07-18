@@ -19,6 +19,7 @@ type ChunkService struct {
 	codeChunkRepo   *repository.CodeChunkRepository
 }
 
+// 装配项目、文件和chunk repository.
 func NewChunkService(db *gorm.DB) *ChunkService {
 	return &ChunkService{
 		db:              db,
@@ -28,6 +29,7 @@ func NewChunkService(db *gorm.DB) *ChunkService {
 	}
 }
 
+// 只遍历Go文件生成AST Chunk,事务替换项目的MySQL Chunk。
 func (s *ChunkService) GenerateASTChunks(projectID uint) (int, error) {
 	project, err := s.projectRepo.GetByID(projectID)
 	if err != nil {
@@ -84,6 +86,7 @@ func (s *ChunkService) GenerateASTChunks(projectID uint) (int, error) {
 	return len(codeChunks), nil
 }
 
+// 判断文件类型是否为Go文件，支持"go"和".go"两种形式。
 func isGoFileType(fileType string) bool {
 	normalized := strings.ToLower(strings.TrimSpace(fileType))
 	return normalized == "go" || normalized == ".go"

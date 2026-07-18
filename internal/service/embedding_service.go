@@ -15,10 +15,12 @@ type EmbeddingTestResult struct {
 	Mock      bool `json:"mock"`
 }
 
+// 注入embedding客户端，创建EmbeddingService实例。
 func NewEmbeddingService(client *embedding.Client) *EmbeddingService {
 	return &EmbeddingService{client: client}
 }
 
+// 生成单文本向量，只返回维度和Mock标志
 func (s *EmbeddingService) Test(ctx context.Context, text string) (*EmbeddingTestResult, error) {
 	vector, err := s.client.EmbedText(ctx, text)
 	if err != nil {

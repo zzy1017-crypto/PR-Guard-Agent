@@ -122,6 +122,7 @@ type WorkerStatusItem struct {
 	FailureCount   uint64     `json:"failure_count"`
 }
 
+// 注入Repository、配置、运行快照和stopping回调。
 func NewAnalysisTaskOpsService(
 	repo analysisTaskOpsRepository,
 	opsConfig config.OpsConfig,
@@ -139,6 +140,7 @@ func NewAnalysisTaskOpsService(
 	}
 }
 
+// ListTasks 查询分析任务列表，支持分页、过滤和排序，返回任务列表及总数。把数据库模型转换为安全DTO，清洗错误文本。
 func (s *AnalysisTaskOpsService) ListTasks(ctx context.Context, filter repository.TaskListFilter) (*TaskListResult, error) {
 	if s == nil || s.repository == nil {
 		return nil, errors.New("analysis task ops repository is not initialized")
@@ -178,6 +180,7 @@ func (s *AnalysisTaskOpsService) ListTasks(ctx context.Context, filter repositor
 	}, nil
 }
 
+// 计算时间边界、读取聚合数据并计算成功率、失败率、降级率和重试率。
 func (s *AnalysisTaskOpsService) GetMetrics(ctx context.Context, windowHours int) (*TaskMetricsResult, error) {
 	if s == nil || s.repository == nil {
 		return nil, errors.New("analysis task ops repository is not initialized")
@@ -228,6 +231,7 @@ func (s *AnalysisTaskOpsService) GetMetrics(ctx context.Context, windowHours int
 	}, nil
 }
 
+// 查询分析任务工作器状态，返回注册的工作器数量、忙碌和空闲工作器数量、运行时间、运行时指标是否在重启时重置以及每个工作器的详细状态。
 func (s *AnalysisTaskOpsService) GetWorkers(ctx context.Context) (*WorkerStatusResult, error) {
 	if err := ctx.Err(); err != nil {
 		return nil, err
@@ -278,6 +282,7 @@ func (s *AnalysisTaskOpsService) GetWorkers(ctx context.Context) (*WorkerStatusR
 	}, nil
 }
 
+// 处理零分母并把比率限制在0-100之间，返回百分比值。
 func percentage(numerator int64, denominator int64) float64 {
 	if numerator <= 0 || denominator <= 0 {
 		return 0
@@ -292,6 +297,7 @@ func percentage(numerator int64, denominator int64) float64 {
 	return value
 }
 
+// 移除控制字段、把换行符转空格，并按UTF-8 rune截断到最大长度512，返回安全的错误消息字符串。
 func safeOpsErrorMessage(value string) string {
 	value = strings.Map(func(r rune) rune {
 		if r == '\r' || r == '\n' || r == '\t' {

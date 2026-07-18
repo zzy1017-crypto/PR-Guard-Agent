@@ -9,6 +9,8 @@ const (
 	AnalysisTaskStatusFailed    = "failed"
 )
 
+// task_key唯一，领取索引由status/next_run_at/created_at组成，领取时按status/next_run_at/created_at升序排序，领取后更新status/worker_id/started_at/next_run_at/attempt_count
+// 定义了一个分析任务的模型，包含任务的唯一标识符、任务键、关联的项目ID和diff ID、任务状态、尝试次数、最大尝试次数、工作节点ID、报告ID、结果JSON、降级标志、错误码、错误信息、提交请求ID以及任务的开始时间、结束时间、下一次运行时间和最后一次失败时间等信息。
 type AnalysisTask struct {
 	ID              uint64 `gorm:"primaryKey"`
 	TaskKey         string `gorm:"type:char(64);not null;uniqueIndex"`

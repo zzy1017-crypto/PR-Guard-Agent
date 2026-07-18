@@ -51,6 +51,7 @@ type AnalysisTaskService struct {
 	logger      *zap.Logger
 }
 
+// 装配项目、diff和任务repository.
 func NewAnalysisTaskService(db *gorm.DB, maxAttempts int, loggers ...*zap.Logger) *AnalysisTaskService {
 	logger := zap.NewNop()
 	if len(loggers) > 0 && loggers[0] != nil {
@@ -65,8 +66,7 @@ func NewAnalysisTaskService(db *gorm.DB, maxAttempts int, loggers ...*zap.Logger
 	}
 }
 
-// BuildAnalysisTaskKey returns a stable SHA-256 identity for one versioned
-// analysis request. Length-prefixed strings avoid delimiter ambiguity.
+// 对带长度前缀的项目/版本/diff/TopK串计算SHA-256哈希，作为分析任务的唯一Key。
 func BuildAnalysisTaskKey(projectID uint, codeVersionHash string, diffHash string, topK int) string {
 	payload := strconv.FormatUint(uint64(projectID), 10) + ":" +
 		strconv.Itoa(len(codeVersionHash)) + ":" + codeVersionHash + ":" +
@@ -76,6 +76,7 @@ func BuildAnalysisTaskKey(projectID uint, codeVersionHash string, diffHash strin
 	return hex.EncodeToString(sum[:])
 }
 
+// 校验归属、生成任务键、复用已有任务或处理并发唯一键冲突，否则创建pending任务。
 func (s *AnalysisTaskService) Submit(
 	ctx context.Context,
 	projectID uint,
@@ -139,10 +140,12 @@ func (s *AnalysisTaskService) Submit(
 	return &SubmitAnalysisTaskResult{Task: task}, nil
 }
 
+// 查询任务
 func (s *AnalysisTaskService) Get(ctx context.Context, taskID uint64) (*model.AnalysisTask, error) {
 	return s.taskRepo.GetByID(ctx, taskID)
 }
 
+// 复用未失败任务，未耗尽failed任务恢复pending，耗尽返回冲突。
 func (s *AnalysisTaskService) resolveExisting(ctx context.Context, task *model.AnalysisTask) (*SubmitAnalysisTaskResult, error) {
 	switch task.Status {
 	case model.AnalysisTaskStatusPending, model.AnalysisTaskStatusRunning, model.AnalysisTaskStatusSucceeded:
@@ -173,6 +176,7 @@ func (s *AnalysisTaskService) resolveExisting(ctx context.Context, task *model.A
 	}
 }
 
+// 生成统一的任务日志字段。
 func taskLogFields(task *model.AnalysisTask) []zap.Field {
 	return []zap.Field{
 		zap.Uint64("task_id", task.ID),

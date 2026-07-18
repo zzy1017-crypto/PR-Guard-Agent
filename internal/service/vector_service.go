@@ -43,6 +43,7 @@ type VectorTestSearchResult struct {
 	Results         []vector.SearchResult `json:"results"`
 }
 
+// 注入Qdrant配置和Embedding Client。
 func NewVectorService(qdrantCfg config.QdrantConfig, embeddingClient *embedding.Client) *VectorService {
 	return &VectorService{
 		qdrantCfg:       qdrantCfg,
@@ -50,6 +51,7 @@ func NewVectorService(qdrantCfg config.QdrantConfig, embeddingClient *embedding.
 	}
 }
 
+// 创建Client、确认Collection并返回配置摘要。
 func (s *VectorService) InitCollection(ctx context.Context) (*VectorCollectionInitResult, error) {
 	client, err := vector.NewClient(s.qdrantCfg)
 	if err != nil {
@@ -68,6 +70,7 @@ func (s *VectorService) InitCollection(ctx context.Context) (*VectorCollectionIn
 	}, nil
 }
 
+// 为固定Add函数生成向量并写固定测试Point。
 func (s *VectorService) TestUpsert(ctx context.Context) (*VectorTestUpsertResult, error) {
 	vectorValues, err := s.embeddingClient.EmbedText(ctx, vectorTestContent)
 	if err != nil {
@@ -111,6 +114,7 @@ func (s *VectorService) TestUpsert(ctx context.Context) (*VectorTestUpsertResult
 	}, nil
 }
 
+// 用相同内容查询，验证Embedding->Qdrant搜索链路。
 func (s *VectorService) TestSearch(ctx context.Context, topK uint64) (*VectorTestSearchResult, error) {
 	if topK == 0 {
 		topK = 5

@@ -68,6 +68,7 @@ type ContextChunkResult struct {
 	ChunkText  string  `json:"chunk_text"`
 }
 
+// 装配项目/diff/chunk Repository、Embedding和Qdrant配置。
 func NewRAGService(db *gorm.DB, qdrantCfg config.QdrantConfig, embeddingClient *embedding.Client) *RAGService {
 	if embeddingClient == nil {
 		embeddingClient = embedding.NewClient(config.EmbeddingConfig{})
@@ -83,6 +84,7 @@ func NewRAGService(db *gorm.DB, qdrantCfg config.QdrantConfig, embeddingClient *
 	}
 }
 
+// 包级兼容入口，重新读取配置并使用全局DB
 func RetrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
 	cfg, err := config.Load("configs/config.yaml")
 	if err != nil {
@@ -93,14 +95,17 @@ func RetrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, top
 		RetrieveRelatedChunks(ctx, projectID, diffID, topK)
 }
 
+// 统一转入私有实现
 func (s *RAGService) RetrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
 	return s.retrieveRelatedChunks(ctx, projectID, diffID, topK)
 }
 
+// 统一转入私有实现
 func (s *RAGService) RetrieveRelatedChunksWithContext(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
 	return s.retrieveRelatedChunks(ctx, projectID, diffID, topK)
 }
 
+// 验证项目/diff、生成diff向量、带版本过滤搜索、加载并验证Chunk、构造上下文。
 func (s *RAGService) retrieveRelatedChunks(ctx context.Context, projectID uint, diffID uint, topK int) (*RetrieveResult, error) {
 	if s == nil || s.db == nil {
 		return nil, errors.New("database is not initialized")
@@ -187,6 +192,7 @@ func (s *RAGService) retrieveRelatedChunks(ctx context.Context, projectID uint, 
 	return result, nil
 }
 
+// 批量加载Chunk，并强制检查全部搜索结果都能在当前项目版本中找到。
 func (s *RAGService) loadChunksBySearchResults(ctx context.Context, searchResults []vector.SearchResult, project *model.Project) (map[uint]model.CodeChunk, error) {
 	chunkIDs := uniqueSearchResultChunkIDs(searchResults)
 	if len(chunkIDs) == 0 {
@@ -216,6 +222,7 @@ func (s *RAGService) loadChunksBySearchResults(ctx context.Context, searchResult
 	return chunksByID, nil
 }
 
+// 规范检索TopK值，确保在有效范围内。默认5，最大20.
 func normalizeRetrieveTopK(topK int) int {
 	if topK <= 0 {
 		return defaultRetrieveTopK
@@ -226,6 +233,7 @@ func normalizeRetrieveTopK(topK int) int {
 	return topK
 }
 
+// 去重搜索结果中的ChunkID，返回唯一的ChunkID列表。忽略0ID.
 func uniqueSearchResultChunkIDs(searchResults []vector.SearchResult) []uint {
 	chunkIDs := make([]uint, 0, len(searchResults))
 	seen := make(map[uint]struct{}, len(searchResults))
@@ -243,6 +251,7 @@ func uniqueSearchResultChunkIDs(searchResults []vector.SearchResult) []uint {
 	return chunkIDs
 }
 
+// 优先Payload ChunkID,兼容使用Point ID。
 func searchResultChunkID(searchResult vector.SearchResult) uint {
 	if searchResult.ChunkID != 0 {
 		return searchResult.ChunkID
@@ -250,6 +259,7 @@ func searchResultChunkID(searchResult vector.SearchResult) uint {
 	return searchResult.ID
 }
 
+// 以Qdrant Payload为主，MySQL为后被构造符号结果。
 func relatedSymbolFromSearchResult(searchResult vector.SearchResult, chunk model.CodeChunk) RelatedSymbolResult {
 	return RelatedSymbolResult{
 		ChunkID:    chunk.ID,
@@ -262,6 +272,7 @@ func relatedSymbolFromSearchResult(searchResult vector.SearchResult, chunk model
 	}
 }
 
+// 加入原始Chunk文本并截断。
 func contextChunkFromSymbol(symbol RelatedSymbolResult, chunkText string) ContextChunkResult {
 	return ContextChunkResult{
 		ChunkID:    symbol.ChunkID,
@@ -275,6 +286,7 @@ func contextChunkFromSymbol(symbol RelatedSymbolResult, chunkText string) Contex
 	}
 }
 
+// 优先返回非空字符串，否则返回备用字符串。
 func firstNonEmpty(primary string, fallback string) string {
 	if strings.TrimSpace(primary) != "" {
 		return primary
@@ -282,6 +294,7 @@ func firstNonEmpty(primary string, fallback string) string {
 	return fallback
 }
 
+// 优先返回非零整数，否则返回备用整数。
 func firstNonZero(primary int, fallback int) int {
 	if primary != 0 {
 		return primary
@@ -289,6 +302,7 @@ func firstNonZero(primary int, fallback int) int {
 	return fallback
 }
 
+// 按Unicode rune截断，避免破坏UTF-8.
 func truncateRunes(text string, maxRunes int) string {
 	if maxRunes <= 0 {
 		return ""

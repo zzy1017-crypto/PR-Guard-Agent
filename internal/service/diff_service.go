@@ -25,6 +25,7 @@ type UploadDiffResult struct {
 	ChangedFiles []parser.DiffFile `json:"changed_files"`
 }
 
+// 装配项目和Diff Repository。
 func NewDiffService(db *gorm.DB) *DiffService {
 	return &DiffService{
 		projectRepo: repository.NewProjectRepository(db),
@@ -32,6 +33,7 @@ func NewDiffService(db *gorm.DB) *DiffService {
 	}
 }
 
+// 上传Diff文本，解析出变更文件列表，计算Diff哈希，保存Diff记录（持久化），并返回结果。
 func (s *DiffService) UploadDiff(projectID uint, diffText string) (*UploadDiffResult, error) {
 	diffText = strings.TrimPrefix(diffText, "\uFEFF")
 	if strings.TrimSpace(diffText) == "" {

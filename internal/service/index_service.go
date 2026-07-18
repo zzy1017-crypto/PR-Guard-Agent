@@ -41,6 +41,7 @@ type IndexService struct {
 	embeddingClient *embedding.Client
 }
 
+// 装配索引依赖，nil Embedding Client时创建默认Mock。
 func NewIndexService(db *gorm.DB, qdrantCfg config.QdrantConfig, embeddingClient *embedding.Client) *IndexService {
 	if embeddingClient == nil {
 		embeddingClient = embedding.NewClient(config.EmbeddingConfig{})
@@ -56,6 +57,7 @@ func NewIndexService(db *gorm.DB, qdrantCfg config.QdrantConfig, embeddingClient
 	}
 }
 
+// 包级兼容入口，重新读取配置并使用全局DB
 func IndexProject(projectID uint) (*IndexProjectResult, error) {
 	cfg, err := config.Load("configs/config.yaml")
 	if err != nil {
@@ -65,10 +67,12 @@ func IndexProject(projectID uint) (*IndexProjectResult, error) {
 	return NewIndexService(database.DB, cfg.Qdrant, embedding.NewClient(cfg.Embedding)).IndexProject(projectID)
 }
 
+// 后台Context入口，使用全局DB和配置
 func (s *IndexService) IndexProject(projectID uint) (*IndexProjectResult, error) {
 	return s.IndexProjectWithContext(context.Background(), projectID)
 }
 
+// 执行文件分块、MySQL Chunk替换、Collection确认、Embedding和Upsert全流程。
 func (s *IndexService) IndexProjectWithContext(ctx context.Context, projectID uint) (*IndexProjectResult, error) {
 	project, err := s.projectRepo.GetByID(projectID)
 	if err != nil {
@@ -150,6 +154,7 @@ func (s *IndexService) IndexProjectWithContext(ctx context.Context, projectID ui
 	return result, nil
 }
 
+// 按批次生成向量、检查数量、Upsert，并回写embedding_id.
 func (s *IndexService) embedAndUpsertChunks(ctx context.Context, codeChunks []model.CodeChunk, vectorClient *vector.Client, result *IndexProjectResult) error {
 	batchSize := s.embeddingClient.BatchSize()
 	if batchSize <= 0 {
@@ -195,6 +200,7 @@ func (s *IndexService) embedAndUpsertChunks(ctx context.Context, codeChunks []mo
 	return nil
 }
 
+// 拒绝空文本的Chunk，避免生成无效向量和浪费资源。
 func validateCodeChunksForEmbedding(codeChunks []model.CodeChunk) error {
 	for i, chunk := range codeChunks {
 		if strings.TrimSpace(chunk.ChunkText) == "" {
@@ -204,6 +210,7 @@ func validateCodeChunksForEmbedding(codeChunks []model.CodeChunk) error {
 	return nil
 }
 
+// 把数据库Chunk和向量组合成Qdrant Point.
 func codeChunksToPoints(codeChunks []model.CodeChunk, vectors [][]float32) []vector.ChunkPoint {
 	points := make([]vector.ChunkPoint, 0, len(codeChunks))
 	for i, chunk := range codeChunks {
@@ -224,6 +231,7 @@ func codeChunksToPoints(codeChunks []model.CodeChunk, vectors [][]float32) []vec
 	return points
 }
 
+// 把AST分块转换为CodeChunk
 func astChunksToCodeChunks(projectID uint, fileID uint, astChunks []chunker.ASTChunk) []model.CodeChunk {
 	codeChunks := make([]model.CodeChunk, 0, len(astChunks))
 	for _, astChunk := range astChunks {
@@ -243,6 +251,7 @@ func astChunksToCodeChunks(projectID uint, fileID uint, astChunks []chunker.ASTC
 	return codeChunks
 }
 
+// 把文本分块转换为CodeChunk
 func textChunksToCodeChunks(projectID uint, fileID uint, textChunks []chunker.TextChunk) []model.CodeChunk {
 	codeChunks := make([]model.CodeChunk, 0, len(textChunks))
 	for _, textChunk := range textChunks {
@@ -262,11 +271,13 @@ func textChunksToCodeChunks(projectID uint, fileID uint, textChunks []chunker.Te
 	return codeChunks
 }
 
+// 规范斜杠并构造项目落盘路径。
 func projectFilePath(projectID uint, relativePath string) string {
 	normalized := strings.ReplaceAll(relativePath, "\\", "/")
 	return filepath.Join("data", "projects", fmt.Sprintf("%d", projectID), filepath.FromSlash(normalized))
 }
 
+// 判断文件类型是否为文本索引类型，支持md、yaml、yml、json、sql、mod、sum、lua等。
 func isTextIndexFileType(fileType string) bool {
 	switch normalizeFileType(fileType) {
 	case "md", "yaml", "yml", "json", "sql", "mod", "sum", "lua":
@@ -276,6 +287,7 @@ func isTextIndexFileType(fileType string) bool {
 	}
 }
 
+// 规范文件类型，去掉前导点并转小写。
 func normalizeFileType(fileType string) string {
 	return strings.TrimPrefix(strings.ToLower(strings.TrimSpace(fileType)), ".")
 }
