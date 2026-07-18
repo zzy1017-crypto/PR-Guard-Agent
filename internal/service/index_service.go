@@ -136,6 +136,12 @@ func (s *IndexService) IndexProjectWithContext(ctx context.Context, projectID ui
 	if err := vectorClient.EnsureCollection(ctx); err != nil {
 		return nil, fmt.Errorf("ensure qdrant collection failed: %w", err)
 	}
+	if err := vectorClient.DeleteChunks(ctx, vector.SearchFilter{
+		ProjectID:       project.ID,
+		CodeVersionHash: project.CodeVersionHash,
+	}); err != nil {
+		return nil, fmt.Errorf("delete stale qdrant chunks failed: %w", err)
+	}
 
 	if err := s.embedAndUpsertChunks(ctx, codeChunks, vectorClient, result); err != nil {
 		return nil, err

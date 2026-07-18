@@ -131,6 +131,36 @@ func (c *Client) EnsureCollection(ctx context.Context) error {
 	return nil
 }
 
+// DeleteChunks removes all vector points belonging to one project code
+// version. Re-indexing calls this before the full upsert so stale point IDs
+// cannot outlive the MySQL code_chunks rows they reference.
+func (c *Client) DeleteChunks(ctx context.Context, filter SearchFilter) error {
+	if c == nil || c.client == nil {
+		return errors.New("qdrant client is nil")
+	}
+
+	pointsFilter, err := chunkFilter(filter)
+	if err != nil {
+		return err
+	}
+
+	requestCtx, cancel := context.WithTimeout(ctx, c.timeout)
+	defer cancel()
+
+	wait := true
+	requestTimeout := uint64(c.timeout.Seconds())
+	if _, err := c.client.Delete(requestCtx, &qdrantapi.DeletePoints{
+		CollectionName: c.collectionName,
+		Wait:           &wait,
+		Points:         qdrantapi.NewPointsSelectorFilter(pointsFilter),
+		Timeout:        &requestTimeout,
+	}); err != nil {
+		return fmt.Errorf("delete qdrant points failed: %w", classifyQdrantError(err))
+	}
+
+	return nil
+}
+
 func (c *Client) UpsertChunks(ctx context.Context, points []ChunkPoint) error {
 	if len(points) == 0 {
 		return errors.New("points is empty")
@@ -249,6 +279,23 @@ func parseDistance(distance string) qdrantapi.Distance {
 	default:
 		return qdrantapi.Distance_Cosine
 	}
+}
+
+func chunkFilter(filter SearchFilter) (*qdrantapi.Filter, error) {
+	if filter.ProjectID == 0 {
+		return nil, errors.New("project_id is required")
+	}
+	codeVersionHash := strings.TrimSpace(filter.CodeVersionHash)
+	if codeVersionHash == "" {
+		return nil, errors.New("code_version_hash is required")
+	}
+
+	return &qdrantapi.Filter{
+		Must: []*qdrantapi.Condition{
+			qdrantapi.NewMatchInt(payloadProjectID, int64(filter.ProjectID)),
+			qdrantapi.NewMatch(payloadCodeVersionHash, codeVersionHash),
+		},
+	}, nil
 }
 
 func chunkPointPayload(point ChunkPoint) (map[string]*qdrantapi.Value, error) {
